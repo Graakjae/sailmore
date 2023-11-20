@@ -7,7 +7,6 @@ import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
 import HomePageTrips from "/components/HomePageTrips";
 
-
 function HomePage() {
     const [data, setData] = useState([]);
 
@@ -37,5 +36,3 @@ function HomePage() {
         </div>
     );
 }
-
-export default HomePage;
