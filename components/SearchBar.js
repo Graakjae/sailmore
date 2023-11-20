@@ -1,4 +1,4 @@
-function SearchBar () {
+function SearchBar() {
     return (
         <div class="search-bar">
             <form action="api.php" method="post" class="search-form">
