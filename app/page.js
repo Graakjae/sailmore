@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import getData from "../backend/api/getData"; // Import getData function
+import NavigationsBar from "/components/NavigationBar";
 
 function HomePage() {
     const [data, setData] = useState([]);
@@ -15,6 +16,7 @@ function HomePage() {
 
     return (
         <div>
+            <NavigationsBar />
             <h1>User Data:</h1>
             {data.map(user => (
                 <div key={user.id}>
