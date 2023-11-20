@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react";
 import getData from "../backend/api/getData"; // Import getData function
 import NavigationsBar from "/components/NavigationBar";
+import Footer from "/components/Footer";
+import HomePageHeader from "/components/HomePageHeader";
+import HomePageTrips from "/components/HomePageTrips";
+
 
 function HomePage() {
     const [data, setData] = useState([]);
@@ -17,7 +21,12 @@ function HomePage() {
     return (
         <div>
             <NavigationsBar />
-            <h1>User Data:</h1>
+            <br></br>
+            <HomePageHeader />
+            <br></br>
+            <HomePageTrips />
+            <br></br>
+            <Footer />
             {data.map(user => (
                 <div key={user.id}>
                     <p>ID: {user.id}</p>
