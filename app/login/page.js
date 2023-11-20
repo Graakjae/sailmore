@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
     const router = useRouter();
 
     const handleLogin = async () => {
@@ -18,11 +19,13 @@ const Login = () => {
             });
 
             const data = await response.text();
+            console.log("Login response:", data);
 
             if (data === "Login successful") {
                 console.log("User logged in successfully");
-                // Redirect to a protected page or update the UI
-                router.push("/"); // Replace '/dashboard' with your desired protected page
+                setLoggedIn(true);
+                console.log(loggedIn);
+                router.push("/");
             } else {
                 console.error("Login failed:", data);
             }
