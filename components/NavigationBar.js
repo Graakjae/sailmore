@@ -29,7 +29,7 @@ function NavigationsBar() {
                         <a href="TripsOverview">Trips</a>
                     </li>
                     <li>
-                        <a href="travelers">Travelers</a>
+                        <a href="CrewMembers">Travelers</a>
                     </li>
                     <li>
                         <a href="login">Login</a>
