@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../authContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loggedIn, setLoggedIn] = useState(false);
+    const { loggedIn, setLoggedIn } = useAuth();
     const router = useRouter();
 
     const handleLogin = async () => {
@@ -24,7 +25,6 @@ const Login = () => {
             if (data === "Login successful") {
                 console.log("User logged in successfully");
                 setLoggedIn(true);
-                console.log(loggedIn);
                 router.push("/");
             } else {
                 console.error("Login failed:", data);
