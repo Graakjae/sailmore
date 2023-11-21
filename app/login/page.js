@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../authContext";
-
+import "./login.css";
+import SimpleButton from "../../components/buttons/SimpleButton";
+import Link from "next/link";
+import TextInputField from "../../components/inputs/TextInputField";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,16 +38,23 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
-            <button onClick={handleLogin}>Login</button>
+        <div className="flexBox">
+            <div className="loginWrapper">
+                <div>
+                    <h2>Login</h2>
+                    <TextInputField label="Email" type="text" value={email} onChange={e => setEmail(e.target.value)} />
+                    <TextInputField
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <SimpleButton onClick={handleLogin} text="Login" />
+                    <Link className="noLink" href="/signup">
+                        Need an account? <b className="link">SIGN UP</b>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };
