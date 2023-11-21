@@ -12,6 +12,7 @@
     "ignore-loader": "^0.1.2",
     "next": "14.0.2",
     "react": "^18",
+    "react-datepicker": "^4.23.0",
     "react-dom": "^18"
   },
   "devDependencies": {
