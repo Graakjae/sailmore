@@ -1,5 +1,9 @@
 
-function TripsOverviewPage() {
+import FilterTrips from '@/components/FilterTrips';
 
+function TripsOverview() {
+    return(
+        <FilterTrips />
+    )
 }
-export default TripsOverviewPage
+export default TripsOverview;
