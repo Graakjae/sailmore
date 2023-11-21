@@ -1,5 +1,6 @@
 
-function ProfilePage() {
-
+export default function ProfilePage(){
+    return(
+        <h1>Hi</h1>
+    )
 }
-export default ProfilePage

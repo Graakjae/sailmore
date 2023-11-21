@@ -32,6 +32,9 @@ function NavigationsBar() {
                         <a href="CrewMembers">Travelers</a>
                     </li>
                     <li>
+                        <a href="Profile">Profile</a>
+                    </li>
+                    <li>
                         <a href="login">Login</a>
                     </li>
                     <li>

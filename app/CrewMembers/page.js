@@ -1,5 +1,4 @@
 import FilterCrewMembers from "@/components/FilterCrewMembers";
-
 function CrewMembersPage() {
     return(
         <FilterCrewMembers />
