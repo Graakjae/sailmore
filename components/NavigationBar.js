@@ -26,10 +26,10 @@ function NavigationsBar() {
             <nav>
                 <ul>
                     <li>
-                        <a href="trips/page.js">Trips</a>
+                        <a href="TripsOverview">Trips</a>
                     </li>
                     <li>
-                        <a href="travelers/page.js">Travelers</a>
+                        <a href="travelers">Travelers</a>
                     </li>
                     <li>
                         <a href="login">Login</a>
