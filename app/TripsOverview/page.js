@@ -24,6 +24,7 @@ const TripsComponent = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Title</th>
                         <th>Start Date</th>
                         <th>End Date</th>
@@ -34,6 +35,7 @@ const TripsComponent = () => {
                 <tbody>
                     {trips.map((trip, index) => (
                         <tr key={index}>
+                            <td><img src={trip.img} /></td>
                             <td>{trip.title}</td>
                             <td>{trip.start_date}</td>
                             <td>{trip.end_date}</td>
