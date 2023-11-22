@@ -1,28 +1,70 @@
-.flexBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 .signupWrapper {
     width: 80%;
-
     border-radius: 33px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .grid {
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-gap: 20px;
-    margin-top: 50px;
 }
 
 .profilePicture {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    border-radius: 13px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+}
+
+.date {
+    width: 350px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 1px solid #7b7979;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: large;
+    padding-left: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .signupWrapper {
+        width: 90%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profilePicture {
+        width: 100px;
+        height: 100px;
+    }
+    input {
+        width: 250px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
 }
