@@ -56,6 +56,9 @@
         width: 100px;
         height: 100px;
     }
+    .date {
+        width: 250px;
+    }
     input {
         width: 250px;
     }
