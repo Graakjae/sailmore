@@ -9,7 +9,6 @@ import LoggedIn from "@/components/loggedIn";
 function HomePage() {
     return (
         <div>
-            <NavigationsBar />
             <LoggedIn />
             <br></br>
             <HomePageHeader />

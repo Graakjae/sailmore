@@ -94,7 +94,6 @@ export default function signUp() {
                             alt="Profile picture"
                         />
                     </div>
-                    <img src="public/profilePictures/frederik-graakjaer.jpg" alt="Profile Picture" />
 
                     <SimpleButton text="Create account" onClick={handleSignup} />
                 </div>
