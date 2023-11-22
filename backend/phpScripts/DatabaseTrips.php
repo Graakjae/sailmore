@@ -4,7 +4,7 @@ include "../../db/mysql.php";
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT * FROM trip";
+$sql = "SELECT * FROM trip_card";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -12,7 +12,9 @@ if ($result->num_rows > 0) {
         // Append each item to the $data array
         $data[] = array(
             'title' => $row['title'],
-            // Add other fields as needed
+            'start_date' => $row['start_date'],
+            'end_date' => $row['end_date'],
+            'price' => $row['price']
         );
     }
 } else {

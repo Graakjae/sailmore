@@ -24,16 +24,20 @@ const TripsComponent = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Price</th>
                         {/* Add other columns as needed */}
                     </tr>
                 </thead>
                 <tbody>
-                    {trips.map((trip) => (
-                        <tr key={trip.id}>
-                            <td>{trip.id}</td>
+                    {trips.map((trip, index) => (
+                        <tr key={index}>
                             <td>{trip.title}</td>
+                            <td>{trip.start_date}</td>
+                            <td>{trip.end_date}</td>
+                            <td>{trip.price}</td>
                             {/* Render other columns as needed */}
                         </tr>
                     ))}
