@@ -2,12 +2,6 @@
 include '../../db/mysql.php';
 session_start();
 
-// Check if the user is not logged in, redirect to the login page
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: /login.php");
-//     exit();
-// }
-
 // Get data from POST request
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -23,14 +17,14 @@ $checkEmailQuery = "SELECT * FROM captains WHERE email = '$email'";
 $checkEmailResult = $mySQL->query($checkEmailQuery);
 
 if ($checkEmailResult->num_rows > 0) {
-    echo "Email already exists";
+    echo json_encode(['error' => 'Email already exists']);
 } else {
     // Handle file upload
     $profilePicture = ''; // Default value
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
         $tempPath = $_FILES['profilePicture']['tmp_name'];
         $uploadPath = '../../public/profilePictures/' . $_FILES['profilePicture']['name'];
-        
+
         move_uploaded_file($tempPath, $uploadPath);
         $profilePicture = $uploadPath;
     }
@@ -41,9 +35,21 @@ if ($checkEmailResult->num_rows > 0) {
     VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
 
     if ($mySQL->query($insertQuery) === TRUE) {
-        echo "User registered successfully";
+        // Retrieve user data from the database based on the provided email
+        $getUserQuery = "SELECT * FROM captains WHERE email = '$email'";
+        $getUserResult = $mySQL->query($getUserQuery);
+
+        $loggedInUser = $getUserResult->fetch_assoc();
+
+        if ($loggedInUser) {
+            $_SESSION['user_id'] = $loggedInUser['pk_id'];
+            $_SESSION['email'] = $loggedInUser['email'];
+            echo "User registered successfully";
+        } else {
+            echo json_encode(['error' => 'User not found after signup']);
+        }
     } else {
-        echo "Error: " . $insertQuery . "<br>" . $mySQL->error;
+        echo json_encode(['error' => $mySQL->error]);
     }
 }
 

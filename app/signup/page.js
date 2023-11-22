@@ -7,6 +7,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import { format, compareAsc } from "date-fns";
+import TextInputField from "@/components/inputs/textInputField";
+import FileInputField from "@/components/inputs/fileInput";
+import { useRouter } from "next/navigation";
 
 export default function signUp() {
     const [email, setEmail] = useState("");
@@ -16,6 +19,8 @@ export default function signUp() {
     const [age, setAge] = useState(new Date());
     const [profilePicture, setProfilePicture] = useState();
     const [previewUrl, setPreviewUrl] = useState(null);
+    const router = useRouter();
+
     const handleSignup = async () => {
         try {
             // FormData is used for sending files in a POST request
@@ -34,6 +39,10 @@ export default function signUp() {
 
             const data = await response.text();
             console.log(data); // You can handle the response as needed
+            if (data === "User registered successfully") {
+                console.log("User signed up successfully");
+                router.push("/Profile");
+            }
         } catch (error) {
             console.error("Error:", error);
         }
@@ -52,49 +61,43 @@ export default function signUp() {
         <div className="flexBox">
             <div className="signupWrapper">
                 <div>
-                    <h2>Create your account</h2>
+                    <h2>Sign up here</h2>
                     <div className="grid">
-                        <div>
-                            <h3>First name</h3>
-                            <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
-                        </div>
-                        <div>
-                            <h3>Last name</h3>
-                            <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
-                        </div>
+                        <TextInputField
+                            label="First name"
+                            type="text"
+                            value={firstName}
+                            onChange={e => setFirstName(e.target.value)}
+                        />
+                        <TextInputField
+                            label="Last name"
+                            type="text"
+                            value={lastName}
+                            onChange={e => setLastName(e.target.value)}
+                        />
                         <div>
                             <h3>Date of birth</h3>
-                            <DatePicker
-                                dateFormat="dd/MM/yy"
-                                placeholder="DD/MM/YYY"
-                                selected={age}
-                                onChange={date => setAge(date)}
-                            />
+                            <DatePicker dateFormat="dd/MM/yy" selected={age} onChange={date => setAge(date)} />
                         </div>
-                        <div>
-                            <h3>Email</h3>
-                            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                        </div>
-                        <div>
-                            <h3>Password</h3>
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <h3>Profile picture</h3>
-                            <input type="file" onChange={handleProfilePictureChange} placeholder="" />
-                        </div>
+                        <TextInputField
+                            label="Email"
+                            type="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <TextInputField
+                            label="Password"
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
                         <img
                             className="profilePicture"
-                            src={profilePicture ? URL.createObjectURL(profilePicture) : ""}
+                            src={profilePicture ? URL.createObjectURL(profilePicture) : "/defaultProfilePicture.png"}
                             alt="Profile picture"
                         />
                     </div>
-
                     <SimpleButton text="Create account" onClick={handleSignup} />
                 </div>
             </div>

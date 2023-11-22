@@ -22,7 +22,9 @@ function NavigationsBar() {
     };
     return (
         <div>
-            <img src="/sailmore_logo.png" alt="Site Logo" />
+            <a href="/">
+                <img src="/sailmore_logo.png" alt="Site Logo" />
+            </a>
             <nav>
                 <ul>
                     <li>
