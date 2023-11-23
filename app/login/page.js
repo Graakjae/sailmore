@@ -5,7 +5,7 @@ import { useAuth } from "../authContext";
 import "./login.css";
 import SimpleButton from "../../components/buttons/SimpleButton";
 import Link from "next/link";
-import TextInputField from "../../components/inputs/TextInputField";
+import TextInputField from "../../components/inputs/textInputField";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
