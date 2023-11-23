@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import TextInputField from "@/components/inputs/textInputField";
 import FileInputField from "@/components/inputs/fileInput";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../authContext";
 
 export default function signUp() {
     const [email, setEmail] = useState("");
@@ -22,6 +23,7 @@ export default function signUp() {
     const [error, setError] = useState(null);
     const [role, setRole] = useState("none");
     const router = useRouter();
+    const { loggedIn, setLoggedIn } = useAuth();
 
     const isFormValid = () => {
         return (
@@ -66,6 +68,7 @@ export default function signUp() {
             console.log(data); // You can handle the response as needed
             if (data === "User registered successfully") {
                 console.log("User signed up successfully");
+                setLoggedIn(true);
                 router.push("/Profile");
             } else {
                 setError(data); // Display error message if signup fails
@@ -78,14 +81,7 @@ export default function signUp() {
 
     const handleProfilePictureChange = e => {
         const selectedFile = e.target.files[0];
-
-        // Check if a file is selected
-        if (!selectedFile) {
-            setProfilePicture(null);
-            setPreviewUrl(null);
-            setError(null);
-            return;
-        }
+        console.log("Selected files:", selectedFile.size);
 
         // Check file size (maxSize in bytes)
         const maxSize = 2 * 1024 * 1024; // 2 MB (adjust as needed)
@@ -94,9 +90,20 @@ export default function signUp() {
             return;
         }
 
+        if (!selectedFile.type.match(/image.*/)) {
+            setError("File must be an image.");
+            return;
+        }
+
         // File is within size limit, proceed
         setError(null);
         setProfilePicture(selectedFile);
+
+        // Check if a file is selected
+        if (!selectedFile) {
+            setError(null);
+            return;
+        }
 
         // Display a preview of the selected image
         const imageUrl = URL.createObjectURL(selectedFile);
