@@ -66,7 +66,7 @@ if ($checkEmailResult->num_rows > 0) {
             exit;
         }
     } else {
-        $profilePicture = ''; // Default value
+        $profilePicture = '/defaultProfilePicture.png'; // Default value
     }
 
     if ($role === 'captains') {

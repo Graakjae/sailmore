@@ -1,65 +1,57 @@
 "use client";
 import Link from "next/link";
 import { useAuth } from "../app/authContext";
-import { useRouter } from "next/navigation";
 import "../styles/NavBar.css";
+import SignOut from "./SignOut";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+
 function NavigationsBar() {
     const { loggedIn, setLoggedIn } = useAuth();
-    const router = useRouter();
-    const handleSignout = async () => {
-        try {
-            const response = await fetch("/backend/phpScripts/logout.php");
-
-            if (response.ok) {
-                console.log("Logout successful");
-                setLoggedIn(false); // Update client-side state
-                router.push("/login"); // Redirect to the login page or any other desired page
-            } else {
-                console.error("Logout failed");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    };
+    const pathName = usePathname();
     return (
         <div className="navBarWrapper">
             <Link href="/">
-                <img src="/sailmore_logo.png" alt="Site Logo" />
+                <img
+                    src={`${pathName === "/" ? "/sailmore_logo.png" : "/sailmore_logo_sort.png"}`}
+                    alt="Site Logo"
+                    className="logo"
+                />
             </Link>
             <nav className="navLinks">
-                <Link className="navLink" href="TripsOverview">
+                <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="TripsOverview">
                     Trips
                 </Link>
-                <Link className="navLink" href="CrewMembers">
+                <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="CrewMembers">
                     Travelers
                 </Link>
                 {loggedIn && (
-                    <Link className="navLink" href="TripsOverview">
+                    <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="TripsOverview">
                         Your Trips
                     </Link>
                 )}
                 {loggedIn && (
-                    <Link className="navLink" href="Applications">
+                    <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="Applications">
                         Applications
                     </Link>
                 )}
                 {loggedIn && (
-                    <Link className="navLink" href="Profile">
+                    <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="Profile">
                         Profile
                     </Link>
                 )}
+                {loggedIn && <SignOut />}
                 {loggedIn ? null : (
-                    <Link className="navLink" href="login">
+                    <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="login">
                         Login
                     </Link>
                 )}
                 {loggedIn ? null : (
-                    <Link className="navLink" href="signup">
+                    <Link className={`${pathName === "/" ? "navLink" : "navLink2"}`} href="signup">
                         Signup
                     </Link>
                 )}
             </nav>
-            <button onClick={handleSignout}>Sign Out</button>
         </div>
     );
 }
