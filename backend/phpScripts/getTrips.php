@@ -11,6 +11,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Append each item to the $data array
         $data[] = array(
+            'img' => $row['img'],
             'title' => $row['title'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],

@@ -1,8 +1,8 @@
-import TripsComponent from "../../components/Trips";
+import Trips from "../../components/Trips";
 
-export default function TripsOverview(){
+export default function TripsOverview() {
     return(
-        <TripsComponent />
+        <Trips />
     )
 }
 
