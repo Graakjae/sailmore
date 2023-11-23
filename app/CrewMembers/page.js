@@ -1,7 +1,9 @@
 import FilterCrewMembers from "@/components/FilterCrewMembers";
+import CrewMembers from "@/components/CrewMembers";
 function CrewMembersPage() {
     return(
-        <FilterCrewMembers />
+        <FilterCrewMembers />,
+        <CrewMembers />
     )
 }
 export default CrewMembersPage

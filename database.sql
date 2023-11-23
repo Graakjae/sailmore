@@ -23,6 +23,20 @@ VALUES (
     4
 );
 
+CREATE TABLE CrewMembersTest(
+    pk_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR (255) NOT NULL,
+    age INT NOT NULL,
+    experience VARCHAR (255) NOT NULL
+);
+INSERT INTO CrewMembersTest (firstname, age, experience) VALUES
+    ('John Doe', 25, 'no experience'),
+    ('Jane Smith', 30, 'inexperience'),
+    ('Bob Johnson', 28, 'experienced'),
+    ('Alice Williams', 35, 'experienced'),
+    ('Charlie Brown', 22, 'inexperience');
+
+
 CREATE TABLE boats (
     pk_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     brand VARCHAR(255) NOT NULL,
