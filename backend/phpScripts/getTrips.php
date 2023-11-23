@@ -4,18 +4,18 @@ include "../../db/mysql.php";
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT * FROM trip_card";
+$sql = "SELECT title, start_date, end_date, price, trip_img FROM trip_card";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Append each item to the $data array
         $data[] = array(
-            'img' => $row['img'],
             'title' => $row['title'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
-            'price' => $row['price']
+            'price' => $row['price'],
+            'trip_img' => $row['trip_img']
         );
     }
 } else {
