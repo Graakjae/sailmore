@@ -16,19 +16,31 @@ export default function createTripPage() {
     const [crewCapacity, setCrewCapacity] = useState("");
     const [rules, setRules] = useState("");
 
-    const handleCreateTrip = () => {
-        // Handle the creation of the trip using the entered data
-        console.log("Creating trip:", {
-            title,
-            description,
-            startPoint,
-            destination,
-            startDate,
-            endDate,
-            price,
-            crewCapacity,
-            rules,
-        });
+    const handleCreateTrip = async () => {
+        try {
+            const response = await fetch("/path/to/your/trip-script.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    startPoint,
+                    destination,
+                    startDate,
+                    endDate,
+                    price,
+                    crewCapacity,
+                    rules,
+                }),
+            });
+
+            const data = await response.text();
+            console.log(data); // Log the response from the server
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     return (
