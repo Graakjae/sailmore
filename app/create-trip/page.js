@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import SimpleButton from "@/components/buttons/SimpleButton";
 import "./createtrip.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 export default function createTripPage() {
     const [title, setTitle] = useState("");
@@ -15,25 +17,26 @@ export default function createTripPage() {
     const [price, setPrice] = useState("");
     const [crewCapacity, setCrewCapacity] = useState("");
     const [rules, setRules] = useState("");
+    const [tripImg, setTripImg] = useState("");
+    const [error, setError] = useState(null);
 
     const handleCreateTrip = async () => {
         try {
-            const response = await fetch("/path/to/your/trip-script.php", {
+            const formData = new FormData();    
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("startpoint", startPoint);
+            formData.append("destination", destination);
+            formData.append("start_date", format(startDate, "yyyy-dd-MM")); // Format date to match backend expectations
+            formData.append("end_date", format(endDate, "yyyy-dd-MM"))
+            formData.append("price", price);
+            formData.append("crew_capacity", crewCapacity);
+            formData.append("rules", rules);
+            formData.append("trip_img", tripImg);
+
+            const response = await fetch("/backend/phpScripts/createTrip.php", { 
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    title,
-                    description,
-                    startPoint,
-                    destination,
-                    startDate,
-                    endDate,
-                    price,
-                    crewCapacity,
-                    rules,
-                }),
+                body: formData
             });
 
             const data = await response.text();
@@ -41,7 +44,34 @@ export default function createTripPage() {
         } catch (error) {
             console.error("Error:", error);
         }
+        router.push("/tripArticle/[id]");
     };
+
+    const handleAddTripImage = e => {
+        const selectedFile = e.target.files[0];
+        console.log("Selected files:", selectedFile.size);
+
+        // Check file size (maxSize in bytes)
+        const maxSize = 2 * 1024 * 1024; // 2 MB (adjust as needed)
+        if (selectedFile.size > maxSize) {
+            setError('File size must be less than ${maxSize / (1024 * 1024)} MB.');
+            return;
+        };
+
+        if (!selectedFile.type.match(/image.*/)) {
+            setError("File must be an image.");
+            return;
+        };
+
+        // File is within size limit, proceed
+        setError(null);
+        setTripImg(selectedFile);
+
+        // Check if a file is selected
+        if (!selectedFile) {
+            setError(null);
+            return;
+        }};
 
     return (
         <div className="flexBox">
@@ -99,11 +129,19 @@ export default function createTripPage() {
                             <h3>Rules</h3>
                             <textarea value={rules} onChange={(e) => setRules(e.target.value)} className="descriptionTextarea" />
                         </div>
+                        <div>
+                            <h3>Boat image</h3>
+                            <input type="file" onChange={handleAddTripImage} placeholder="" />
+                        </div>
+                        <img
+                            className="trip_img"
+                            src={tripImg ? URL.createObjectURL(tripImg) : ""}
+                            alt="Image(s) of the trip"
+                        />
                     </div>
-
                     <SimpleButton text="Create Trip" onClick={handleCreateTrip} />
                 </div>
             </div>
         </div>
     );
-}
+};
