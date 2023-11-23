@@ -48,4 +48,5 @@ if ($checkEmailResult->num_rows > 0) {
 }
 
 $mySQL->close();
+
 ?>
