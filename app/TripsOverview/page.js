@@ -1,9 +1,8 @@
+import Trips from "../../components/Trips";
 
-import FilterTrips from '@/components/FilterTrips';
-
-function TripsOverview() {
+export default function TripsOverview() {
     return(
-        <FilterTrips />
+        <Trips />
     )
 }
-export default TripsOverview;
+
