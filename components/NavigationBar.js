@@ -1,7 +1,8 @@
 "use client";
+import Link from "next/link";
 import { useAuth } from "../app/authContext";
 import { useRouter } from "next/navigation";
-
+import "../styles/NavBar.css";
 function NavigationsBar() {
     const { loggedIn, setLoggedIn } = useAuth();
     const router = useRouter();
@@ -21,28 +22,42 @@ function NavigationsBar() {
         }
     };
     return (
-        <div>
-            <a href="/">
+        <div className="navBarWrapper">
+            <Link href="/">
                 <img src="/sailmore_logo.png" alt="Site Logo" />
-            </a>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="TripsOverview">Trips</a>
-                    </li>
-                    <li>
-                        <a href="CrewMembers">Travelers</a>
-                    </li>
-                    <li>
-                        <a href="Profile">Profile</a>
-                    </li>
-                    <li>
-                        <a href="login">Login</a>
-                    </li>
-                    <li>
-                        <a href="signup">Signup</a>
-                    </li>
-                </ul>
+            </Link>
+            <nav className="navLinks">
+                <Link className="navLink" href="TripsOverview">
+                    Trips
+                </Link>
+                <Link className="navLink" href="CrewMembers">
+                    Travelers
+                </Link>
+                {loggedIn && (
+                    <Link className="navLink" href="TripsOverview">
+                        Your Trips
+                    </Link>
+                )}
+                {loggedIn && (
+                    <Link className="navLink" href="Applications">
+                        Applications
+                    </Link>
+                )}
+                {loggedIn && (
+                    <Link className="navLink" href="Profile">
+                        Profile
+                    </Link>
+                )}
+                {loggedIn ? null : (
+                    <Link className="navLink" href="login">
+                        Login
+                    </Link>
+                )}
+                {loggedIn ? null : (
+                    <Link className="navLink" href="signup">
+                        Signup
+                    </Link>
+                )}
             </nav>
             <button onClick={handleSignout}>Sign Out</button>
         </div>

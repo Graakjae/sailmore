@@ -15,6 +15,7 @@ $password = $_POST['password'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $age = $_POST['age'];
+$role = $_POST['role'];  
 
 // Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -25,8 +26,17 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // Hash the password (you should use a stronger hashing method in a production environment)
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Check if the email already exists
-$checkEmailQuery = "SELECT * FROM captains WHERE email = '$email'";
+$checkEmailQuery = ""; // Initialize the variable
+
+if ($role === 'captains') {
+    $checkEmailQuery = "SELECT * FROM captains WHERE email = '$email'";
+} elseif ($role === 'crewmember') {
+    $checkEmailQuery = "SELECT * FROM crewmember WHERE email = '$email'";
+} else {
+    echo json_encode(['error' => 'Select a role']);
+    exit;
+}
+
 $checkEmailResult = $mySQL->query($checkEmailQuery);
 
 if ($checkEmailResult->num_rows > 0) {
@@ -59,14 +69,21 @@ if ($checkEmailResult->num_rows > 0) {
         $profilePicture = ''; // Default value
     }
 
-    // Insert user data into the database
-    $insertQuery = 
-    "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture) 
-    VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
+    if ($role === 'captains') {
+        $insertQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
+    } elseif ($role === 'crewmember') {
+        $insertQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, profilePicture) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
+    } else {
+        echo "Invalid role";
+        exit;
+    }
 
     if ($mySQL->query($insertQuery) === TRUE) {
+
         // Retrieve user data from the database based on the provided email
-        $getUserQuery = "SELECT * FROM captains WHERE email = '$email'";
+        $getUserQuery = "SELECT * FROM $role WHERE email = '$email'";
         $getUserResult = $mySQL->query($getUserQuery);
 
         $loggedInUser = $getUserResult->fetch_assoc();
