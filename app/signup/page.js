@@ -20,6 +20,7 @@ export default function signUp() {
     const [profilePicture, setProfilePicture] = useState();
     const [previewUrl, setPreviewUrl] = useState(null);
     const [error, setError] = useState(null);
+    const [role, setRole] = useState("none");
     const router = useRouter();
 
     const isFormValid = () => {
@@ -35,6 +36,10 @@ export default function signUp() {
 
     const handleSignup = async () => {
         try {
+            if (role === "none") {
+                setError("Please select a role.");
+                return;
+            }
             if (!isFormValid()) {
                 setError("Please fill out all required fields and ensure passwords match.");
                 return;
@@ -50,6 +55,7 @@ export default function signUp() {
             formData.append("lastName", lastName);
             formData.append("age", format(age, "yyyy-dd-MM")); // Format date to match backend expectations
             formData.append("profilePicture", profilePicture);
+            formData.append("role", role); // Add the role field
 
             const response = await fetch("/backend/phpScripts/signup.php", {
                 method: "POST",
@@ -102,6 +108,16 @@ export default function signUp() {
             <div className="signupWrapper">
                 <div>
                     <h2>Sign up here</h2>
+                    <div>
+                        <label htmlFor="role">Select Role:</label>
+                        <select id="role" defaultValue="none" onChange={e => setRole(e.target.value)}>
+                            <option value="none" disabled hidden>
+                                Select an Option
+                            </option>
+                            <option value="captains">Captain</option>
+                            <option value="crewmember">Crew</option>
+                        </select>
+                    </div>
                     <div className="grid">
                         <TextInputField
                             label="First name"
