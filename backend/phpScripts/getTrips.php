@@ -4,7 +4,7 @@ include "../../db/mysql.php";
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT title, start_date, end_date, price, trip_img FROM trip_card";
+$sql = "SELECT title, start_date, end_date, price, trip_img FROM trip";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {

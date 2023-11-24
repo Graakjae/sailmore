@@ -10,7 +10,7 @@ const CrewMemberList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/backend/phpScripts/DatabaseCrew.php');
+            const response = await fetch('/backend/phpScripts/getCrew.php');
             const result = await response.json();
             setTrips(result);
         } catch (error) {

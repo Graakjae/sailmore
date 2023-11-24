@@ -1,12 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
-function TripCard() {
+export default function TripCard() {
     const [trips, setTrips] = useState([]);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -18,6 +14,10 @@ function TripCard() {
         }
     };
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
         <div>
             <h1>Trips List</h1>
@@ -26,14 +26,11 @@ function TripCard() {
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
                         <img src={trip.trip_img} />
                         <h2>{trip.title}</h2>
-                        <p><strong></strong>{trip.start_date} - {trip.end_date}</p>
-                        <p><strong></strong> {`${trip.price}€/day`}</p>
+                        <p>{trip.start_date} - {trip.end_date}</p>
+                        <p>${trip.price}€/day</p>
                     </div>
                 ))}
             </div>
         </div>
     );
 };
-
-export default TripCard;
-

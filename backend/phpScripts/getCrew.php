@@ -13,7 +13,7 @@ if ($result->num_rows > 0) {
         $data[] = array(
             'firstname' => $row['firstname'],
             'age' => $row['age'],
-            'exp' => $row['exp'],
+            'experience' => $row['experience'],
         );
     }
 } else {
