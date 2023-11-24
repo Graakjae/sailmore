@@ -1,11 +1,15 @@
 <?php
 
-include "../../db/mysql.php";
+// Get root folder  
+$rootFolder = $_SERVER['DOCUMENT_ROOT'];
+$fullPath = $rootFolder . "/db/mysql.php";
+
+include $fullPath;
 
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT title, start_date, end_date, price, trip_img, trip.pk_id FROM trip_card";
+$sql = "SELECT title, start_date, end_date, price, trip_img FROM trip_card";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -16,8 +20,7 @@ if ($result->num_rows > 0) {
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
-            'trip_img' => $row['trip_img'],
-            'pk_id' => $row['pk_id'],
+            'trip_img' => $row['trip_img']
         );
     }
 } else {
@@ -30,5 +33,7 @@ $mySQL->close();
 
 // Encode the $data array as JSON and echo the result
 header('Content-Type: application/json');
-echo json_encode($data);
+$json_response = json_encode($data);
+echo $json_response;
+
 ?>
