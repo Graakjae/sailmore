@@ -4,7 +4,7 @@ include "../../db/mysql.php";
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT * FROM CrewMembersTest";
+$sql = "SELECT * FROM crewmember";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -13,7 +13,7 @@ if ($result->num_rows > 0) {
         $data[] = array(
             'firstname' => $row['firstname'],
             'age' => $row['age'],
-            'experience' => $row['experience'],
+            'exp' => $row['exp'],
         );
     }
 } else {
