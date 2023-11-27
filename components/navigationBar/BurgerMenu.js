@@ -19,16 +19,16 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole }) {
                 <div className="burgerInside">
                     {userRole === "crewmember" &&
                         crewmembers.map((link, index) => (
-                            <LinkComponent text={link.text} href={link.link} className={`navLink`} customkey={index} />
+                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
                         ))}
                     {userRole === "captain" &&
                         captain.map((link, index) => (
-                            <LinkComponent text={link.text} href={link.link} className={`navLink`} customkey={index} />
+                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
                         ))}
                     {!loggedIn &&
                         userRole === "none" &&
                         loggedout.map((link, index) => (
-                            <LinkComponent text={link.text} href={link.link} className={`navLink`} customkey={index} />
+                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
                         ))}
                     {loggedIn && <SignOut />}
                 </div>

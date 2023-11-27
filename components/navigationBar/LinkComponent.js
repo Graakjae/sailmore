@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-function LinkComponent({ text, href, className, customkey }) {
+function LinkComponent({ text, href, className }) {
     return (
-        <div customkey={customkey}>
+        <div>
             <Link href={href} className={className}>
                 {text}
             </Link>

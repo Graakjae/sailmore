@@ -47,3 +47,11 @@ input {
     padding: 10px;
     resize: none; /* Disable textarea resizing */
 }
+
+.trip_img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    padding-left: 10px;
+    object-fit: cover;
+}
