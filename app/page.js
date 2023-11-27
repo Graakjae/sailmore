@@ -7,7 +7,8 @@ import HomePageHeader from "/components/HomePageHeader";
 import HomePageTrips from "/components/HomePageTrips";
 import LoggedIn from "@/components/loggedIn";
 import HomePageCrew from "@/components/HomePageCrew";
-
+import ExploreTripsButton from "@/components/buttons/ExploreTripsButton";
+import MoreCrewMembersButton from "@/components/buttons/MoreCrewMembersButton";
 function HomePage() {
     return (
         <div>
@@ -18,7 +19,11 @@ function HomePage() {
             <br></br>
             <HomePageTrips />
             <br></br>
+            <ExploreTripsButton />
+            <br></br>
             <HomePageCrew />
+            <br></br>
+            <MoreCrewMembersButton />
             <br></br>
             <Footer />
         </div>
