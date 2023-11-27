@@ -43,7 +43,7 @@ export default function signUp() {
                 return;
             }
             if (!isFormValid()) {
-                setError("Please fill out all required fields and ensure passwords match.");
+                setError("Please fill out all fields and ensure passwords match.");
                 return;
             }
 
@@ -55,7 +55,7 @@ export default function signUp() {
             formData.append("password", password);
             formData.append("firstName", firstName);
             formData.append("lastName", lastName);
-            formData.append("age", format(age, "yyyy-dd-MM")); // Format date to match backend expectations
+            formData.append("age", format(age, "yyyy-dd-MM"));
             formData.append("profilePicture", profilePicture);
             formData.append("role", role); // Add the role field
 
@@ -84,7 +84,7 @@ export default function signUp() {
         console.log("Selected files:", selectedFile.size);
 
         // Check file size (maxSize in bytes)
-        const maxSize = 2 * 1024 * 1024; // 2 MB (adjust as needed)
+        const maxSize = 10 * 1024 * 1024; // 2 MB (adjust as needed)
         if (selectedFile.size > maxSize) {
             setError(`File size must be less than ${maxSize / (1024 * 1024)} MB.`);
             return;

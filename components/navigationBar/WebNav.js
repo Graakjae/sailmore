@@ -13,16 +13,16 @@ function NavigationsBar({ loggedIn, setLoggedIn, userRole }) {
                 captain.map((link, index) => (
                     <LinkComponent
                         text={link.text}
-                        href={link.link}
+                        href={`${link.link}`}
                         className={`${pathName === "/" ? "navLink" : "navLink2"}`}
-                        customkey={index}
+                        key={index}
                     />
                 ))}
             {userRole === "crewmember" &&
                 crewmembers.map((link, index) => (
                     <LinkComponent
                         text={link.text}
-                        href={link.link}
+                        href={`${link.link}`}
                         className={`${pathName === "/" ? "navLink" : "navLink2"}`}
                         key={index}
                     />
@@ -32,7 +32,7 @@ function NavigationsBar({ loggedIn, setLoggedIn, userRole }) {
                 loggedout.map((link, index) => (
                     <LinkComponent
                         text={link.text}
-                        href={link.link}
+                        href={`${link.link}`}
                         className={`${pathName === "/" ? "navLink" : "navLink2"}`}
                         key={index}
                     />
