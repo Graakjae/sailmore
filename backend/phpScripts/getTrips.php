@@ -9,7 +9,7 @@ include $fullPath;
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT title, start_date, end_date, price, trip_img FROM trip_card";
+$sql = "SELECT * FROM trip";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -17,6 +17,8 @@ if ($result->num_rows > 0) {
         // Append each item to the $data array
         $data[] = array(
             'title' => $row['title'],
+            'startpoint' => $row['startpoint'],
+            'destination' => $row['destination'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],

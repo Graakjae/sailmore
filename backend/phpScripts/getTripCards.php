@@ -1,5 +1,10 @@
 <?php
-include "../../db/mysql.php";
+
+// Get root folder  
+$rootFolder = $_SERVER['DOCUMENT_ROOT'];
+$fullPath = $rootFolder . "/db/mysql.php";
+
+include $fullPath;
 
 // Initialize an empty array to store the data
 $data = array();
@@ -12,6 +17,8 @@ if ($result->num_rows > 0) {
         // Append each item to the $data array
         $data[] = array(
             'title' => $row['title'],
+            'startpoint' => $row['startpoint'],
+            'destination' => $row['destination'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
@@ -21,11 +28,14 @@ if ($result->num_rows > 0) {
 } else {
     // If no data found, you can set a specific message in the array
     $data = array('message' => 'No data found');
-}
+};
 
 // Close the MySQL connection
 $mySQL->close();
 
 // Encode the $data array as JSON and echo the result
-echo json_encode($data);
+header('Content-Type: application/json');
+$json_response = json_encode($data);
+echo $json_response;
+
 ?>
