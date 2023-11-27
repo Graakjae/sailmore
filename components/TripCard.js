@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
+
 const TripCard = () => {
     const [trips, setTrips] = useState([]);
 
@@ -21,11 +22,11 @@ const TripCard = () => {
     return (
         <div>
             <h1>Trips List</h1>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                {trips.map((trip, index) => (
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {trips.slice(0, 6).map((trip, index) => (
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
                         <img src={`trip_img/${trip.trip_img}`} className='trip-img' />
-                        <h2 className='trip-title'>{trip.title}</h2>
+                        <h2 className='trip-title' style={{ maxWidth: '200px' }}>{trip.title}</h2>
                         <p className='trip-dates'>{trip.start_date} - {trip.end_date}</p>
                         <p className='trip-price'>${trip.price}€/day</p>
                     </div>
