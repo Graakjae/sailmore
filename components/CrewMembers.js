@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 const CrewMemberList = () => {
-    const [trips, setTrips] = useState([]);
+    const [crewmembers, setCrewmembers] = useState([]);
 
     useEffect(() => {
         fetchData();
@@ -10,9 +10,9 @@ const CrewMemberList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/backend/phpScripts/DatabaseCrew.php');
+            const response = await fetch('/backend/phpScripts/getCrew.php');
             const result = await response.json();
-            setTrips(result);
+            setCrewmembers(result);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -22,11 +22,11 @@ const CrewMemberList = () => {
         <div>
             <h1>CrewMemberList</h1>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                {trips.map((trip, index) => (
+                {crewmembers.map((crewmember, index) => (
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
-                        <p><strong>First Name: </strong> {trip.firstname}</p>
-                        <p><strong>Age: </strong> {trip.age}</p>
-                        <p><strong>Experience: </strong> {trip.experience}</p>
+                        <p><strong>First Name: </strong> {crewmember.firstname}</p>
+                        <p><strong>Age: </strong> {crewmember.age}</p>
+                        <p><strong>Experience: </strong> {crewmember.exp}</p>
                     </div>
                 ))}
             </div>
