@@ -70,11 +70,11 @@ if ($checkEmailResult->num_rows > 0) {
     }
 
     if ($role === 'captains') {
-        $insertQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
+        $insertQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'captain')";
     } elseif ($role === 'crewmember') {
-        $insertQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, profilePicture) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture')";
+        $insertQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'crewmember')";
     } else {
         echo "Invalid role";
         exit;

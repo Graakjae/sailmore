@@ -1,4 +1,4 @@
-.navBarWrapper {
+.navWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,4 +26,81 @@
 }
 .logo {
     width: 200px;
+    z-index: 4;
+}
+
+.burgerMenuSvg {
+    display: none;
+}
+
+.burgerMenuIcon {
+    display: none;
+}
+
+.burgerMenu {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .burgerMenuIcon {
+        display: block;
+        cursor: pointer;
+        z-index: 5;
+        position: relative;
+    }
+
+    .burgerMenu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 4;
+        transform: translateY(-100%);
+        transition: transform 0.5s ease-out;
+    }
+
+    .burgerMenuOpen {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #049dbf;
+        width: 100%;
+        height: 60vh;
+        transition: transform 0.5s ease-out;
+        z-index: 5;
+        transform: translateX(0%);
+    }
+
+    .burgerMenuOpenBg {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: black;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+        transform: translateX(0%);
+        opacity: 0.4;
+    }
+
+    .burgerInside {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 10rem;
+    }
+    .navLinks {
+        display: none;
+    }
+
+    .navLink {
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: 600;
+    }
 }

@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { loggedIn, setLoggedIn } = useAuth();
+    const [error, setError] = useState(null);
     const router = useRouter();
 
     const handleLogin = async () => {
@@ -31,6 +32,7 @@ const Login = () => {
                 router.push("/");
             } else {
                 console.error("Login failed:", data);
+                setError("Invalid email or password");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -50,6 +52,7 @@ const Login = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <SimpleButton onClick={handleLogin} text="Login" />
+                    {error && <p className="error-message">{error}</p>}
                     <Link className="noLink" href="/signup">
                         Need an account? <b className="link">SIGN UP</b>
                     </Link>
