@@ -1,7 +1,4 @@
 <?php
-// Add this at the beginning of your PHP script
-var_dump($_FILES);
-
 include('../../db/mysql.php');
 
 // Add this after establishing the database connection
@@ -32,7 +29,6 @@ if (!isset($title, $startpoint, $destination, $start_date, $end_date, $price, $c
         "INSERT INTO trip (title, description, startpoint, destination, start_date, end_date, price, crew_capacity, captain_ID, rules) 
     VALUES ('$title', '$description', '$startpoint', '$destination', '$start_date', '$end_date', '$price', '$crew_capacity', '$captain_ID', '$rules')";
     // Add this after your SQL queries
-echo "Insert Query: $insertQuery<br>";
     if ($mySQL->query($insertQuery) === TRUE) {
         // Get the ID of the last inserted trip
         $tripId = $mySQL->insert_id;
@@ -51,14 +47,12 @@ if (!empty($_FILES['trip_img']['name'][0])) {
             mkdir($destinationDirectory, 0755, true);
         }
 
-        // Debug statement to check the upload path
-        echo "Upload Path: $uploadPath<br>";
+        
 
         if (move_uploaded_file($tempPath, $uploadPath)) {
             // Insert each image into the trip_img table with the original file name
             $insertImages =
                 "INSERT INTO trip_img (img, trip_ID) VALUES ('$originalFileName', '$tripId')";
-            echo "Insert Images Query: $insertImages<br>";
 
             if ($mySQL->query($insertImages) !== TRUE) {
                 echo "Error inserting images: " . $insertImages . "<br>" . $mySQL->error;
@@ -69,7 +63,6 @@ if (!empty($_FILES['trip_img']['name'][0])) {
         }
     }
 }
-
         echo "Trip registered successfully";
     } else {
         echo "Error: " . $insertQuery . "<br>" . $mySQL->error;
