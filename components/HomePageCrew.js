@@ -20,11 +20,10 @@ const CrewMemberList = () => {
 
     return (
         <div>
-            <h1>CrewMemberList</h1>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                {crewmembers.map((crewmember, index) => (
+            <h1>Crew Member List</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {crewmembers.slice(0, 8).map((crewmember, index) => (
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
-                        <p><strong></strong></p>
                         <p><strong>First Name: </strong> {crewmember.firstname}</p>
                         <p><strong>Age: </strong> {crewmember.age}</p>
                         <p><strong>Experience: </strong> {crewmember.exp}</p>
@@ -36,3 +35,4 @@ const CrewMemberList = () => {
 };
 
 export default CrewMemberList;
+

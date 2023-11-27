@@ -23,7 +23,7 @@ const TripCard = () => {
         <div>
             <h1>Trips List</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {trips.slice(0, 6).map((trip, index) => (
+                {trips.slice(0, 8).map((trip, index) => (
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
                         <img src={`trip_img/${trip.trip_img}`} className='trip-img' />
                         <h2 className='trip-title' style={{ maxWidth: '200px' }}>{trip.title}</h2>

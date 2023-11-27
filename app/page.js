@@ -6,6 +6,7 @@ import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
 import HomePageTrips from "/components/HomePageTrips";
 import LoggedIn from "@/components/loggedIn";
+import HomePageCrew from "@/components/HomePageCrew";
 
 function HomePage() {
     return (
@@ -16,6 +17,8 @@ function HomePage() {
             <HomePageHeader />
             <br></br>
             <HomePageTrips />
+            <br></br>
+            <HomePageCrew />
             <br></br>
             <Footer />
         </div>
