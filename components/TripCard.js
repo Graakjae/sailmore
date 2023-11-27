@@ -20,7 +20,6 @@ const TripCard = () => {
 
     return (
         <div>
-            <h1>Trips List</h1>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 {trips.map((trip, index) => (
                     <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
