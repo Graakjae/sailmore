@@ -93,7 +93,7 @@ INSERT INTO trip_img VALUES (
     'GRAAKJÆR LÆGGER AN PÅ MIG WTF:DD'
 );
 
-DROP TABLE trip_img;
+DROP TABLE crewmember;
 
 CREATE VIEW trip_card AS 
 SELECT trip.title, trip.start_date, trip.end_date, trip.price, trip.img FROM trip
@@ -111,7 +111,8 @@ CREATE TABLE crewmember (
     password VARCHAR(60) NOT NULL,
     bio VARCHAR(1000) NOT NULL,
     country VARCHAR(255) NOT NULL,
-    exp INT NOT NULL
+    exp INT NOT NULL,
+    profilePicture VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE applications (

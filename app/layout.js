@@ -2,7 +2,7 @@
 import { Quicksand } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./authContext";
-import NavigationsBar from "@/components/NavigationBar";
+import NavigationsBar from "@/components/navigationBar/NavigationBar";
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 // export const metadata = {

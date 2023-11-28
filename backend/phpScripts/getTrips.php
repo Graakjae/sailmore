@@ -17,11 +17,15 @@ if ($result->num_rows > 0) {
         // Append each item to the $data array
         $data[] = array(
             'title' => $row['title'],
+            'description' => $row['description'],
             'startpoint' => $row['startpoint'],
             'destination' => $row['destination'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
+            'crew_capacity' => $row['crew_capacity'],
+            'captain_ID' => $row['captain_ID'],
+            'rules' => $row['rules'],
             'trip_img' => $row['trip_img']
         );
     }
