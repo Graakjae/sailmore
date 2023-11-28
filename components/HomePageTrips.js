@@ -11,7 +11,7 @@ const TripCard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('/backend/phpScripts/Sejlture.php');
+            const response = await fetch('/backend/phpScripts/getTripCards.php');
             const result = await response.json();
             setTrips(result);
         } catch (error) {
