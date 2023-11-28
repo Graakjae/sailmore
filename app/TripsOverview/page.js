@@ -69,41 +69,45 @@ export default function TripsOverview() {
       setEndDate(null);
       setTargetArea(null);
       setTargetPrice(null);
-      document.querySelector(".filter").reset();
+      document.querySelector(".filter-form").reset();
     }
   }
 
   return (
     <div>
-      <form className="filter" onSubmit={handleSubmit}>
-        <input type="date" onChange={(e) => setStartDate(e.target.value)} />
-        <input type="date" onChange={(e) => setEndDate(e.target.value)} />
-        <input
-          type="text"
-          placeholder="Country"
-          onChange={(e) => setTargetArea(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Max. price"
-          onChange={(e) => setTargetPrice(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <button onClick={resetFilters}>Reset filters</button>
-      {filteredTrips.map((trip, index) => (
-        <TripCard
-          title={trip.title}
-          startpoint={trip.startpoint}
-          destination={trip.destination}
-          start_date={trip.start_date}
-          end_date={trip.end_date}
-          price={trip.price}
-          img={trip.img}
-          key={index}
-          trip={trip}
-        />
-      ))}
+      <div className="filter">
+        <form className="filter-form" onSubmit={handleSubmit}>
+          <input type="date" onChange={(e) => setStartDate(e.target.value)} />
+          <input type="date" onChange={(e) => setEndDate(e.target.value)} />
+          <input
+            type="text"
+            placeholder="Country"
+            onChange={(e) => setTargetArea(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Max. price"
+            onChange={(e) => setTargetPrice(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <button onClick={resetFilters}>Reset filters</button>
+      </div>
+      <div className="trip-card-container">
+        {filteredTrips.map((trip, index) => (
+          <TripCard
+            title={trip.title}
+            startpoint={trip.startpoint}
+            destination={trip.destination}
+            start_date={trip.start_date}
+            end_date={trip.end_date}
+            price={trip.price}
+            img={trip.img}
+            key={index}
+            trip={trip}
+          />
+        ))}
+      </div>
     </div>
   );
 }

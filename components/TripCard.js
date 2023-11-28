@@ -1,4 +1,5 @@
 "use client";
+import "../app/TripsOverview/tripsoverview.css";
 
 const TripCard = ({
   title,
@@ -10,14 +11,7 @@ const TripCard = ({
   img,
 }) => {
   return (
-    <div
-      style={{
-        margin: "10px",
-        padding: "10px",
-        border: "1px solid #ccc",
-        width: "300px",
-      }}
-    >
+    <div className="trip-card">
       <img src={`trip_img/${img}`} className="trip-img" />
       <h2 className="trip-title">{title}</h2>
       <h3 className="trip-area">
