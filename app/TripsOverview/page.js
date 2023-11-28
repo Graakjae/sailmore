@@ -28,39 +28,37 @@ export default function TripsOverview() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // !! opdel i forskellige if-statements, ét til hvert filtreringskriterie
-    if (startDate) {
-      const newFilteredTrips = trips.filter((trip) => {
-        const startDateObj = new Date(startDate);
-        const tripStartDateObj = new Date(trip.start_date);
 
+    let newFilteredTrips = [...trips];
+
+    if (startDate) {
+      const startDateObj = new Date(startDate);
+      newFilteredTrips = newFilteredTrips.filter((trip) => {
+        const tripStartDateObj = new Date(trip.start_date);
         return tripStartDateObj >= startDateObj;
       });
-      setFilteredTrips(newFilteredTrips);
     }
     if (endDate) {
-      const newFilteredTrips = trips.filter((trip) => {
-        const endDateObj = new Date(endDate);
+      const endDateObj = new Date(endDate);
+      newFilteredTrips = newFilteredTrips.filter((trip) => {
         const tripEndDateObj = new Date(trip.end_date);
-
         return tripEndDateObj <= endDateObj;
       });
-      setFilteredTrips(newFilteredTrips);
     }
     if (targetArea) {
-      const newFilteredTrips = trips.filter((trip) => {
+      newFilteredTrips = newFilteredTrips.filter((trip) => {
         return (
           trip.startpoint === targetArea || trip.destination === targetArea
         );
       });
-      setFilteredTrips(newFilteredTrips);
     }
     if (targetPrice) {
-      const newFilteredTrips = trips.filter((trip) => {
+      newFilteredTrips = newFilteredTrips.filter((trip) => {
         return Number(trip.price) <= Number(targetPrice);
       });
-      setFilteredTrips(newFilteredTrips);
     }
+
+    setFilteredTrips(newFilteredTrips);
   };
 
   function resetFilters(e) {
@@ -71,13 +69,13 @@ export default function TripsOverview() {
       setEndDate(null);
       setTargetArea(null);
       setTargetPrice(null);
-      document.querySelector("form").reset();
+      document.querySelector(".filter").reset();
     }
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="filter" onSubmit={handleSubmit}>
         <input type="date" onChange={(e) => setStartDate(e.target.value)} />
         <input type="date" onChange={(e) => setEndDate(e.target.value)} />
         <input
