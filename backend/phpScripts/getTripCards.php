@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
-            'trip_img' => $row['trip_img']
+            'img' => $row['img']
         );
     }
 } else {

@@ -101,7 +101,7 @@ export default function TripsOverview() {
           start_date={trip.start_date}
           end_date={trip.end_date}
           price={trip.price}
-          trip_img={trip.trip_img}
+          img={trip.img}
           key={index}
           trip={trip}
         />

@@ -33,6 +33,15 @@ if (!isset($title, $startpoint, $destination, $start_date, $end_date, $price, $c
         // Get the ID of the last inserted trip
         $tripId = $mySQL->insert_id;
 
+        $dropView = "DROP VIEW trip_card";
+        $mySQL->query($dropView);
+        
+        $createView = "CREATE VIEW trip_card AS 
+        SELECT title, start_date, startpoint, destination, end_date, price, trip_img FROM trip";
+        $mySQL->query($createView);
+        
+
+
 if (!empty($_FILES['trip_img']['name'][0])) {
     $tripImages = $_FILES['trip_img'];
 
@@ -63,6 +72,7 @@ if (!empty($_FILES['trip_img']['name'][0])) {
         }
     }
 }
+        
         echo "Trip registered successfully";
     } else {
         echo "Error: " . $insertQuery . "<br>" . $mySQL->error;
