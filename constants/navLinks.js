@@ -1,5 +1,5 @@
 export const captain = [
-    {
+    ({
         text: "Find crew members",
         link: "/CrewMembers"
     },
@@ -17,11 +17,11 @@ export const captain = [
     },
     {
         text: "Profile",
-        link: "/Profile"
+        link: `/profile-captain`
     },
     {
         text: "Logout"
-    }
+    })
 ];
 
 export const crewmembers = [
