@@ -1,5 +1,4 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
 
 const TripCard = ({title, startpoint, destination, start_date, end_date, price, img}) => {
 
