@@ -12,6 +12,7 @@ import LinkComponent from "./LinkComponent";
 
 function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole }) {
     const pathName = usePathname();
+    console.log(userRole);
 
     return (
         <div>
