@@ -1,4 +1,4 @@
-export const captain = [
+export const captain = userId => [
     {
         text: "Find crew members",
         link: "/CrewMembers"
@@ -17,7 +17,7 @@ export const captain = [
     },
     {
         text: "Profile",
-        link: `/profile-captain`
+        link: `/profile_captain/${userId}`
     }
 ];
 

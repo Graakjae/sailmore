@@ -16,18 +16,24 @@ function NavigationsBar() {
     const pathName = usePathname();
     const [burgerMenu, setBurgerMenu] = useState(false);
     const [userRole, setUserRole] = useState("none");
+    const [userId, setUserId] = useState(null);
     console.log(userRole);
     console.log(loggedIn);
+    console.log(userId);
 
     useEffect(() => {
         if (loggedIn) {
             fetch("/backend/phpScripts/checkRole.php")
                 .then(response => response.json())
-                .then(data => setUserRole(data.role))
-                .catch(error => console.error("Error fetching user role:", error));
+                .then(data => {
+                    setUserRole(data.role);
+                    setUserId(data.userId); // Assuming your response includes a field named userId
+                })
+                .catch(error => console.error("Error fetching user role and ID:", error));
         }
         if (!loggedIn) {
             setUserRole("none");
+            setUserId(null);
         }
     }, [loggedIn]);
 
@@ -40,8 +46,14 @@ function NavigationsBar() {
                     className="logo"
                 />
             </Link>
-            <BurgerMenu loggedIn={loggedIn} burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} userRole={userRole} />
-            <WebNav loggedIn={loggedIn} userRole={userRole} />
+            <BurgerMenu
+                loggedIn={loggedIn}
+                burgerMenu={burgerMenu}
+                setBurgerMenu={setBurgerMenu}
+                userRole={userRole}
+                userId={userId}
+            />
+            <WebNav loggedIn={loggedIn} userRole={userRole} userId={userId} />
         </div>
     );
 }

@@ -4,13 +4,13 @@ import { usePathname } from "next/navigation";
 import LinkComponent from "./LinkComponent";
 import { captain, crewmembers, loggedout } from "@/constants/navLinks";
 
-function NavigationsBar({ loggedIn, setLoggedIn, userRole }) {
+function NavigationsBar({ loggedIn, setLoggedIn, userRole, userId }) {
     const pathName = usePathname();
 
     let linksToRender;
 
     if (userRole === "captain") {
-        linksToRender = captain;
+        linksToRender = captain(userId);
     } else if (userRole === "crewmember") {
         linksToRender = crewmembers;
     } else {

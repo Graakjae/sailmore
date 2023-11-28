@@ -10,29 +10,27 @@ import Hamburger from "hamburger-react";
 import { captain, crewmembers, loggedout } from "@/constants/navLinks";
 import LinkComponent from "./LinkComponent";
 
-function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole }) {
+function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
     const pathName = usePathname();
-    console.log(userRole);
+
+    let linksToRender;
+
+    if (userRole === "captain") {
+        linksToRender = captain(userId);
+    } else if (userRole === "crewmember") {
+        linksToRender = crewmembers;
+    } else {
+        linksToRender = loggedout;
+    }
 
     return (
         <div>
             <div className={`${burgerMenu ? "burgerMenuOpen" : "burgerMenu"}`}>
-                <div className="burgerInside">
-                    {userRole === "crewmember" &&
-                        crewmembers.map((link, index) => (
-                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
-                        ))}
-                    {userRole === "captain" &&
-                        captain.map((link, index) => (
-                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
-                        ))}
-                    {!loggedIn &&
-                        userRole === "none" &&
-                        loggedout.map((link, index) => (
-                            <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
-                        ))}
-                    {loggedIn && <SignOut />}
-                </div>
+                {linksToRender.map((link, index) => (
+                    <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
+                ))}
+
+                {loggedIn && <SignOut />}
             </div>
             <div
                 onClick={() => setBurgerMenu(!burgerMenu)}
