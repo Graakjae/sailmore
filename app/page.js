@@ -14,10 +14,6 @@ import TripCard from "@/components/TripCard";
 function HomePage() {
   const [trips, setTrips] = useState([]);
   const [filteredTrips, setFilteredTrips] = useState([]);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [targetArea, setTargetArea] = useState(null);
-  const [targetPrice, setTargetPrice] = useState(null);
 
   async function fetchTrips() {
     try {
