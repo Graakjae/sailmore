@@ -16,7 +16,7 @@ export default function TripPage() {
 
     const fetchTrip = async (tripId) => {
         try {
-            const response = await fetch(`/backend/phpScripts/getTrips.php/${tripId}`);
+            const response = await fetch(`/backend/phpScripts/getAllTripInfo.php/${tripId}`);
             const result = await response.json();
 
             if (typeof result === "object" && result !== null) {
