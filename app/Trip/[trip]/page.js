@@ -8,16 +8,16 @@ export default function TripPage() {
     const params = useParams();
 
     useEffect(() => {
-        const tripId = params.pk_id;
+        const trip = params;
 
-        if (tripId) {
-            fetchTrip(tripId);
+        if (trip) {
+            fetchTrip(trip);
         }
     }, [params]);
 
-    const fetchTrip = async (tripId) => {
+    const fetchTrip = async () => {
         try {
-            const response = await fetch(`/backend/phpScripts/getTrips.php/${tripId}`);
+            const response = await fetch(`/backend/phpScripts/getTrips.php/${params.trip}`);
             const result = await response.json();
 
             if (typeof result === "object" && result !== null) {

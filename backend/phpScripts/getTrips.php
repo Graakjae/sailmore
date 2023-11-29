@@ -2,12 +2,12 @@
 include "../../db/mysql.php";
 
 // Retrieve trip ID from the URL path
-$tripId = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+$trip = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 
 // Use prepared statements to prevent SQL injection
-$sql = "SELECT title, description, start_date, end_date, price, crew_capacity, rules, trip_img FROM trip_page WHERE pk_id = ?";
+$sql = "SELECT * FROM trip_page WHERE pk_id = ?";
 $stmt = $mySQL->prepare($sql);
-$stmt->bind_param("i", $tripId);
+$stmt->bind_param("i", $trip);
 $stmt->execute();
 $result = $stmt->get_result();
 
