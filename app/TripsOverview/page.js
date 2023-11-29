@@ -7,7 +7,6 @@ export default function TripsOverview() {
   const [trips, setTrips] = useState([]);
   const [filteredTrips, setFilteredTrips] = useState([]);
   const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
   const [targetArea, setTargetArea] = useState(null);
   const [targetPrice, setTargetPrice] = useState(null);
 
@@ -38,13 +37,6 @@ export default function TripsOverview() {
         return tripStartDateObj >= startDateObj;
       });
     }
-    if (endDate) {
-      const endDateObj = new Date(endDate);
-      newFilteredTrips = newFilteredTrips.filter((trip) => {
-        const tripEndDateObj = new Date(trip.end_date);
-        return tripEndDateObj <= endDateObj;
-      });
-    }
     if (targetArea) {
       newFilteredTrips = newFilteredTrips.filter((trip) => {
         return (
@@ -63,10 +55,9 @@ export default function TripsOverview() {
 
   function resetFilters(e) {
     e.preventDefault();
-    if (startDate || endDate || targetArea || targetPrice) {
+    if (startDate || targetArea || targetPrice) {
       setFilteredTrips(trips);
       setStartDate(null);
-      setEndDate(null);
       setTargetArea(null);
       setTargetPrice(null);
       document.querySelector(".filter-form").reset();
@@ -78,7 +69,6 @@ export default function TripsOverview() {
       <div className="filter">
         <form className="filter-form" onSubmit={handleSubmit}>
           <input type="date" onChange={(e) => setStartDate(e.target.value)} />
-          <input type="date" onChange={(e) => setEndDate(e.target.value)} />
           <input
             type="text"
             placeholder="Where would you like to go?"
