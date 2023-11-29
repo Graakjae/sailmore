@@ -6,7 +6,6 @@ if ($mySQL->connect_error) {
     die("Connection failed: " . $mySQL->connect_error);
 }
 
-
 session_start();
 
 // Get data from POST request
