@@ -31,37 +31,26 @@ export default function TripPage() {
 
     return (
         <div>
-            <div key={trip.id}>
-                <h3>Trip</h3>
-                <div>
-                    <h4>{trip.title}</h4>
-                    <p>Firstname: {trip.firstname}</p>
-                    <p>Description: {trip.description}</p>
-                    <p>Start Point: {trip.startpoint}</p>
-                    <p>Destination: {trip.destination}</p>
-                    <p>Start Date: {trip.start_date}</p>
-                    <p>End Date: {trip.end_date}</p>
-                    <p>Price: {trip.price}</p>
-                    <CrewCapacity
-                        capacity={trip.crew_capacity}
-                        trip={trip}
-                    />
-                    <p>Rules: {trip.rules}</p>
-                    <div>
-                        <h5>Images</h5>
-                        {trip.img ? (
-                            <Image
-                                src={`/trip_img/${trip.img}`}
-                                alt={`Image of ${trip.title}`}
-                                width={100}
-                                height={100}
-                            />
-                        ) : (
-                            <p>No images for this trip</p>
-                        )}
-                    </div>
-                </div>
-            </div>
+          <div key={trip.id}>
+              {trip.img ? (
+                <Image
+                  src={`/trip_img/${trip.img}`}
+                  alt={`Image of ${trip.title}`}
+                  width={100}
+                  height={100}
+                />
+              ) : (
+                <p>No images for this trip</p>
+              )}
+            <h4>{trip.title}</h4>
+            <p>{trip.start_date} - {trip.end_date}</p>
+            <p>Start Point: {trip.startpoint}</p>
+            <p>Destination: {trip.destination}</p>
+            <p>Description: {trip.description}</p>
+            <p>Price: {trip.price}</p>
+            <CrewCapacity capacity={trip.crew_capacity} trip={trip} />
+            <p>Rules: {trip.rules}</p>
+          </div>
         </div>
-    );
-}
+      );
+}      
