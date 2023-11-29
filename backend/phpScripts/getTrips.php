@@ -5,7 +5,7 @@ include "../../db/mysql.php";
 $trip = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 
 // Use prepared statements to prevent SQL injection
-$sql = "SELECT * FROM trip_page WHERE pk_id = ?";
+$sql = "SELECT * FROM trip_captain WHERE captain_ID = ?";
 $stmt = $mySQL->prepare($sql);
 $stmt->bind_param("i", $trip);
 $stmt->execute();

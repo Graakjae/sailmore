@@ -135,3 +135,10 @@ DROP TABLE applications;
 DROP TABLE boats;
 DROP TABLE captains;
 DROP TABLE crewmember;
+
+CREATE VIEW combined_view AS
+SELECT *
+FROM captain_boat
+UNION ALL
+SELECT *
+FROM trip_card;
