@@ -81,7 +81,7 @@ export default function TripsOverview() {
           <input type="date" onChange={(e) => setEndDate(e.target.value)} />
           <input
             type="text"
-            placeholder="Country"
+            placeholder="Where would you like to go?"
             onChange={(e) => setTargetArea(e.target.value)}
           />
           <input
