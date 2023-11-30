@@ -20,12 +20,12 @@ if ($result === false) {
     } else {
         $data = array('message' => 'No data found');
     }
-
-    // Encode the $data array as JSON and echo the result
-    header('Content-Type: application/json');
-    echo json_encode($data);
 }
 
 // Close the MySQL connection
 $mySQL->close();
+
+header('Content-Type: application/json');
+echo json_encode($data);
+
 ?>

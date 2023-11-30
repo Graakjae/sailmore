@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import CrewCapacity from "@/components/CrewCapacity";
+import CaptainCard from "@/components/CaptainCard";
 
 export default function TripPage() {
     const [trip, setTrip] = useState({});
@@ -50,6 +51,25 @@ export default function TripPage() {
             <p>Price: {trip.price}</p>
             <CrewCapacity capacity={trip.crew_capacity} trip={trip} />
             <p>Rules: {trip.rules}</p>
+           <div>
+            <CaptainCard 
+            profilePicture={trip.profilePicture} 
+            firstname={trip.firstname} 
+            lastname={trip.lastname}
+            age={trip.age} 
+            brand={trip.brand} 
+            model={trip.model} 
+            year={trip.year}
+            length={trip.length} 
+            toilet={trip.toilet} 
+            shower={trip.shower} 
+            kitchen={trip.kitchen} 
+            gps={trip.gps} 
+            wifi={trip.wifi} 
+            power={trip.power} 
+            outlets={trip.outlets}
+            />
+</div> 
           </div>
         </div>
       );
