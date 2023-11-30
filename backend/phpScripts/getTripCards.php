@@ -16,6 +16,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Append each item to the $data array
         $data[] = array(
+            'pk_id' => $row['pk_id'],
             'title' => $row['title'],
             'startpoint' => $row['startpoint'],
             'destination' => $row['destination'],
