@@ -45,8 +45,7 @@ export default function TripPage() {
               )}
             <h4>{trip.title}</h4>
             <p>{trip.start_date} - {trip.end_date}</p>
-            <p>Start Point: {trip.startpoint}</p>
-            <p>Destination: {trip.destination}</p>
+            <p>{trip.startpoint} to {trip.destination}</p>
             <p>Description: {trip.description}</p>
             <p>Price: {trip.price}</p>
             <CrewCapacity capacity={trip.crew_capacity} trip={trip} />
