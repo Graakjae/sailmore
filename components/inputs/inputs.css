@@ -1,7 +1,6 @@
-h3 {
+.label {
     font-size: 25px;
     font-weight: 600;
-    margin-bottom: 5px;
     margin-top: 30px;
 }
 
@@ -36,8 +35,8 @@ h3 {
 /* Style the file input */
 .file-input {
     position: absolute;
-    height: 150px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     opacity: 0;
     top: 0;
     left: 0;
@@ -51,6 +50,13 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.fileFlexBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 600px) {

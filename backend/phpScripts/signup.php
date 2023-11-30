@@ -14,7 +14,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
-$age = $_POST['age'];
+$age = date("Y-m-d", strtotime($_POST['age']));
 $role = $_POST['role'];  
 
 // Validate email format
@@ -66,7 +66,7 @@ if ($checkEmailResult->num_rows > 0) {
             exit;
         }
     } else {
-        $profilePicture = '/defaultProfilePicture.png'; // Default value
+        $profilePicture = 'defaultProfilePicture.png'; // Default value
     }
 
     if ($role === 'captains') {
