@@ -55,9 +55,9 @@ export default function signUp() {
             formData.append("password", password);
             formData.append("firstName", firstName);
             formData.append("lastName", lastName);
-            formData.append("age", format(age, "yyyy-dd-MM"));
+            formData.append("age", format(age, "yyyy-MM-dd"));
             formData.append("profilePicture", profilePicture);
-            formData.append("role", role); // Add the role field
+            formData.append("role", role);
 
             const response = await fetch("/backend/phpScripts/signup.php", {
                 method: "POST",
@@ -168,7 +168,12 @@ export default function signUp() {
                     </div>
                     <div className="flexBox">
                         <div>
-                            <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
+                            <FileInputField
+                                label="Profile picture"
+                                type="file"
+                                onChange={handleProfilePictureChange}
+                                button={"Select file"}
+                            />
                             <img
                                 className="profilePicture"
                                 src={

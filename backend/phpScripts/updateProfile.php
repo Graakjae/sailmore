@@ -1,26 +1,57 @@
 <?php
-include '../../db/mysql.php';
+include "../../db/mysql.php";
 session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    echo "User not logged in";
-    exit;
-}
-
-$user_id = $_SESSION['user_id'];
-
-// Get data from POST request
+$userID = $_SESSION['user_id'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
-$age = $_POST['age'];
+$bio = $_POST['bio'];
 
-$updateQuery = "UPDATE captains SET firstName = '$firstName', lastName = '$lastName', age = '$age' WHERE pk_id = '$user_id'";
+// Use prepared statements to prevent SQL injection
+$query = "UPDATE captains SET firstName = ?, lastName = ?, bio = ? WHERE pk_id = ?";
+$stmt = $mySQL->prepare($query);
 
-if ($mySQL->query($updateQuery) === TRUE) {
-    echo "Profile updated successfully";
+// Bind parameters
+$stmt->bind_param("sssi", $firstName, $lastName, $bio, $userID);
+
+// Execute the statement
+if ($stmt->execute()) {
+    // Check if a new profile picture is provided
+    if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
+        // Handle file upload for profile picture
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $tempPath = $_FILES['profilePicture']['tmp_name'];
+        $uploadPath = '../../public/profilePictures/' . $_FILES['profilePicture']['name'];
+        $fileInfo = pathinfo($uploadPath);
+        $fileExtension = strtolower($fileInfo['extension']);
+
+        // Check if the file extension is allowed
+        if (in_array($fileExtension, $allowedExtensions)) {
+            move_uploaded_file($tempPath, $uploadPath);
+
+            // Update the profile picture filename in the database
+            $profilePictureFilename = $_FILES['profilePicture']['name'];
+            $updateProfilePictureQuery = "UPDATE captains SET profilePicture = ? WHERE pk_id = ?";
+            $stmtProfilePicture = $mySQL->prepare($updateProfilePictureQuery);
+            $stmtProfilePicture->bind_param("si", $profilePictureFilename, $userID);
+
+            if ($stmtProfilePicture->execute()) {
+                echo json_encode(['message' => 'Profile and profile picture updated successfully']);
+            } else {
+                echo json_encode(['error' => 'Error updating profile picture']);
+            }
+
+            $stmtProfilePicture->close();
+        } else {
+            echo json_encode(['error' => 'Invalid file type. Allowed types: jpg, jpeg, png']);
+        }
+    } else {
+        echo json_encode(['message' => 'Profile updated successfully']);
+    }
 } else {
-    echo json_encode(['error' => $mySQL->error]);
+    echo json_encode(['error' => 'Error updating profile']);
 }
 
+// Close the statement and the MySQL connection
+$stmt->close();
 $mySQL->close();
 ?>
