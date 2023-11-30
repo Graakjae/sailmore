@@ -1,5 +1,6 @@
 "use client";
 import TripCard from "../../components/TripCard";
+import Link from "next/link";  // Import Link
 import "./tripsoverview.css";
 import { useState, useEffect } from "react";
 
@@ -15,6 +16,8 @@ export default function TripsOverview() {
       const response = await fetch("/backend/phpScripts/getTripCards.php");
       const result = await response.json();
       setTrips(result);
+  console.log(result);
+
       setFilteredTrips(result);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -64,6 +67,7 @@ export default function TripsOverview() {
     }
   }
 
+
   return (
     <div>
       <div className="filter">
@@ -85,19 +89,23 @@ export default function TripsOverview() {
       </div>
       <div className="trip-card-container">
         {filteredTrips.map((trip, index) => (
-          <TripCard
-            title={trip.title}
-            startpoint={trip.startpoint}
-            destination={trip.destination}
-            start_date={trip.start_date}
-            end_date={trip.end_date}
-            price={trip.price}
-            img={trip.img}
-            key={index}
-            trip={trip}
-          />
+          // Wrap each TripCard with Link
+          <Link href={`/trip/${trip.pk_id}`} key={index}>
+            <TripCard
+              title={trip.title}
+              startpoint={trip.startpoint}
+              destination={trip.destination}
+              start_date={trip.start_date}
+              end_date={trip.end_date}
+              price={trip.price}
+              img={trip.img}
+              key={index}
+              trip={trip}
+            />
+          </Link>
         ))}
       </div>
     </div>
   );
 }
+
