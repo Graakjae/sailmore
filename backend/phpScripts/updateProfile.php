@@ -39,6 +39,7 @@ if ($stmt->execute()) {
             } else {
                 echo json_encode(['error' => 'Error updating profile picture']);
             }
+            
 
             $stmtProfilePicture->close();
         } else {

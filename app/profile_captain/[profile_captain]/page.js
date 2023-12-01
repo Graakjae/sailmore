@@ -11,15 +11,27 @@ import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import "./profile-captain.css";
 import SimpleButton from "@/components/buttons/SimpleButton";
+import SwitchToggle from "@/components/inputs/toggle";
 
 export default function CaptainProfilePage() {
     const [profile, setProfile] = useState({});
     const [trips, setTrips] = useState([]);
     const [updatedProfile, setUpdatedProfile] = useState({});
     const [isEditing, setIsEditing] = useState(false);
+    const [isEditingBoat, setIsEditingBoat] = useState(false);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [bio, setBio] = useState("");
+    const [brand, setBrand] = useState("");
+    const [model, setModel] = useState("");
+    const [year, setYear] = useState(0);
+    const [length, setLength] = useState("");
+    const [GPS, setGPS] = useState(false);
+    const [wifi, setWifi] = useState(false);
+    const [power, setPower] = useState(false);
+    const [toilet, setToilet] = useState("");
+    const [shower, setShower] = useState(false);
+    const [kitchen, setKitchen] = useState(false);
     const [age, setAge] = useState(new Date());
     const [profilePicture, setProfilePicture] = useState();
     const [previewUrl, setPreviewUrl] = useState(null);
@@ -33,18 +45,9 @@ export default function CaptainProfilePage() {
 
         if (userId) {
             fetchProfile(userId);
-            fetchProfileTrips(userId); // Pass userId to fetchProfileTrips
+            fetchProfileTrips(userId);
         }
     }, [params]);
-
-    // useEffect(() => {
-    //     if (profile) {
-    //         setFirstName(profile.firstName);
-    //         setLastName(profile.lastName);
-    //         setBio(profile.bio);
-    //         console.log("firstname", firstName);
-    //     }
-    // }, [profile]);
 
     const fetchProfile = async () => {
         try {
@@ -54,6 +57,16 @@ export default function CaptainProfilePage() {
             setFirstName(result.firstname);
             setLastName(result.lastname);
             setBio(result.bio);
+            setBrand(result.brand);
+            setModel(result.model);
+            setYear(result.year);
+            setLength(result.length);
+            setGPS(result.gps);
+            setWifi(result.wifi);
+            setPower(result.power);
+            setToilet(result.toilet);
+            setShower(result.shower);
+            setKitchen(result.kitchen);
             // Check if the result is an object or an array
             if (typeof result === "object" && result !== null) {
                 setProfile(result);
@@ -84,14 +97,6 @@ export default function CaptainProfilePage() {
         }
     };
 
-    const handleEditClick = () => {
-        // Enable editing mode
-        setIsEditing(true);
-        // Initialize the updatedProfile state with the current profile data
-        setUpdatedProfile({ ...profile });
-        console.log(updatedProfile);
-    };
-
     const handleSaveClick = async () => {
         try {
             // FormData is used for sending files in a POST request
@@ -112,6 +117,35 @@ export default function CaptainProfilePage() {
             fetchProfile(params);
         } catch (error) {
             console.error("Error updating profile:", error);
+        }
+    };
+
+    const handleBoatEdit = async () => {
+        try {
+            // FormData is used for sending files in a POST request
+            const formData = new FormData();
+            formData.append("brand", brand);
+            formData.append("model", model);
+            formData.append("year", year);
+            formData.append("length", length);
+            formData.append("toilet", toilet);
+            formData.append("shower", shower);
+            formData.append("gps", GPS);
+            formData.append("wifi", wifi);
+            formData.append("power", power);
+            formData.append("kitchen", kitchen);
+            const response = await fetch(`/backend/phpScripts/updateBoat.php`, {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            console.log("Update result:", result);
+
+            setIsEditingBoat(false);
+            fetchProfile(params);
+        } catch (error) {
+            console.error("Error updating boat:", error);
         }
     };
 
@@ -150,6 +184,7 @@ export default function CaptainProfilePage() {
         return new Intl.DateTimeFormat("de", options).format(age);
     };
     console.log("Profile age:", formatDate(profile.age));
+    console.log("gps:", power);
     return (
         <div className="height">
             {isEditing ? (
@@ -211,8 +246,67 @@ export default function CaptainProfilePage() {
                     </div>
                 </div>
             ) : (
-                <button onClick={handleEditClick}>Edit</button>
+                <button onClick={() => setIsEditing(true)}>Edit</button>
             )}
+            {isEditingBoat && (
+                <div>
+                    <div className="background"></div>
+                    <div className="editWrapper">
+                        <div>
+                            <h3>Boat info</h3>
+                            <TextInputField
+                                label={"Boat name"}
+                                type="text"
+                                value={brand}
+                                onChange={e => setBrand(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Model"}
+                                type="text"
+                                value={model}
+                                onChange={e => setModel(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Year"}
+                                type="number"
+                                value={year}
+                                onChange={e => setYear(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Length"}
+                                type="number"
+                                value={length}
+                                onChange={e => setLength(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Toilet"}
+                                type="number"
+                                value={toilet}
+                                onChange={e => setToilet(e.target.value)}
+                            />
+
+                            <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
+                            <SwitchToggle text={"Shower"} onChange={() => setShower(!shower)} value={shower} />
+                            <SwitchToggle text={"Kitchen"} onChange={() => setKitchen(!kitchen)} value={kitchen} />
+                            <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
+                            <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
+
+                            <SimpleButton text={"Save"} onClick={handleBoatEdit} />
+                            <Image
+                                src="/cross.png"
+                                alt="Close edit"
+                                width={20}
+                                height={20}
+                                className="closeEdit"
+                                onClick={() => setIsEditingBoat(false)}
+                            />
+
+                            {error && <p className="error-message">{error}</p>}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="flexBox">
                 <div className="leftWrapper">
                     <div className="bio">
@@ -266,10 +360,11 @@ export default function CaptainProfilePage() {
                         </div>
                         <div className="infoWrapper">
                             <h3>Boat</h3>
-                            <p>Ship ??</p>
-                            <p>Model ??</p>
-                            <p>Year ??</p>
-                            <p>Length ??</p>
+                            <p>Ship {profile.brand}</p>
+                            <p>Model {profile.model}</p>
+                            <p>Year {profile.year}</p>
+                            <p>Length {profile.length}</p>
+                            <button onClick={() => setIsEditingBoat(true)}>Edit boat</button>
                         </div>
                     </div>
                 </div>
