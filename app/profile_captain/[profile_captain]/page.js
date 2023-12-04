@@ -362,7 +362,18 @@ export default function CaptainProfilePage() {
                                 value={tripDescription}
                                 onChange={(e) => setTripDescription(e.target.value)}
                             />
-                            {/* Add similar TextInputField components for other trip fields */}
+                            <TextInputField
+                                label={"Start Point"}
+                                type="text"
+                                value={tripStartPoint}
+                                onChange={(e) => setTripStartPoint(e.target.value)}
+                            />                            
+                            <TextInputField
+                            label={"Destination"}
+                            type="text"
+                            value={tripDestination}
+                            onChange={(e) => setTripDestination(e.target.value)}
+                            />
                             <DatePicker
                                 selected={tripStartDate}
                                 onChange={(date) => setTripStartDate(date)}
