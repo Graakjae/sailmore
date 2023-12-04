@@ -19,6 +19,16 @@ export default function CaptainProfilePage() {
     const [updatedProfile, setUpdatedProfile] = useState({});
     const [isEditing, setIsEditing] = useState(false);
     const [isEditingBoat, setIsEditingBoat] = useState(false);
+    const [tripTitle, setTripTitle] = useState("");
+    const [tripDescription, setTripDescription] = useState("");
+    const [tripStartPoint, setTripStartPoint] = useState("");
+    const [tripDestination, setTripDestination] = useState("");
+    const [tripStartDate, setTripStartDate] = useState(new Date());
+    const [tripEndDate, setTripEndDate] = useState(new Date());
+    const [tripPrice, setTripPrice] = useState("");
+    const [tripCrewCapacity, setTripCrewCapacity] = useState("");
+    const [tripRules, setTripRules] = useState("");
+    const [isEditingTrip, setIsEditingTrip] = useState(false);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [bio, setBio] = useState("");
@@ -48,7 +58,35 @@ export default function CaptainProfilePage() {
             fetchProfileTrips(userId);
         }
     }, [params]);
+    
+    const handleTripEdit = async () => {
+        try {
+            // FormData is used for sending files in a POST request
+            const formData = new FormData();
+            formData.append("title", tripTitle);
+            formData.append("description", tripDescription);
+            formData.append("startpoint", tripStartPoint);
+            formData.append("destination", tripDestination);
+            formData.append("start_date", format(tripStartDate, "yyyy-MM-dd"));
+            formData.append("end_date", format(tripEndDate, "yyyy-MM-dd"));
+            formData.append("price", tripPrice);
+            formData.append("crew_capacity", tripCrewCapacity);
+            formData.append("rules", tripRules);
 
+            const response = await fetch(`/backend/phpScripts/updateTrip.php`, {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+            console.log("Update result:", result);
+
+            setIsEditingTrip(false);
+            fetchProfileTrips(params.profile_captain);
+        } catch (error) {
+            console.error("Error updating trip:", error);
+        }
+    };
     const fetchProfile = async () => {
         try {
             const response = await fetch(`/backend/phpScripts/profile.php/${params.profile_captain}`);
@@ -196,17 +234,17 @@ export default function CaptainProfilePage() {
                                 label={"First name"}
                                 type="text"
                                 value={firstName}
-                                onChange={e => setFirstName(e.target.value)}
+                                onChange={(e) => setFirstName(e.target.value)}
                             />
                             <TextInputField
                                 label={"Last name"}
                                 type="text"
                                 value={lastName}
-                                onChange={e => setLastName(e.target.value)}
+                                onChange={(e) => setLastName(e.target.value)}
                             />
                             <div>
                                 <h3>Bio</h3>
-                                <textarea value={bio} onChange={e => setBio(e.target.value)} className="bioInput" />
+                                <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="bioInput" />
                             </div>
                             <div>
                                 <FileInputField
@@ -240,7 +278,7 @@ export default function CaptainProfilePage() {
                                 className="closeEdit"
                                 onClick={() => setIsEditing(false)}
                             />
-
+    
                             {error && <p className="error-message">{error}</p>}
                         </div>
                     </div>
@@ -258,39 +296,39 @@ export default function CaptainProfilePage() {
                                 label={"Boat name"}
                                 type="text"
                                 value={brand}
-                                onChange={e => setBrand(e.target.value)}
+                                onChange={(e) => setBrand(e.target.value)}
                             />
                             <TextInputField
                                 label={"Model"}
                                 type="text"
                                 value={model}
-                                onChange={e => setModel(e.target.value)}
+                                onChange={(e) => setModel(e.target.value)}
                             />
                             <TextInputField
                                 label={"Year"}
                                 type="number"
                                 value={year}
-                                onChange={e => setYear(e.target.value)}
+                                onChange={(e) => setYear(e.target.value)}
                             />
                             <TextInputField
                                 label={"Length"}
                                 type="number"
                                 value={length}
-                                onChange={e => setLength(e.target.value)}
+                                onChange={(e) => setLength(e.target.value)}
                             />
                             <TextInputField
                                 label={"Toilet"}
                                 type="number"
                                 value={toilet}
-                                onChange={e => setToilet(e.target.value)}
+                                onChange={(e) => setToilet(e.target.value)}
                             />
-
+    
                             <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
                             <SwitchToggle text={"Shower"} onChange={() => setShower(!shower)} value={shower} />
                             <SwitchToggle text={"Kitchen"} onChange={() => setKitchen(!kitchen)} value={kitchen} />
                             <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
                             <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
-
+    
                             <SimpleButton text={"Save"} onClick={handleBoatEdit} />
                             <Image
                                 src="/cross.png"
@@ -300,13 +338,78 @@ export default function CaptainProfilePage() {
                                 className="closeEdit"
                                 onClick={() => setIsEditingBoat(false)}
                             />
-
+    
                             {error && <p className="error-message">{error}</p>}
                         </div>
                     </div>
                 </div>
             )}
-
+            {isEditingTrip && (
+                <div>
+                    <div className="background"></div>
+                    <div className="editWrapper">
+                        <div>
+                            <h3>Edit Trip</h3>
+                            <TextInputField
+                                label={"Title"}
+                                type="text"
+                                value={tripTitle}
+                                onChange={(e) => setTripTitle(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Description"}
+                                type="text"
+                                value={tripDescription}
+                                onChange={(e) => setTripDescription(e.target.value)}
+                            />
+                            {/* Add similar TextInputField components for other trip fields */}
+                            <DatePicker
+                                selected={tripStartDate}
+                                onChange={(date) => setTripStartDate(date)}
+                                dateFormat="yyyy-MM-dd"
+                                className="datePicker"
+                            />
+                            <DatePicker
+                                selected={tripEndDate}
+                                onChange={(date) => setTripEndDate(date)}
+                                dateFormat="yyyy-MM-dd"
+                                className="datePicker"
+                            />
+                            <TextInputField
+                                label={"Price"}
+                                type="number"
+                                value={tripPrice}
+                                onChange={(e) => setTripPrice(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Crew Capacity"}
+                                type="number"
+                                value={tripCrewCapacity}
+                                onChange={(e) => setTripCrewCapacity(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Rules"}
+                                type="text"
+                                value={tripRules}
+                                onChange={(e) => setTripRules(e.target.value)}
+                            />
+    
+                            <SimpleButton text={"Save"} onClick={handleTripEdit} />
+                            <Image
+                                src="/cross.png"
+                                alt="Close edit"
+                                width={20}
+                                height={20}
+                                className="closeEdit"
+                                onClick={() => setIsEditingTrip(false)}
+                            />
+    
+                            {error && <p className="error-message">{error}</p>}
+                        </div>
+                    </div>
+                </div>
+            )}
+    
             <div className="flexBox">
                 <div className="leftWrapper">
                     <div className="bio">
@@ -318,12 +421,13 @@ export default function CaptainProfilePage() {
                     <div>
                         <h3>Trips</h3>
                         {trips.length > 0 ? (
-                            trips.map(trip => (
+                            trips.map((trip) => (
                                 <div key={trip.trip_id}>
                                     <h4>{trip.title}</h4>
                                     <p>Start Date: {trip.start_date}</p>
                                     <p>End Date: {trip.end_date}</p>
                                     <p>Price: {trip.price}</p>
+                                    <button onClick={() => setIsEditingTrip(true)}>Edit Trip</button>
                                     <div>
                                         <h5>Images</h5>
                                         {trip.images.length > 0 ? (
@@ -344,7 +448,7 @@ export default function CaptainProfilePage() {
                         )}
                     </div>
                 </div>
-                <div className="rigthWrapper">
+                <div className="rightWrapper">
                     <Image
                         src={`/profilePictures/${profile.profilePicture}`}
                         alt="Profile image"
