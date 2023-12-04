@@ -56,7 +56,7 @@ if ($checkEmailResult->num_rows > 0) {
             // Check if the file size is within the allowed limit
             if ($_FILES['profilePicture']['size'] <= $maxFileSize) {
                 move_uploaded_file($tempPath, $uploadPath);
-                $profilePicture = $uploadPath;
+                $profilePicture = $_FILES['profilePicture']['name'];
             } else {
                 echo json_encode(['error' => 'File size exceeds the limit']);
                 exit;
