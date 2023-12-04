@@ -5,7 +5,9 @@ include "../../db/mysql.php";
 $userId = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 
 // Use prepared statements to prevent SQL injection
-$sql = "SELECT firstname, lastname, age, bio, country, profilePicture, exp FROM captains WHERE pk_id = ?";
+$sql = "SELECT c.firstname, c.lastname, c.age, c.bio, c.country, c.profilePicture, c.exp, b.brand, b.model, b.year, b.length, b.toilet, b.shower, b.kitchen, b.gps, b.wifi, b.power FROM captains c
+        LEFT JOIN boats b ON c.pk_id = b.captainID
+        WHERE c.pk_id = ?";
 $stmt = $mySQL->prepare($sql);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -16,7 +18,16 @@ if ($result === false) {
     echo json_encode(array('error' => 'MySQL Error: ' . $mySQL->error));
 } else {
     if ($result->num_rows > 0) {
+        // Fetch associative array
         $data = $result->fetch_assoc();
+
+        // Convert boolean values to actual booleans
+        $booleanFields = array('shower', 'kitchen', 'gps', 'wifi', 'power');
+        foreach ($booleanFields as $field) {
+            if (isset($data[$field])) {
+                $data[$field] = (bool)$data[$field];
+            }
+        }
     } else {
         $data = array('message' => 'No data found');
     }
