@@ -17,7 +17,7 @@ export default function TripPage() {
 
     const fetchTrip = async (tripId) => {
         try {
-            const response = await fetch(`/backend/phpScripts/getAllTripInfo.php/${tripId}`);
+            const response = await fetch(`/backend/phpScripts/getAllTripInfo.php?trip=${tripId}`);
             const result = await response.json();
 
             if (typeof result === "object" && result !== null) {
@@ -30,19 +30,47 @@ export default function TripPage() {
         }
     };
 
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        if (tripParam) {
+            fetchImages(tripParam);
+        }
+    }, [tripParam]);
+
+    const fetchImages = async (tripId) => {
+      try {
+          const response = await fetch(`/backend/phpScripts/getImages.php?trip=${tripId}`);
+          const result = await response.json();
+
+          if (typeof result === "object" && result !== null) {
+              setImages(result);
+          } else {
+              console.error("Unexpected data format:", result);
+          }
+      } catch (error) {
+          console.error("Error fetching data:", error);
+      }
+  };
+
     return (
         <div>
           <div key={trip.id}>
-              {trip.img ? (
-                <Image
+            <h2>Thumbnail</h2>
+          <Image
                   src={`/trip_img/${trip.img}`}
                   alt={`Image of ${trip.title}`}
                   width={100}
                   height={100}
                 />
-              ) : (
-                <p>No images for this trip</p>
-              )}
+                <h3>Other images</h3>
+            {images.map((image, index) => (<Image key={index}
+                  src={`/trip_img/${image.img}`}
+                  alt={`Image of ${image.title}`}
+                  width={100}
+                  height={100}
+                />)
+            )};
             <h4>{trip.title}</h4>
             <p>{trip.start_date} - {trip.end_date}</p>
             <p>{trip.startpoint} to {trip.destination}</p>

@@ -4,7 +4,7 @@ const CaptainCard = ({profilePicture, firstname, lastname, age, brand, model, ye
 
     return (
       <div className="trip-card">
-        <img src={`profilePictures/${profilePicture}`} className="captain-img" />
+        <img src={`/profilePictures/${profilePicture}`} className="captain-img" />
         <p>{firstname} {lastname}, {age}</p>
         <div className="boat-info">
         <h2>The captain's boat</h2>
