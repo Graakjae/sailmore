@@ -177,7 +177,9 @@ export default function signUp() {
                             <img
                                 className="profilePicture"
                                 src={
-                                    profilePicture ? URL.createObjectURL(profilePicture) : "/defaultProfilePicture.png"
+                                    profilePicture
+                                        ? URL.createObjectURL(profilePicture)
+                                        : "/profilePictures/defaultProfilePicture.png"
                                 }
                                 alt="Profile picture"
                             />
