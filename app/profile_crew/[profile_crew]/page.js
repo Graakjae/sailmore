@@ -12,12 +12,12 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 
 export default function crewProfilePage() {
-
+  // const [profile, setProfile] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [bio, setBio] = useState("");
-  const [country, setCoúntry] = useState("");
+  const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
   const [age, setAge] = useState(new Date());
   const [profilePicture, setProfilePicture] = useState();
@@ -43,12 +43,12 @@ export default function crewProfilePage() {
       console.log("result", result);
       setFirstName(result.firstname);
       setLastName(result.lastname);
-      setCoúntry(result.country)
+      setCountry(result.country)
       setExp(result.exp);
       setBio(result.bio);
       // Check if the result is an object or an array
       if (typeof result === "object" && result !== null) {
-        setProfile(result);
+        // setProfile(result);
         console.log("result", result);
         console.log("lastname", lastName);
       } else {
@@ -67,6 +67,7 @@ export default function crewProfilePage() {
       formData.append("lastName", lastName);
       formData.append("exp", exp);
       formData.append("bio", bio);
+      formData.append("country", country);
       formData.append("profilePicture", profilePicture);
       const response = await fetch(`/backend/phpScripts/updateCrewProfile.php`, {
         method: "POST",
@@ -175,12 +176,12 @@ export default function crewProfilePage() {
                   onChange={handleProfilePictureChange}
                   button={"Edit picture"}
                 />
-                {profile.profilePicture &&
-                typeof profile.profilePicture === "string" ? (
+                {profilePicture &&
+                typeof profilePicture === "string" ? (
                   <img
                     className="editProfilePicture"
                     src={
-                      previewUrl || `/profilePictures/${profile.profilePicture}`
+                      previewUrl || `/profilePictures/${profilePicture}`
                     }
                     alt="Profile picture"
                   />
