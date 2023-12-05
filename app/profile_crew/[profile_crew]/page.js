@@ -12,11 +12,12 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 
 export default function crewProfilePage() {
-  const [profile, setProfile] = useState({});
+
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [bio, setBio] = useState("");
+  const [country, setCoúntry] = useState("");
   const [exp, setExp] = useState("");
   const [age, setAge] = useState(new Date());
   const [profilePicture, setProfilePicture] = useState();
@@ -40,8 +41,9 @@ export default function crewProfilePage() {
       );
       const result = await response.json();
       console.log("result", result);
-      setFirstName(result.firstName);
-      setLastName(result.lastName);
+      setFirstName(result.firstname);
+      setLastName(result.lastname);
+      setCoúntry(result.country)
       setExp(result.exp);
       setBio(result.bio);
       // Check if the result is an object or an array
@@ -117,29 +119,27 @@ export default function crewProfilePage() {
     return new Intl.DateTimeFormat("de", options).format(age);
   };
 
-  console.log("Profile age:", formatDate(profile.age));
-
   return (
     <div className="height">
       <div className="flexBox">
           <div className="bio">
             <h2>
-              {profile.firstname} {profile.lastname}
+              {firstName} {lastName}
             </h2>
-            <p>{profile.bio}</p>
+            <p>{bio}</p>
           </div>
         <div className="rigthWrapper">
           <Image
-            src={`/profilePictures/${profile.profilePicture}`}
+            src={`/profilePictures/${profilePicture}`}
             alt="Profile image"
             width={400}
             height={400}
           />
             <div className="infoWrapper">
-              <h3>About {profile.firstname}</h3>
-              <p>From {profile.country}</p>
-              <p>Birthday {formatDate(profile.age)}</p>
-              <p>Experience {profile.exp}</p>
+              <h3>About {firstName}</h3>
+              <p>From {country}</p>
+              <p>Birthday {formatDate(age)}</p>
+              <p>Experience {exp}</p>
             </div>
         </div>
       </div>
@@ -151,19 +151,19 @@ export default function crewProfilePage() {
               <TextInputField
                 label={"First name"}
                 type="text"
-                value={profile.firstname}
+                value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <TextInputField
                 label={"Last name"}
                 type="text"
-                value={profile.lastname}
+                value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
               <div>
                 <h3>Bio</h3>
                 <textarea
-                  value={profile.bio}
+                  value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   className="bioInput"
                 />
