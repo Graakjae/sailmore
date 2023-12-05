@@ -1,7 +1,5 @@
 "use client";
-import TripCard from "@/components/HomePageTrips";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
@@ -10,11 +8,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
-import SwitchToggle from "@/components/inputs/toggle";
 
 export default function crewProfilePage() {
   const [crew, setCrew] = useState({});
-  const [updatedProfile, setUpdatedProfile] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -70,7 +66,7 @@ export default function crewProfilePage() {
         `/backend/phpScripts/updateCrewProfile.php`,
         {
           method: "POST",
-          body: formData,
+          body: formData
         }
       );
 
@@ -122,6 +118,32 @@ export default function crewProfilePage() {
 
   return (
     <div className="height">
+      <div className="flexBox">
+        <div className="leftWrapper">
+          <div className="bio">
+            <h2>
+              {crew.firstname} {crew.lastname}
+            </h2>
+            <p>{crew.bio}</p>
+          </div>
+        </div>
+        <div className="rigthWrapper">
+          <Image
+            src={`/profilePictures/${crew.profilePicture}`}
+            alt="Profile image"
+            width={400}
+            height={400}
+          />
+          <div>
+            <div className="infoWrapper">
+              <h3>About {crew.firstname}</h3>
+              <p>From {crew.country}</p>
+              <p>Birthday: {formatDate(crew.age)}</p>
+              <p>Experience: {crew.exp}</p>
+            </div>
+          </div>
+        </div>
+      </div>
       {isEditing ? (
         <div>
           <div className="background"></div>
@@ -200,32 +222,6 @@ export default function crewProfilePage() {
       ) : (
         <button onClick={() => setIsEditing(true)}>Edit</button>
       )}
-      <div className="flexBox">
-        <div className="leftWrapper">
-          <div className="bio">
-            <h2>
-              {crew.firstname} {crew.lastname}
-            </h2>
-            <p>{crew.bio}</p>
-          </div>
-        </div>
-        <div className="rigthWrapper">
-          <Image
-            src={`/profilePictures/${crew.profilePicture}`}
-            alt="Profile image"
-            width={400}
-            height={400}
-          />
-          <div>
-            <div className="infoWrapper">
-              <h3>About {crew.firstname}</h3>
-              <p>From {crew.country}</p>
-              <p>Birthday: {formatDate(crew.age)}</p>
-              <p>Experience: {crew.exp}</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
