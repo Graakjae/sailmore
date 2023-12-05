@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
@@ -8,16 +9,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
+import SwitchToggle from "@/components/inputs/toggle";
 
 export default function crewProfilePage() {
-  const [crew, setCrew] = useState({});
+  const [profile, setProfile] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [bio, setBio] = useState("");
   const [exp, setExp] = useState("");
   const [age, setAge] = useState(new Date());
   const [profilePicture, setProfilePicture] = useState();
+  const [updatedProfile, setUpdatedProfile] = useState({});
   const [previewUrl, setPreviewUrl] = useState(null);
   const [error, setError] = useState(null);
   const params = useParams();
@@ -26,25 +29,26 @@ export default function crewProfilePage() {
     const userId = params;
 
     if (userId) {
-      fetchCrewProfile(userId);
+      fetchProfile(userId);
     }
   }, [params]);
 
-  const fetchCrewProfile = async () => {
+  const fetchProfile = async () => {
     try {
       const response = await fetch(
         `/backend/phpScripts/getCrewProfile.php/${params.profile_crew}`
       );
       const result = await response.json();
-      setFirstName(result.firstname);
-      setLastName(result.lastname);
-      setBio(result.bio);
+      console.log("result", result);
+      setFirstName(result.firstName);
+      setLastName(result.lastName);
       setExp(result.exp);
+      setBio(result.bio);
       // Check if the result is an object or an array
       if (typeof result === "object" && result !== null) {
-        setCrew(result);
+        setProfile(result);
         console.log("result", result);
-        console.log("lastname", lastname);
+        console.log("lastname", lastName);
       } else {
         console.error("Unexpected data format:", result);
       }
@@ -57,24 +61,21 @@ export default function crewProfilePage() {
     try {
       // FormData is used for sending files in a POST request
       const formData = new FormData();
-      formData.append("firstname", firstname);
-      formData.append("lastname", lastname);
-      formData.append("bio", bio);
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
       formData.append("exp", exp);
+      formData.append("bio", bio);
       formData.append("profilePicture", profilePicture);
-      const response = await fetch(
-        `/backend/phpScripts/updateCrewProfile.php`,
-        {
-          method: "POST",
-          body: formData
-        }
-      );
+      const response = await fetch(`/backend/phpScripts/updateCrewProfile.php`, {
+        method: "POST",
+        body: formData,
+      });
 
       const result = await response.json();
       console.log("Update result:", result);
 
       setIsEditing(false);
-      fetchCrewProfile(params);
+      fetchProfile(params);
     } catch (error) {
       console.error("Error updating profile:", error);
     }
@@ -116,32 +117,30 @@ export default function crewProfilePage() {
     return new Intl.DateTimeFormat("de", options).format(age);
   };
 
+  console.log("Profile age:", formatDate(profile.age));
+
   return (
     <div className="height">
       <div className="flexBox">
-        <div className="leftWrapper">
           <div className="bio">
             <h2>
-              {crew.firstname} {crew.lastname}
+              {profile.firstname} {profile.lastname}
             </h2>
-            <p>{crew.bio}</p>
+            <p>{profile.bio}</p>
           </div>
-        </div>
         <div className="rigthWrapper">
           <Image
-            src={`/profilePictures/${crew.profilePicture}`}
+            src={`/profilePictures/${profile.profilePicture}`}
             alt="Profile image"
             width={400}
             height={400}
           />
-          <div>
             <div className="infoWrapper">
-              <h3>About {crew.firstname}</h3>
-              <p>From {crew.country}</p>
-              <p>Birthday: {formatDate(crew.age)}</p>
-              <p>Experience: {crew.exp}</p>
+              <h3>About {profile.firstname}</h3>
+              <p>From {profile.country}</p>
+              <p>Birthday {formatDate(profile.age)}</p>
+              <p>Experience {profile.exp}</p>
             </div>
-          </div>
         </div>
       </div>
       {isEditing ? (
@@ -150,31 +149,23 @@ export default function crewProfilePage() {
           <div className="editWrapper">
             <div>
               <TextInputField
-                label={"Firstname"}
+                label={"First name"}
                 type="text"
-                value={firstname}
+                value={profile.firstname}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <TextInputField
-                label={"Lastname"}
+                label={"Last name"}
                 type="text"
-                value={lastname}
+                value={profile.lastname}
                 onChange={(e) => setLastName(e.target.value)}
               />
               <div>
                 <h3>Bio</h3>
                 <textarea
-                  value={bio}
+                  value={profile.bio}
                   onChange={(e) => setBio(e.target.value)}
                   className="bioInput"
-                />
-              </div>
-              <div>
-                <h3>Experience</h3>
-                <textarea
-                  value={exp}
-                  onChange={(e) => setExp(e.target.value)}
-                  className="expInput"
                 />
               </div>
               <div>
@@ -182,14 +173,14 @@ export default function crewProfilePage() {
                   label="Profile picture"
                   type="file"
                   onChange={handleProfilePictureChange}
-                  button={"Change picture"}
+                  button={"Edit picture"}
                 />
-                {crew.profilePicture &&
-                typeof crew.profilePicture === "string" ? (
+                {profile.profilePicture &&
+                typeof profile.profilePicture === "string" ? (
                   <img
                     className="editProfilePicture"
                     src={
-                      previewUrl || `/profilePictures/${crew.profilePicture}`
+                      previewUrl || `/profilePictures/${profile.profilePicture}`
                     }
                     alt="Profile picture"
                   />

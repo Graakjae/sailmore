@@ -2,13 +2,13 @@
 include "../../db/mysql.php";
 session_start();
 $userID = $_SESSION['user_id'];
-$firstName = $_POST['firstname'];
-$lastName = $_POST['lastname'];
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
 $exp = $_POST['exp'];
 $bio = $_POST['bio'];
 
 // Use prepared statements to prevent SQL injection
-$query = "UPDATE crewmember SET firstname = ?, lastname = ?, bio = ?, exp = ? WHERE pk_id = ?";
+$query = "UPDATE crewmember SET firstName = ?, lastName = ?, bio = ?, exp = ? WHERE pk_id = ?";
 $stmt = $mySQL->prepare($query);
 
 // Bind parameters
