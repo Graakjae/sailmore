@@ -43,9 +43,10 @@ export default function crewProfilePage() {
       console.log("result", result);
       setFirstName(result.firstname);
       setLastName(result.lastname);
-      setCountry(result.country)
+      setCountry(result.country);
       setExp(result.exp);
       setBio(result.bio);
+      setProfilePicture(result.profilePicture);
       // Check if the result is an object or an array
       if (typeof result === "object" && result !== null) {
         // setProfile(result);
@@ -69,10 +70,13 @@ export default function crewProfilePage() {
       formData.append("bio", bio);
       formData.append("country", country);
       formData.append("profilePicture", profilePicture);
-      const response = await fetch(`/backend/phpScripts/updateCrewProfile.php`, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `/backend/phpScripts/updateCrewProfile.php`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const result = await response.json();
       console.log("Update result:", result);
@@ -123,12 +127,12 @@ export default function crewProfilePage() {
   return (
     <div className="height">
       <div className="flexBox">
-          <div className="bio">
-            <h2>
-              {firstName} {lastName}
-            </h2>
-            <p>{bio}</p>
-          </div>
+        <div className="bio">
+          <h2>
+            {firstName} {lastName}
+          </h2>
+          <p>{bio}</p>
+        </div>
         <div className="rigthWrapper">
           <Image
             src={`/profilePictures/${profilePicture}`}
@@ -136,12 +140,12 @@ export default function crewProfilePage() {
             width={400}
             height={400}
           />
-            <div className="infoWrapper">
-              <h3>About {firstName}</h3>
-              <p>From {country}</p>
-              <p>Birthday {formatDate(age)}</p>
-              <p>Experience {exp}</p>
-            </div>
+          <div className="infoWrapper">
+            <h3>About {firstName}</h3>
+            <p>From {country}</p>
+            <p>Birthday {formatDate(age)}</p>
+            <p>Experience {exp}</p>
+          </div>
         </div>
       </div>
       {isEditing ? (
@@ -176,13 +180,10 @@ export default function crewProfilePage() {
                   onChange={handleProfilePictureChange}
                   button={"Edit picture"}
                 />
-                {profilePicture &&
-                typeof profilePicture === "string" ? (
+                {profilePicture && typeof profilePicture === "string" ? (
                   <img
                     className="editProfilePicture"
-                    src={
-                      previewUrl || `/profilePictures/${profilePicture}`
-                    }
+                    src={previewUrl || `/profilePictures/${profilePicture}`}
                     alt="Profile picture"
                   />
                 ) : (

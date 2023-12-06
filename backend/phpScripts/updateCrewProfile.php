@@ -31,7 +31,7 @@ if ($stmt->execute()) {
 
             // Update the profile picture filename in the database
             $profilePictureFilename = $_FILES['profilePicture']['name'];
-            $updateProfilePictureQuery = "UPDATE captains SET profilePicture = ? WHERE pk_id = ?";
+            $updateProfilePictureQuery = "UPDATE crewmember SET profilePicture = ? WHERE pk_id = ?";
             $stmtProfilePicture = $mySQL->prepare($updateProfilePictureQuery);
             $stmtProfilePicture->bind_param("si", $profilePictureFilename, $userID);
 
