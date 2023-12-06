@@ -13,8 +13,9 @@ export default function TripPage() {
     const [acceptedCrew, setAcceptedCrew] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(0);
     const { trip: tripParam } = useParams();
-    const { user } = useAuth();
-    console.log(useAuth());
+    const userId = useAuth().userId;
+
+    console.log(useAuth().userId);
     useEffect(() => {
         if (tripParam) {
             fetchTrip(tripParam);
@@ -78,14 +79,16 @@ export default function TripPage() {
             console.error(`Error fetching accepted crew data: ${error}`);
         }
     };
-
+    console.log(trip);
     return (
         <div>
             <div key={trip.id}>
                 <h2>Thumbnail</h2>
-                <Link href={`/Trip/edit/${tripParam}`}>
-                    <button>Edit trip</button>
-                </Link>
+                {userId == trip.captain_ID ? (
+                    <Link href={`/Trip/edit/${tripParam}`}>
+                        <button>Edit trip</button>
+                    </Link>
+                ) : null}
                 <Image src={`/trip_img/${trip.img}`} alt={`Image of ${trip.title}`} width={100} height={100} />
                 <h3>Other images</h3>
                 {images.map((image, index) => (
