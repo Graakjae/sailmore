@@ -24,10 +24,16 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
     }
 
     return (
-        <div>
+        <div className="fixed">
             <div className={`${burgerMenu ? "burgerMenuOpen" : "burgerMenu"}`}>
                 {linksToRender.map((link, index) => (
-                    <LinkComponent text={link.text} href={`${link.link}`} className={`navLink`} key={index} />
+                    <LinkComponent
+                        text={link.text}
+                        href={`${link.link}`}
+                        className={`navLink`}
+                        key={index}
+                        onClick={() => setBurgerMenu(false)}
+                    />
                 ))}
 
                 {loggedIn && <SignOut />}

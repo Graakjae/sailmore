@@ -46,9 +46,17 @@
         display: block;
         cursor: pointer;
         z-index: 5;
-        position: relative;
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
-
+    .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+    }
     .burgerMenu {
         display: block;
         position: absolute;

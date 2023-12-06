@@ -4,7 +4,6 @@ import { useAuth } from "@/app/authContext";
 
 export default function ApplicationsPage() {
     const [applications, setApplications] = useState([]);
-    const [maxCapacity, setMaxCapacity] = useState(0);
     const [acceptedCrew, setAcceptedCrew] = useState([]);
     const captainId = useAuth().userId;
     useEffect(() => {
@@ -64,21 +63,6 @@ export default function ApplicationsPage() {
             console.error("Error handling decision:", error);
         }
     };
-
-    // const fetchTrip = async tripId => {
-    //     try {
-    //         const response = await fetch(`/backend/phpScripts/getAllTripInfo.php?trip=${tripId}`);
-    //         const result = await response.json();
-    //         console.log("Trip Data:", result);
-    //         if (typeof result === "object" && result !== null) {
-    //             setMaxCapacity(result.crew_capacity);
-    //         } else {
-    //             console.error("Unexpected data format:", result);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error fetching data:", error);
-    //     }
-    // };
 
     const fetchAcceptedCrew = async tripId => {
         try {

@@ -10,7 +10,7 @@ export default function TripPage() {
     const [trip, setTrip] = useState({});
     const [acceptedCrew, setAcceptedCrew] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(0);
-    const { trip: tripParam } = useParams(); // Destructuring to get the 'trip' parameter
+    const { trip: tripParam } = useParams();
 
     useEffect(() => {
         if (tripParam) {

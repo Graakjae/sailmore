@@ -8,7 +8,7 @@ export default function Application({ maxCapacity, acceptedCrew }) {
     const [application, setApplication] = useState(false);
     const params = useParams();
     const loggedIn = useAuth().loggedIn;
-
+    const userRole = useAuth().userRole;
     const handleRequest = async () => {
         try {
             const formData = new FormData();
@@ -46,7 +46,7 @@ export default function Application({ maxCapacity, acceptedCrew }) {
                         you must be logged in to request to join <Link href="/login">login here</Link>
                     </div>
                 )
-            ) : (
+            ) : userRole === "captain" ? null : (
                 <button onClick={() => setApplication(true)} disabled={acceptedCrew.length >= maxCapacity}>
                     Request to join
                 </button>
