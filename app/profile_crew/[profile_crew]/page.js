@@ -12,7 +12,6 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 
 export default function crewProfilePage() {
-  // const [profile, setProfile] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
