@@ -9,6 +9,8 @@ CREATE TABLE captains (
     country VARCHAR(255) NOT NULL,
     exp INT NOT NULL
 );
+ALTER TABLE captains
+MODIFY COLUMN exp VARCHAR(255) NOT NULL;
 
 INSERT INTO captains
 VALUES (

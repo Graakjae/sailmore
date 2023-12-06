@@ -15,7 +15,9 @@ $password = $_POST['password'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $age = date("Y-m-d", strtotime($_POST['age']));
-$role = $_POST['role'];  
+$role = $_POST['role'];
+$experience = $_POST['exp']; // Added line for experience
+$country = $_POST['country']; // Added line for country
 
 // Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -62,8 +64,8 @@ if ($checkEmailResult->num_rows > 0) {
 
     // Insert the user based on the specified role
     if ($role === 'captains') {
-        $insertCaptainQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture, role) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'captain')";
+        $insertCaptainQuery = "INSERT INTO captains (email, password, firstName, lastName, age, exp, country, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$experience', '$country', '$profilePicture', 'captain')";
         
         if ($mySQL->query($insertCaptainQuery) === TRUE) {
             // Retrieve the newly created captain's ID
@@ -86,9 +88,8 @@ if ($checkEmailResult->num_rows > 0) {
             echo json_encode(['error' => $mySQL->error]);
         }
     } elseif ($role === 'crewmember') {
-        // Insert crew member without a boat
-        $insertCrewQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, profilePicture, role) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'crewmember')";
+        $insertCrewQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, exp, country, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$experience', '$country', '$profilePicture', 'crewmember')";
         
         if ($mySQL->query($insertCrewQuery) === TRUE) {
             // Retrieve the newly created crew member's ID

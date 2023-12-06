@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../authContext";
 
 export default function signUp() {
+    const [exp, setExp] = useState("none");
+    const [country, setCountry] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -24,6 +26,8 @@ export default function signUp() {
     const [role, setRole] = useState("none");
     const router = useRouter();
     const { loggedIn, setLoggedIn } = useAuth();
+    const [expError, setExpError] = useState(null);
+
 
     const isFormValid = () => {
         return (
@@ -42,6 +46,11 @@ export default function signUp() {
                 setError("Please select a role.");
                 return;
             }
+            if (exp === "none") {
+                setExpError("Please select experience.");
+                return;
+            }
+
             if (!isFormValid()) {
                 setError("Please fill out all fields and ensure passwords match.");
                 return;
@@ -51,6 +60,8 @@ export default function signUp() {
 
             // FormData is used for sending files in a POST request
             const formData = new FormData();
+            formData.append("exp", exp);
+            formData.append("country", country);
             formData.append("email", email);
             formData.append("password", password);
             formData.append("firstName", firstName);
@@ -165,6 +176,33 @@ export default function signUp() {
                             value={passwordConfirmation}
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
+                        <TextInputField
+                            label="Country"
+                            type="country"
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                        />
+                        <div>
+                            <label htmlFor="exp">Experience</label>
+                            <select
+                                defaultValue="none"
+                                id="exp"
+                                value={exp}
+                                onChange={(e) => {
+                                    setExp(e.target.value);
+                                    setExpError(null); // Clear experience error when a new option is selected
+                                }}
+                            >
+                                <option value="none" disabled hidden>
+                                    Select Experience
+                                </option>
+                                <option value="No experience">No Experience</option>
+                                <option value="Inexperienced">Inexperienced sailor</option>
+                                <option value="Experienced sailor">Experienced sailor</option>
+                                <option value="Expert sailor">Expert sailor</option>
+                            </select>
+                            {expError && <p className="error-message">{expError}</p>}
+                        </div>
                     </div>
                     <div className="flexBox">
                         <div>
