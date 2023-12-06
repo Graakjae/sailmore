@@ -135,3 +135,7 @@ DROP TABLE applications;
 DROP TABLE boats;
 DROP TABLE captains;
 DROP TABLE crewmember;
+
+ALTER TABLE applications ADD COLUMN status VARCHAR(255) DEFAULT 'pending';
+
+ALTER TABLE applications DROP COLUMN status;

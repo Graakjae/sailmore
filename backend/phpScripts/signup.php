@@ -19,24 +19,15 @@ $role = $_POST['role'];
 
 // Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Email must contain @";
+    echo json_encode(['error' => 'Email must contain @']);
     exit;
 }
 
 // Hash the password (you should use a stronger hashing method in a production environment)
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$checkEmailQuery = ""; // Initialize the variable
-
-if ($role === 'captains') {
-    $checkEmailQuery = "SELECT * FROM captains WHERE email = '$email'";
-} elseif ($role === 'crewmember') {
-    $checkEmailQuery = "SELECT * FROM crewmember WHERE email = '$email'";
-} else {
-    echo json_encode(['error' => 'Select a role']);
-    exit;
-}
-
+// Check if the email already exists in either table
+$checkEmailQuery = "SELECT * FROM captains WHERE email = '$email' UNION SELECT * FROM crewmember WHERE email = '$email'";
 $checkEmailResult = $mySQL->query($checkEmailQuery);
 
 if ($checkEmailResult->num_rows > 0) {
@@ -69,6 +60,7 @@ if ($checkEmailResult->num_rows > 0) {
         $profilePicture = 'defaultProfilePicture.png'; // Default value
     }
 
+    // Insert the user based on the specified role
     if ($role === 'captains') {
         $insertCaptainQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture, role) 
                         VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'captain')";
@@ -114,5 +106,4 @@ if ($checkEmailResult->num_rows > 0) {
 }
 
 $mySQL->close();
-
 ?>
