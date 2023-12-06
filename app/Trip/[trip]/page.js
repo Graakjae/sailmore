@@ -11,6 +11,7 @@ import Application from "@/components/SendApplication";
 export default function TripPage() {
     const [trip, setTrip] = useState({});
     const [acceptedCrew, setAcceptedCrew] = useState([]);
+    const [maxCapacity, setMaxCapacity] = useState(0);
     const { trip: tripParam } = useParams();
     const { user } = useAuth();
     console.log(useAuth());
@@ -28,6 +29,7 @@ export default function TripPage() {
 
             if (typeof result === "object" && result !== null) {
                 setTrip(result);
+                setMaxCapacity(result.crew_capacity);
             } else {
                 console.error("Unexpected data format:", result);
             }
