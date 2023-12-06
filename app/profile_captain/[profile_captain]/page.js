@@ -16,9 +16,20 @@ import SwitchToggle from "@/components/inputs/toggle";
 export default function CaptainProfilePage() {
     const [profile, setProfile] = useState({});
     const [trips, setTrips] = useState([]);
+    const [trip, setTrip] = useState([]);
     const [updatedProfile, setUpdatedProfile] = useState({});
     const [isEditing, setIsEditing] = useState(false);
     const [isEditingBoat, setIsEditingBoat] = useState(false);
+    const [title, setTripTitle] = useState("");
+    const [description, setTripDescription] = useState("");
+    const [startpoint, setTripStartPoint] = useState("");
+    const [destination, setTripDestination] = useState("");
+    const [start_date, setTripStartDate] = useState(new Date());
+    const [end_date, setTripEndDate] = useState(new Date());
+    const [price, setTripPrice] = useState("");
+    const [crew_capacity, setTripCrewCapacity] = useState("");
+    const [rules, setTripRules] = useState("");
+    const [isEditingTrip, setIsEditingTrip] = useState(false);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [bio, setBio] = useState("");
@@ -48,6 +59,51 @@ export default function CaptainProfilePage() {
             fetchProfileTrips(userId);
         }
     }, [params]);
+
+    const fetchTrip = async () => {
+        try {
+            const response = await fetch(`/backend/phpScripts/getTrip.php/${params.trip}`);
+            const result = await response.json();
+            console.log("result trips", result);
+
+            // Check if the result is an object or an array
+            if (Array.isArray(result)) {
+                setTrip(result);
+            } else {
+                console.error("Unexpected data format for trips:", result);
+            }
+        } catch (error) {
+            console.error("Error fetching trips data:", error);
+        }
+    };
+
+    const handleUpdateTrip = async () => {
+        try {
+            // FormData is used for sending files in a POST request
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", description);
+            formData.append("startpoint", startpoint);
+            formData.append("destination", destination);
+            formData.append("start_date", format(start_date, "yyyy-MM-dd"));
+            formData.append("end_date", format(end_date, "yyyy-MM-dd"));
+            formData.append("price", price);
+            formData.append("crew_capacity", crew_capacity);
+            formData.append("rules", rules);
+            const response = await fetch(`/backend/phpScripts/updateTrip.php`, {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            console.log("Update result:", result);
+
+            setIsEditingTrip(false);
+            fetchProfileTrips(params.profile_captain);
+        } catch (error) {
+            console.error("Error updating trip:", error);
+        }
+    };
 
     const fetchProfile = async () => {
         try {
@@ -298,7 +354,83 @@ export default function CaptainProfilePage() {
                                 width={20}
                                 height={20}
                                 className="closeEdit"
-                                onClick={() => setIsEditingBoat(false)}
+                                onClick={fetchTrip}
+                            />
+
+                            {error && <p className="error-message">{error}</p>}
+                        </div>
+                    </div>
+                </div>
+            )}
+            {isEditingTrip && (
+                <div>
+                    <div className="background"></div>
+                    <div className="editWrapper">
+                        <div>
+                            <h3>Edit Trip</h3>
+                            <TextInputField
+                                label={"Title"}
+                                type="text"
+                                value={trip.title}
+                                onChange={e => setTripTitle(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Description"}
+                                type="text"
+                                value={trip.description}
+                                onChange={e => setTripDescription(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Start Point"}
+                                type="text"
+                                value={trip.startpoint}
+                                onChange={e => setTripStartPoint(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Destination"}
+                                type="text"
+                                value={trip.destination}
+                                onChange={e => setTripDestination(e.target.value)}
+                            />
+                            <DatePicker
+                                selected={trip.start_date}
+                                onChange={date => setTripStartDate(date)}
+                                dateFormat="yyyy-MM-dd"
+                                className="datePicker"
+                            />
+                            <DatePicker
+                                selected={trip.end_date}
+                                onChange={date => setTripEndDate(date)}
+                                dateFormat="yyyy-MM-dd"
+                                className="datePicker"
+                            />
+                            <TextInputField
+                                label={"Price"}
+                                type="number"
+                                value={trip.price}
+                                onChange={e => setTripPrice(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Crew Capacity"}
+                                type="number"
+                                value={trip.crew_capacity}
+                                onChange={e => setTripCrewCapacity(e.target.value)}
+                            />
+                            <TextInputField
+                                label={"Rules"}
+                                type="text"
+                                value={trip.rules}
+                                onChange={e => setTripRules(e.target.value)}
+                            />
+
+                            <SimpleButton text={"Save"} onClick={handleUpdateTrip} />
+                            <Image
+                                src="/cross.png"
+                                alt="Close edit"
+                                width={20}
+                                height={20}
+                                className="closeEdit"
+                                onClick={handleUpdateTrip => setIsEditingTrip(false)}
                             />
 
                             {error && <p className="error-message">{error}</p>}
@@ -319,11 +451,12 @@ export default function CaptainProfilePage() {
                         <h3>Trips</h3>
                         {trips.length > 0 ? (
                             trips.map(trip => (
-                                <div key={trip.trip_id}>
+                                <div key={trip.pk_id}>
                                     <h4>{trip.title}</h4>
                                     <p>Start Date: {trip.start_date}</p>
                                     <p>End Date: {trip.end_date}</p>
                                     <p>Price: {trip.price}</p>
+                                    <button onClick={() => setIsEditingTrip(true)}>Edit Trip</button>
                                     <div>
                                         <h5>Images</h5>
                                         {trip.images.length > 0 ? (
@@ -344,7 +477,7 @@ export default function CaptainProfilePage() {
                         )}
                     </div>
                 </div>
-                <div className="rigthWrapper">
+                <div className="rightWrapper">
                     <Image
                         src={`/profilePictures/${profile.profilePicture}`}
                         alt="Profile image"

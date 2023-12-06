@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import CrewCapacity from "@/components/CrewCapacity";
 import CaptainCard from "@/components/CaptainCard";
+import Link from "next/link";
+import { useAuth } from "@/app/authContext";
 import Application from "@/components/SendApplication";
 
 export default function TripPage() {
     const [trip, setTrip] = useState({});
     const [acceptedCrew, setAcceptedCrew] = useState([]);
-    const [maxCapacity, setMaxCapacity] = useState(0);
     const { trip: tripParam } = useParams();
-
+    const { user } = useAuth();
+    console.log(useAuth());
     useEffect(() => {
         if (tripParam) {
             fetchTrip(tripParam);
@@ -26,7 +28,6 @@ export default function TripPage() {
 
             if (typeof result === "object" && result !== null) {
                 setTrip(result);
-                setMaxCapacity(result.crew_capacity);
             } else {
                 console.error("Unexpected data format:", result);
             }
@@ -80,6 +81,9 @@ export default function TripPage() {
         <div>
             <div key={trip.id}>
                 <h2>Thumbnail</h2>
+                <Link href={`/Trip/edit/${tripParam}`}>
+                    <button>Edit trip</button>
+                </Link>
                 <Image src={`/trip_img/${trip.img}`} alt={`Image of ${trip.title}`} width={100} height={100} />
                 <h3>Other images</h3>
                 {images.map((image, index) => (
