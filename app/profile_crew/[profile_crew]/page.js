@@ -16,6 +16,9 @@ export default function crewProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [bio, setBio] = useState("");
   const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
@@ -43,6 +46,8 @@ export default function crewProfilePage() {
       console.log("result", result);
       setFirstName(result.firstname);
       setLastName(result.lastname);
+      setEmail(result.email);
+      setPassword(result.password);
       setCountry(result.country);
       setExp(result.exp);
       setBio(result.bio);
@@ -62,14 +67,26 @@ export default function crewProfilePage() {
 
   const handleSaveClick = async () => {
     try {
-      // FormData is used for sending files in a POST request
       const formData = new FormData();
       formData.append("firstName", firstName);
       formData.append("lastName", lastName);
-      formData.append("exp", exp);
+      formData.append("email", email);
       formData.append("bio", bio);
       formData.append("country", country);
+      formData.append("exp", exp);
       formData.append("profilePicture", profilePicture);
+
+      if (password === "" || passwordConfirmation === "") {
+        setIsEditing(false);
+        return;
+      } else if (password !== passwordConfirmation) {
+        setError("Passwords do not match.");
+        setIsEditing(true);
+        return;
+      } else if (password === passwordConfirmation) {
+        formData.append("password", password);
+      }
+
       const response = await fetch(
         `/backend/phpScripts/updateCrewProfile.php`,
         {
@@ -81,10 +98,17 @@ export default function crewProfilePage() {
       const result = await response.json();
       console.log("Update result:", result);
 
-      setIsEditing(false);
       fetchProfile(params);
     } catch (error) {
       console.error("Error updating profile:", error);
+    } finally {
+      if (password === "" || passwordConfirmation === "") {
+        setIsEditing(false);
+      } else if (password !== passwordConfirmation) {
+        setIsEditing(true);
+      } else {
+        setIsEditing(false);
+      }
     }
   };
 
@@ -131,7 +155,6 @@ export default function crewProfilePage() {
           <h2>
             {firstName} {lastName}
           </h2>
-          <p>{bio}</p>
         </div>
         <div className="rigthWrapper">
           <Image
@@ -141,10 +164,12 @@ export default function crewProfilePage() {
             height={400}
           />
           <div className="infoWrapper">
-            <h3>About {firstName}</h3>
+            <h3>
+              {firstName}, {formatDate(age)}
+            </h3>
             <p>From {country}</p>
-            <p>Birthday {formatDate(age)}</p>
-            <p>Experience {exp}</p>
+            <p>{exp}</p>
+            <p>{bio}</p>
           </div>
         </div>
       </div>
@@ -164,6 +189,34 @@ export default function crewProfilePage() {
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+              />
+              <TextInputField
+                label={"E-mail"}
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextInputField
+                label={"Password"}
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <TextInputField
+                label="Confirm Password"
+                type="password"
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+              />
+              {error && <p className="error-message">{error}</p>}
+              <TextInputField
+                label={"Home country"}
+                type="text"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+              <TextInputField
+                label={"Sailing experience"}
+                type="text"
+                onChange={(e) => setExp(e.target.value)}
               />
               <div>
                 <h3>Bio</h3>
@@ -207,8 +260,6 @@ export default function crewProfilePage() {
                 className="closeEdit"
                 onClick={() => setIsEditing(false)}
               />
-
-              {error && <p className="error-message">{error}</p>}
             </div>
           </div>
         </div>

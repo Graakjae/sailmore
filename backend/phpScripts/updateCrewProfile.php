@@ -4,15 +4,20 @@ session_start();
 $userID = $_SESSION['user_id'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
-$exp = $_POST['exp'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 $bio = $_POST['bio'];
+$country = $_POST['country'];
+$exp = $_POST['exp'];
+
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Use prepared statements to prevent SQL injection
-$query = "UPDATE crewmember SET firstName = ?, lastName = ?, bio = ?, exp = ? WHERE pk_id = ?";
+$query = "UPDATE crewmember SET firstName = ?, lastName = ?, email =?, password = ?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
 $stmt = $mySQL->prepare($query);
 
 // Bind parameters
-$stmt->bind_param("ssssi", $firstName, $lastName, $bio, $exp, $userID);
+$stmt->bind_param("sssssssi", $firstName, $lastName, $email, $hashedPassword, $bio, $country, $exp, $userID);
 
 // Execute the statement
 if ($stmt->execute()) {
