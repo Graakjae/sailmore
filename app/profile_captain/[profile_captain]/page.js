@@ -92,7 +92,7 @@ export default function CaptainProfilePage() {
             formData.append("rules", rules);
             const response = await fetch(`/backend/phpScripts/updateTrip.php`, {
                 method: "POST",
-                body: formData,
+                body: formData
             });
 
             const result = await response.json();
@@ -252,17 +252,17 @@ export default function CaptainProfilePage() {
                                 label={"First name"}
                                 type="text"
                                 value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                onChange={e => setFirstName(e.target.value)}
                             />
                             <TextInputField
                                 label={"Last name"}
                                 type="text"
                                 value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                onChange={e => setLastName(e.target.value)}
                             />
                             <div>
                                 <h3>Bio</h3>
-                                <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="bioInput" />
+                                <textarea value={bio} onChange={e => setBio(e.target.value)} className="bioInput" />
                             </div>
                             <div>
                                 <FileInputField
@@ -296,7 +296,7 @@ export default function CaptainProfilePage() {
                                 className="closeEdit"
                                 onClick={() => setIsEditing(false)}
                             />
-    
+
                             {error && <p className="error-message">{error}</p>}
                         </div>
                     </div>
@@ -314,39 +314,39 @@ export default function CaptainProfilePage() {
                                 label={"Boat name"}
                                 type="text"
                                 value={brand}
-                                onChange={(e) => setBrand(e.target.value)}
+                                onChange={e => setBrand(e.target.value)}
                             />
                             <TextInputField
                                 label={"Model"}
                                 type="text"
                                 value={model}
-                                onChange={(e) => setModel(e.target.value)}
+                                onChange={e => setModel(e.target.value)}
                             />
                             <TextInputField
                                 label={"Year"}
                                 type="number"
                                 value={year}
-                                onChange={(e) => setYear(e.target.value)}
+                                onChange={e => setYear(e.target.value)}
                             />
                             <TextInputField
                                 label={"Length"}
                                 type="number"
                                 value={length}
-                                onChange={(e) => setLength(e.target.value)}
+                                onChange={e => setLength(e.target.value)}
                             />
                             <TextInputField
                                 label={"Toilet"}
                                 type="number"
                                 value={toilet}
-                                onChange={(e) => setToilet(e.target.value)}
+                                onChange={e => setToilet(e.target.value)}
                             />
-    
+
                             <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
                             <SwitchToggle text={"Shower"} onChange={() => setShower(!shower)} value={shower} />
                             <SwitchToggle text={"Kitchen"} onChange={() => setKitchen(!kitchen)} value={kitchen} />
                             <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
                             <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
-    
+
                             <SimpleButton text={"Save"} onClick={handleBoatEdit} />
                             <Image
                                 src="/cross.png"
@@ -356,7 +356,7 @@ export default function CaptainProfilePage() {
                                 className="closeEdit"
                                 onClick={fetchTrip}
                             />
-    
+
                             {error && <p className="error-message">{error}</p>}
                         </div>
                     </div>
@@ -372,35 +372,35 @@ export default function CaptainProfilePage() {
                                 label={"Title"}
                                 type="text"
                                 value={trip.title}
-                                onChange={(e) => setTripTitle(e.target.value)}
+                                onChange={e => setTripTitle(e.target.value)}
                             />
                             <TextInputField
                                 label={"Description"}
                                 type="text"
                                 value={trip.description}
-                                onChange={(e) => setTripDescription(e.target.value)}
+                                onChange={e => setTripDescription(e.target.value)}
                             />
                             <TextInputField
                                 label={"Start Point"}
                                 type="text"
                                 value={trip.startpoint}
-                                onChange={(e) => setTripStartPoint(e.target.value)}
-                            />                            
+                                onChange={e => setTripStartPoint(e.target.value)}
+                            />
                             <TextInputField
-                            label={"Destination"}
-                            type="text"
-                            value={trip.destination}
-                            onChange={(e) => setTripDestination(e.target.value)}
+                                label={"Destination"}
+                                type="text"
+                                value={trip.destination}
+                                onChange={e => setTripDestination(e.target.value)}
                             />
                             <DatePicker
                                 selected={trip.start_date}
-                                onChange={(date) => setTripStartDate(date)}
+                                onChange={date => setTripStartDate(date)}
                                 dateFormat="yyyy-MM-dd"
                                 className="datePicker"
                             />
                             <DatePicker
                                 selected={trip.end_date}
-                                onChange={(date) => setTripEndDate(date)}
+                                onChange={date => setTripEndDate(date)}
                                 dateFormat="yyyy-MM-dd"
                                 className="datePicker"
                             />
@@ -408,22 +408,22 @@ export default function CaptainProfilePage() {
                                 label={"Price"}
                                 type="number"
                                 value={trip.price}
-                                onChange={(e) => setTripPrice(e.target.value)}
+                                onChange={e => setTripPrice(e.target.value)}
                             />
                             <TextInputField
                                 label={"Crew Capacity"}
                                 type="number"
                                 value={trip.crew_capacity}
-                                onChange={(e) => setTripCrewCapacity(e.target.value)}
+                                onChange={e => setTripCrewCapacity(e.target.value)}
                             />
                             <TextInputField
                                 label={"Rules"}
                                 type="text"
                                 value={trip.rules}
-                                onChange={(e) => setTripRules(e.target.value)}
+                                onChange={e => setTripRules(e.target.value)}
                             />
-    
-                            <SimpleButton text={"Save"} onClick={handleTripEdit} />
+
+                            <SimpleButton text={"Save"} onClick={handleUpdateTrip} />
                             <Image
                                 src="/cross.png"
                                 alt="Close edit"
@@ -432,13 +432,13 @@ export default function CaptainProfilePage() {
                                 className="closeEdit"
                                 onClick={handleUpdateTrip => setIsEditingTrip(false)}
                             />
-    
+
                             {error && <p className="error-message">{error}</p>}
                         </div>
                     </div>
                 </div>
             )}
-    
+
             <div className="flexBox">
                 <div className="leftWrapper">
                     <div className="bio">
@@ -450,13 +450,13 @@ export default function CaptainProfilePage() {
                     <div>
                         <h3>Trips</h3>
                         {trips.length > 0 ? (
-                            trips.map((trip) => (
+                            trips.map(trip => (
                                 <div key={trip.pk_id}>
                                     <h4>{trip.title}</h4>
                                     <p>Start Date: {trip.start_date}</p>
                                     <p>End Date: {trip.end_date}</p>
                                     <p>Price: {trip.price}</p>
-                                    <button onClick={fetchTrip}>Edit Trip</button>
+                                    <button onClick={() => setIsEditingTrip(true)}>Edit Trip</button>
                                     <div>
                                         <h5>Images</h5>
                                         {trip.images.length > 0 ? (
