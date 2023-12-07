@@ -197,7 +197,7 @@ export default function signUp() {
                                     Select Experience
                                 </option>
                                 <option value="No experience">No Experience</option>
-                                <option value="Inexperienced">Inexperienced sailor</option>
+                                <option value="Inexperienced sailor">Inexperienced sailor</option>
                                 <option value="Experienced sailor">Experienced sailor</option>
                                 <option value="Expert sailor">Expert sailor</option>
                             </select>

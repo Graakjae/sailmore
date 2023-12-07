@@ -1,15 +1,12 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
-import SwitchToggle from "@/components/inputs/toggle";
 import { useRouter } from "next/navigation";
 
 export default function editCrewProfilePage() {
@@ -26,6 +23,7 @@ export default function editCrewProfilePage() {
   const [error, setError] = useState(null);
   const params = useParams();
   const router = useRouter();
+  const [expError, setExpError] = useState(null);
 
   useEffect(() => {
     const userId = params;
@@ -141,55 +139,6 @@ export default function editCrewProfilePage() {
         <div className="background"></div>
         <div className="editWrapper">
           <div>
-            <TextInputField
-              label={"First name"}
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <TextInputField
-              label={"Last name"}
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-            <TextInputField
-              label={"E-mail"}
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextInputField
-              label={"Password"}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <TextInputField
-              label="Confirm Password"
-              type="password"
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-            {error && <p className="error-message">{error}</p>}
-            <TextInputField
-              label={"Home country"}
-              type="text"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-            <TextInputField
-              label={"Sailing experience"}
-              type="text"
-              value={exp}
-              onChange={(e) => setExp(e.target.value)}
-            />
-            <div>
-              <h3>Bio</h3>
-              <textarea
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                className="bioInput"
-              />
-            </div>
             <div>
               <FileInputField
                 label="Profile picture"
@@ -215,6 +164,72 @@ export default function editCrewProfilePage() {
                 {profilePicture ? profilePicture.name : ""}
               </span>
             </div>
+            <TextInputField
+              label={"First name"}
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <TextInputField
+              label={"Last name"}
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            {error && <p className="error-message">{error}</p>}
+            <TextInputField
+              label={"Country"}
+              type="text"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+            <div>
+              <label htmlFor="exp">Experience</label>
+              <select
+                defaultValue="none"
+                id="exp"
+                value={exp}
+                onChange={(e) => {
+                  setExp(e.target.value);
+                  setExpError(null); // Clear experience error when a new option is selected
+                }}
+              >
+                <option value="none" disabled hidden>
+                  Select Experience
+                </option>
+                <option value="No experience">No Experience</option>
+                <option value="Inexperienced sailor">
+                  Inexperienced sailor
+                </option>
+                <option value="Experienced sailor">Experienced sailor</option>
+                <option value="Expert sailor">Expert sailor</option>
+              </select>
+              {expError && <p className="error-message">{expError}</p>}
+            </div>
+            <div>
+              <h3>Bio</h3>
+              <textarea
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="bioInput"
+              />
+            </div>
+            <TextInputField
+              label={"E-mail"}
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextInputField
+              label={"Password"}
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <TextInputField
+              label="Confirm Password"
+              type="password"
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
             <SimpleButton text={"Save"} onClick={handleSaveClick} />
             <Image
               src="/cross.png"
@@ -222,7 +237,7 @@ export default function editCrewProfilePage() {
               width={20}
               height={20}
               className="closeEdit"
-              onClick={() => router.push(`/profile/crew/${params.crew}`)}
+              onClick={() => router.push(`/profile/captain/${params.captain}`)}
             />
           </div>
         </div>

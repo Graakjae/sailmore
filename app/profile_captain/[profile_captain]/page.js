@@ -14,7 +14,6 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 
 export default function CaptainProfilePage() {
-  const [profile, setProfile] = useState({});
   const [trips, setTrips] = useState([]);
   const [trip, setTrip] = useState([]);
   const [updatedProfile, setUpdatedProfile] = useState({});
@@ -129,7 +128,7 @@ export default function CaptainProfilePage() {
       setKitchen(result.kitchen);
       // Check if the result is an object or an array
       if (typeof result === "object" && result !== null) {
-        setProfile(result);
+        // setProfile(result);
         console.log("result", result);
         console.log("lastname", lastName);
       } else {
@@ -474,7 +473,7 @@ export default function CaptainProfilePage() {
         </div>
       )}
 
-      {/* <div className="flexBox">
+      <div className="flexBox">
                 <div className="leftWrapper">
                     <div className="bio">
                         <h2>
@@ -540,7 +539,7 @@ export default function CaptainProfilePage() {
           </div>
       ) : (
         <button onClick={() => setIsEditing(true)}>Edit</button>
-      )}; */}
+      )};
       {isEditingBoat && (
         <div>
           <div className="background"></div>
