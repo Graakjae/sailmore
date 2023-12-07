@@ -5,7 +5,7 @@ import Image from "next/image";
 import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
 import LoggedIn from "@/components/loggedIn";
-import HomePageCrew from "@/components/HomePageCrew";
+import CrewMembers from "@/components/CrewMembers";
 import ExploreTripsButton from "@/components/buttons/ExploreTripsButton";
 import MoreCrewMembersButton from "@/components/buttons/MoreCrewMembersButton";
 import React, { useState, useEffect } from "react";
@@ -63,7 +63,7 @@ function HomePage() {
       <br></br>
       <ExploreTripsButton />
       <br></br>
-      <HomePageCrew />
+      <CrewMembers />
       <br></br>
       <MoreCrewMembersButton />
       <br></br>

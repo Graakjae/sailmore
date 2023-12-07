@@ -7,7 +7,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Retrieve user data from the database based on the provided email
-$getUserQuery = "SELECT * FROM captains WHERE email = '$email'";
+$getUserQuery = "SELECT * FROM users WHERE email = '$email'";
 $getUserResult = $mySQL->query($getUserQuery);
 
 if ($getUserResult->num_rows > 0) {
@@ -25,7 +25,5 @@ if ($getUserResult->num_rows > 0) {
 } else {
     echo "User not found";
 }
-
-
 
 $mySQL->close();

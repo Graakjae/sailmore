@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Image from "next/image";
 
 const CrewMemberList = () => {
     const [crewmembers, setCrewmembers] = useState([]);
@@ -23,11 +24,17 @@ const CrewMemberList = () => {
             <h1>CrewMemberList</h1>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 {crewmembers.map((crewmember, index) => (
-                    <div key={index} style={{ margin: '10px', padding: '10px', border: '1px solid #ccc' }}>
+                    <div key={index}>
+                        <Image
+                            src={`/profilePictures/${crewmember.profilePicture}`}
+                            alt="Profile image"
+                            width={150}
+                            height={150}
+                        />
                         <p><strong></strong></p>
-                        <p><strong>First Name: </strong> {crewmember.firstname}</p>
-                        <p><strong>Age: </strong> {crewmember.age}</p>
-                        <p><strong>Experience: </strong> {crewmember.exp}</p>
+                        <p>{crewmember.firstname} {crewmember.lastname}, {crewmember.age}</p>
+                        <p></p>
+                        <p>{crewmember.exp}</p>
                     </div>
                 ))}
             </div>
