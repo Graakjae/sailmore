@@ -74,8 +74,15 @@ export default function editCrewProfilePage() {
       formData.append("exp", exp);
       formData.append("profilePicture", profilePicture);
 
-      if (password === passwordConfirmation) {
-        formData.append("password", password);
+      // Check if password fields are not empty and match before appending
+      if (password !== "" && passwordConfirmation !== "") {
+        if (password !== passwordConfirmation) {
+          setError("Passwords do not match.");
+          return;
+        } else {
+          formData.append("password", password);
+          formData.append("passwordConfirmation", passwordConfirmation);
+        }
       }
 
       const response = await fetch(
@@ -93,15 +100,7 @@ export default function editCrewProfilePage() {
     } catch (error) {
       console.error("Error updating profile:", error);
     } finally {
-      if (password === "" || passwordConfirmation === "") {
-        router.push(`/profile/crew/${params.crew}`);
-        return;
-      } else if (password !== passwordConfirmation) {
-        setError("Passwords do not match.");
-        return;
-      } else {
-        router.push(`/profile/crew/${params.crew}`);
-      }
+      router.push(`/profile/crew/${params.crew}`);
     }
   };
 

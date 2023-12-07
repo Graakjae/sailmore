@@ -10,14 +10,23 @@ $bio = $_POST['bio'];
 $country = $_POST['country'];
 $exp = $_POST['exp'];
 
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+if (isset($password) && $password !== '') {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Use prepared statements to prevent SQL injection
-$query = "UPDATE crewmember SET firstName = ?, lastName = ?, email =?, password = ?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
-$stmt = $mySQL->prepare($query);
+    // Use the hashed password in your query
+    $query = "UPDATE crewmember SET firstName = ?, lastName = ?, email =?, password = ?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
+    $stmt = $mySQL->prepare($query);
 
-// Bind parameters
-$stmt->bind_param("sssssssi", $firstName, $lastName, $email, $hashedPassword, $bio, $country, $exp, $userID);
+    // Bind parameters
+    $stmt->bind_param("sssssssi", $firstName, $lastName, $email, $hashedPassword, $bio, $country, $exp, $userID);
+} else {
+    // If password is not set or empty, skip the password update
+    $query = "UPDATE crewmember SET firstName = ?, lastName = ?, email =?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
+    $stmt = $mySQL->prepare($query);
+
+    // Bind parameters
+    $stmt->bind_param("ssssssi", $firstName, $lastName, $email, $bio, $country, $exp, $userID);
+}
 
 // Execute the statement
 if ($stmt->execute()) {
