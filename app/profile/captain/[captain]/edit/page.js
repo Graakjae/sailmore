@@ -58,6 +58,16 @@ export default function editCaptainProfilePage() {
       setCountry(result.country);
       setExp(result.exp);
       setBio(result.bio);
+      setBrand(result.brand);
+      setModel(result.model);
+      setYear(result.year);
+      setLength(result.length);
+      setGPS(result.gps);
+      setWifi(result.wifi);
+      setPower(result.power);
+      setToilet(result.toilet);
+      setShower(result.shower);
+      setKitchen(result.kitchen);
       setProfilePicture(result.profilePicture);
       // Check if the result is an object or an array
       if (typeof result === "object" && result !== null) {
@@ -170,35 +180,6 @@ export default function editCaptainProfilePage() {
     setPreviewUrl(imageUrl);
   };
 
-  // const handleBoatEdit = async () => {
-  //   try {
-  //     // FormData is used for sending files in a POST request
-  //     const formData = new FormData();
-  //     formData.append("brand", brand);
-  //     formData.append("model", model);
-  //     formData.append("year", year);
-  //     formData.append("length", length);
-  //     formData.append("toilet", toilet);
-  //     formData.append("shower", shower);
-  //     formData.append("gps", GPS);
-  //     formData.append("wifi", wifi);
-  //     formData.append("power", power);
-  //     formData.append("kitchen", kitchen);
-  //     const response = await fetch(`/backend/phpScripts/updateBoat.php`, {
-  //       method: "POST",
-  //       body: formData,
-  //     });
-
-  //     const result = await response.json();
-  //     console.log("Update result:", result);
-
-  //     setIsEditingBoat(false);
-  //     fetchProfile(params);
-  //   } catch (error) {
-  //     console.error("Error updating boat:", error);
-  //   }
-  // };
-
   return (
     <div>
       <div className="edit-profile-section">
@@ -301,7 +282,6 @@ export default function editCaptainProfilePage() {
           onClick={() => router.push(`/profile/captain/${params.captain}`)}
         />
       </div>
-
       <div className="edit-boat-section">
         <h3>Boat info</h3>
         <TextInputField
@@ -334,7 +314,6 @@ export default function editCaptainProfilePage() {
           value={toilet}
           onChange={(e) => setToilet(e.target.value)}
         />
-
         <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
         <SwitchToggle
           text={"Shower"}
@@ -356,7 +335,6 @@ export default function editCaptainProfilePage() {
           onChange={() => setPower(!power)}
           value={power}
         />
-
         <SimpleButton text={"Save"} onClick={handleSaveClick} />
         <Image
           src="/cross.png"
@@ -366,7 +344,6 @@ export default function editCaptainProfilePage() {
           className="closeEdit"
           onClick={() => router.push(`/profile/captain/${params.captain}`)}
         />
-
         {error && <p className="error-message">{error}</p>}
       </div>
     </div>
