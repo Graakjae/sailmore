@@ -5,12 +5,10 @@ import Image from "next/image";
 import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
 import LoggedIn from "@/components/loggedIn";
-import CrewMembers from "@/components/CrewMembers";
-import ExploreTripsButton from "@/components/buttons/ExploreTripsButton";
-import MoreCrewMembersButton from "@/components/buttons/MoreCrewMembersButton";
 import React, { useState, useEffect } from "react";
 import TripCard from "@/components/TripCard";
 import Link from "next/link";
+import HomePageCrew from "@/components/HomePageCrew";
 
 function HomePage() {
     const [trips, setTrips] = useState([]);

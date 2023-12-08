@@ -4,7 +4,14 @@ import "../app/trips/tripsoverview.css";
 const TripCard = ({ title, startpoint, destination, start_date, end_date, price, img }) => {
     return (
         <div className="trip-card">
-            <img src={`trip_img/${img}`} className="trip-img" />
+            <img
+                src={`/trip_img/${img}`}
+                className="trip-img"
+                alt="Trip Image"
+                onError={e => {
+                    e.target.src = "/defaultTripImage.jpg";
+                }}
+            />
             <h2 className="trip-title">{title}</h2>
             <h3 className="trip-area">
                 {startpoint} to {destination}
