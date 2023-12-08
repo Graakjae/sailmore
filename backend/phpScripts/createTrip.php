@@ -32,15 +32,13 @@ if (!isset($title, $startpoint, $destination, $start_date, $end_date, $price, $c
         // Get the ID of the last inserted trip
         $tripId = $mySQL->insert_id;
 
-        // $dropView = "DROP VIEW trip_card";
-        // $mySQL->query($dropView);
+        echo "Trip registered successfully";
+    } else {
+        echo "Error: " . $insertQuery . "<br>" . $mySQL->error;
+    }
+}
 
-        // $createView = "CREATE VIEW trip_card AS
-        // SELECT title, start_date, startpoint, destination, end_date, price, img FROM trip
-        // INNER JOIN trip_img
-        // ON trip.pk_id = trip_img.trip_ID
-        // WHERE trip_img.primary_img = 1";
-        // $mySQL->query($createView);
+
 
 if (!empty($_FILES['trip_img']['name'][0])) {
     $tripImages = $_FILES['trip_img'];
@@ -70,12 +68,6 @@ if (!empty($_FILES['trip_img']['name'][0])) {
         } else {
             echo "Error moving uploaded file: $tempPath to $uploadPath<br>";
         }
-    }
-}
-        
-        echo "Trip registered successfully";
-    } else {
-        echo "Error: " . $insertQuery . "<br>" . $mySQL->error;
     }
 }
 

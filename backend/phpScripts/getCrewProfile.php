@@ -4,8 +4,10 @@ include "../../db/mysql.php";
 // Retrieve user ID from the URL path
 $userId = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 
+$data = array();
+
 // Use prepared statements to prevent SQL injection
-$sql = "SELECT firstname, lastname, age, bio, country, profilePicture, exp FROM captains WHERE pk_id = ?";
+$sql = "SELECT * FROM crewmember WHERE pk_id = ?";
 $stmt = $mySQL->prepare($sql);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -17,14 +19,21 @@ if ($result === false) {
 } else {
     if ($result->num_rows > 0) {
         $data = $result->fetch_assoc();
+
+        // Convert boolean values to actual booleans
+        // $booleanFields = array('age');
+        // foreach ($booleanFields as $field) {
+        //     if (isset($data[$field])) {
+        //         $data[$field] = (bool)$data[$field];
+        //     }
+        // }
     } else {
         $data = array('message' => 'No data found');
-    }
-
-    // Encode the $data array as JSON and echo the result
-    header('Content-Type: application/json');
-    echo json_encode($data);
 }
+}
+
+header('Content-Type: application/json');
+echo json_encode($data);
 
 // Close the MySQL connection
 $mySQL->close();

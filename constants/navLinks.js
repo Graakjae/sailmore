@@ -28,7 +28,7 @@ export const crewmembers = [
     },
     {
         text: "Your applications",
-        link: "/Applications"
+        link: "/your-applications"
     },
     {
         text: "Inbox",

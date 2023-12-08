@@ -5,11 +5,12 @@ import Image from "next/image";
 import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
 import LoggedIn from "@/components/loggedIn";
-import HomePageCrew from "@/components/HomePageCrew";
+import CrewMembers from "@/components/CrewMembers";
 import ExploreTripsButton from "@/components/buttons/ExploreTripsButton";
 import MoreCrewMembersButton from "@/components/buttons/MoreCrewMembersButton";
 import React, { useState, useEffect } from "react";
 import TripCard from "@/components/TripCard";
+import Link from "next/link"; 
 
 function HomePage() {
   const [trips, setTrips] = useState([]);
@@ -45,22 +46,24 @@ function HomePage() {
       <br></br>
       <h1>Trips List</h1>
       {filteredTrips.slice(0, 8).map((trip, index) => (
-        <TripCard
-          title={trip.title}
-          startpoint={trip.startpoint}
-          destination={trip.destination}
-          start_date={trip.start_date}
-          end_date={trip.end_date}
-          price={trip.price}
-          img={trip.img}
-          key={index}
-          trip={trip}
-        />
+        <Link href={`/trip/${trip.pk_id}`} key={index}>
+            <TripCard
+              title={trip.title}
+              startpoint={trip.startpoint}
+              destination={trip.destination}
+              start_date={trip.start_date}
+              end_date={trip.end_date}
+              price={trip.price}
+              img={trip.img}
+              key={index}
+              trip={trip}
+            />
+        </Link>
       ))}
       <br></br>
       <ExploreTripsButton />
       <br></br>
-      <HomePageCrew />
+      <CrewMembers />
       <br></br>
       <MoreCrewMembersButton />
       <br></br>

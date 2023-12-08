@@ -4,14 +4,29 @@ session_start();
 $userID = $_SESSION['user_id'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 $bio = $_POST['bio'];
+$country = $_POST['country'];
+$exp = $_POST['exp'];
 
-// Use prepared statements to prevent SQL injection
-$query = "UPDATE captains SET firstName = ?, lastName = ?, bio = ? WHERE pk_id = ?";
-$stmt = $mySQL->prepare($query);
+if (isset($password) && $password !== '') {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Bind parameters
-$stmt->bind_param("sssi", $firstName, $lastName, $bio, $userID);
+    // Use the hashed password in your query
+    $query = "UPDATE captains SET firstName = ?, lastName = ?, email =?, password = ?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
+    $stmt = $mySQL->prepare($query);
+
+    // Bind parameters
+    $stmt->bind_param("sssssssi", $firstName, $lastName, $email, $hashedPassword, $bio, $country, $exp, $userID);
+} else {
+    // If password is not set or empty, skip the password update
+    $query = "UPDATE captains SET firstName = ?, lastName = ?, email =?, bio = ?, country = ?, exp = ? WHERE pk_id = ?";
+    $stmt = $mySQL->prepare($query);
+
+    // Bind parameters
+    $stmt->bind_param("ssssssi", $firstName, $lastName, $email, $bio, $country, $exp, $userID);
+}
 
 // Execute the statement
 if ($stmt->execute()) {
@@ -39,6 +54,7 @@ if ($stmt->execute()) {
             } else {
                 echo json_encode(['error' => 'Error updating profile picture']);
             }
+            
 
             $stmtProfilePicture->close();
         } else {

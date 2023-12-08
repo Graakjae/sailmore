@@ -12,8 +12,13 @@ if ($result->num_rows > 0) {
         // Append each item to the $data array
         $data[] = array(
             'firstname' => $row['firstname'],
+            'lastname' => $row['lastname'],
             'age' => $row['age'],
+            'bio' => $row['bio'],
+            'country' => $row['country'],
             'exp' => $row['exp'],
+            'profilePicture' => $row['profilePicture'],
+            'role' => $row['role']
         );
     }
 } else {

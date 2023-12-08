@@ -15,28 +15,21 @@ $password = $_POST['password'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $age = date("Y-m-d", strtotime($_POST['age']));
-$role = $_POST['role'];  
+$role = $_POST['role'];
+$experience = $_POST['exp']; // Added line for experience
+$country = $_POST['country']; // Added line for country
 
 // Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Email must contain @";
+    echo json_encode(['error' => 'Email must contain @']);
     exit;
 }
 
 // Hash the password (you should use a stronger hashing method in a production environment)
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$checkEmailQuery = ""; // Initialize the variable
-
-if ($role === 'captains') {
-    $checkEmailQuery = "SELECT * FROM captains WHERE email = '$email'";
-} elseif ($role === 'crewmember') {
-    $checkEmailQuery = "SELECT * FROM crewmember WHERE email = '$email'";
-} else {
-    echo json_encode(['error' => 'Select a role']);
-    exit;
-}
-
+// Check if the email already exists in either table
+$checkEmailQuery = "SELECT * FROM captains WHERE email = '$email' UNION SELECT * FROM crewmember WHERE email = '$email'";
 $checkEmailResult = $mySQL->query($checkEmailQuery);
 
 if ($checkEmailResult->num_rows > 0) {
@@ -56,7 +49,7 @@ if ($checkEmailResult->num_rows > 0) {
             // Check if the file size is within the allowed limit
             if ($_FILES['profilePicture']['size'] <= $maxFileSize) {
                 move_uploaded_file($tempPath, $uploadPath);
-                $profilePicture = $uploadPath;
+                $profilePicture = $_FILES['profilePicture']['name'];
             } else {
                 echo json_encode(['error' => 'File size exceeds the limit']);
                 exit;
@@ -69,37 +62,49 @@ if ($checkEmailResult->num_rows > 0) {
         $profilePicture = 'defaultProfilePicture.png'; // Default value
     }
 
+    // Insert the user based on the specified role
     if ($role === 'captains') {
-        $insertQuery = "INSERT INTO captains (email, password, firstName, lastName, age, profilePicture, role) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'captain')";
+        $insertCaptainQuery = "INSERT INTO captains (email, password, firstName, lastName, age, exp, country, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$experience', '$country', '$profilePicture', 'captain')";
+        
+        if ($mySQL->query($insertCaptainQuery) === TRUE) {
+            // Retrieve the newly created captain's ID
+            $captainID = $mySQL->insert_id;
+
+            // Create a boat for the captain
+            $insertBoatQuery = "INSERT INTO boats (captainID, brand, model, year, length, toilet, shower, kitchen, gps, wifi, power) 
+                                VALUES ('$captainID', '', '', 0, '', 0, 0, '', 0, 0, 0)";
+            
+            if ($mySQL->query($insertBoatQuery) === TRUE) {
+                // Log in the captain
+                $_SESSION['user_id'] = $captainID;
+                $_SESSION['email'] = $email;
+
+                echo "User registered successfully";
+            } else {
+                echo json_encode(['error' => 'Error creating boat for the captain']);
+            }
+        } else {
+            echo json_encode(['error' => $mySQL->error]);
+        }
     } elseif ($role === 'crewmember') {
-        $insertQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, profilePicture, role) 
-                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$profilePicture', 'crewmember')";
-    } else {
-        echo "Invalid role";
-        exit;
-    }
+        $insertCrewQuery = "INSERT INTO crewmember (email, password, firstName, lastName, age, exp, country, profilePicture, role) 
+                        VALUES ('$email', '$hashedPassword', '$firstName', '$lastName', '$age', '$experience', '$country', '$profilePicture', 'crewmember')";
+        
+        if ($mySQL->query($insertCrewQuery) === TRUE) {
+            // Retrieve the newly created crew member's ID
+            $crewMemberID = $mySQL->insert_id;
 
-    if ($mySQL->query($insertQuery) === TRUE) {
+            // Log in the crew member
+            $_SESSION['user_id'] = $crewMemberID;
+            $_SESSION['email'] = $email;
 
-        // Retrieve user data from the database based on the provided email
-        $getUserQuery = "SELECT * FROM $role WHERE email = '$email'";
-        $getUserResult = $mySQL->query($getUserQuery);
-
-        $loggedInUser = $getUserResult->fetch_assoc();
-
-        if ($loggedInUser) {
-            $_SESSION['user_id'] = $loggedInUser['pk_id'];
-            $_SESSION['email'] = $loggedInUser['email'];
             echo "User registered successfully";
         } else {
-            echo json_encode(['error' => 'User not found after signup']);
+            echo json_encode(['error' => $mySQL->error]);
         }
-    } else {
-        echo json_encode(['error' => $mySQL->error]);
     }
 }
 
 $mySQL->close();
-
 ?>
