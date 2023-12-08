@@ -7,7 +7,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
-import FileInputField from "@/components/inputs/fileInput";
 
 export default function createTripPage() {
     const [title, setTitle] = useState("");

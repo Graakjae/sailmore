@@ -1,12 +1,12 @@
 function ExploreTripsButton() {
     return (
         <div>
-            <a href="../TripsOverview" class="explore-trips-btn">
+            <a href="../TripsOverview" className="explore-trips-btn">
                 Explore Trips
-                <img src="arrow right image" />
+                <img src="arrow-right-image" />
             </a>
         </div>
-    )
+    );
 }
 
 export default ExploreTripsButton;

@@ -54,8 +54,6 @@ if (!empty($_FILES['trip_img']['name'][0])) {
             mkdir($destinationDirectory, 0755, true);
         }
 
-        
-
         if (move_uploaded_file($tempPath, $uploadPath)) {
             // Insert each image into the trip_img table with the original file name
             $insertImages =

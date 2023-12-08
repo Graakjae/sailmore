@@ -1,30 +1,34 @@
 export const captain = userId => [
     {
         text: "Find crew members",
-        link: "/CrewMembers"
+        link: "/crewmembers"
     },
     {
         text: "Your Trips",
-        link: "/TripsOverview"
+        link: "/trips"
     },
     {
         text: "Applications",
-        link: "/Applications"
+        link: "/applications"
     },
     {
         text: "Inbox",
-        link: "/Inbox"
+        link: "/inbox"
     },
     {
         text: "Profile",
-        link: `/profile_captain/${userId}`
+        link: `/profile/captain/${userId}`
+    },
+    {
+        text: "Create Trip",
+        link: `/create-trip`
     }
 ];
 
-export const crewmembers = [
+export const crewmembers = userId => [
     {
         text: "Discover Trips",
-        link: "/TripsOverview"
+        link: "/trips"
     },
     {
         text: "Your applications",
@@ -32,11 +36,11 @@ export const crewmembers = [
     },
     {
         text: "Inbox",
-        link: "/Inbox"
+        link: "/inbox"
     },
     {
         text: "Profile",
-        link: "/Profile"
+        link: `/profile/crewmember/${userId}`
     },
     {
         text: "Logout"
@@ -46,11 +50,11 @@ export const crewmembers = [
 export const loggedout = [
     {
         text: "Discover Trips",
-        link: "/TripsOverview"
+        link: "/trips"
     },
     {
         text: "Find crew members",
-        link: "/CrewMembers"
+        link: "/crewmembers"
     },
     {
         text: "Login",

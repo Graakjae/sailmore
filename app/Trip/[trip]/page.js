@@ -85,7 +85,7 @@ export default function TripPage() {
             <div key={trip.id}>
                 <h2>Thumbnail</h2>
                 {userId == trip.captain_ID ? (
-                    <Link href={`/Trip/edit/${tripParam}`}>
+                    <Link href={`/trip/edit/${tripParam}`}>
                         <button>Edit trip</button>
                     </Link>
                 ) : null}
