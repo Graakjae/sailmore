@@ -248,75 +248,21 @@ export default function CaptainProfilePage() {
   console.log("gps:", power);
   return (
     <div className="height">
-      {isEditing ? (
-        <div>
-          <div className="background"></div>
-          <div className="editWrapper">
-            <div>
-              <TextInputField
-                label={"First name"}
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <TextInputField
-                label={"Last name"}
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-              <div>
-                <h3>Bio</h3>
-                <textarea
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  className="bioInput"
-                />
-              </div>
-              <div>
-                <FileInputField
-                  label="Profile picture"
-                  type="file"
-                  onChange={handleProfilePictureChange}
-                  button={"Edit picture"}
-                />
-                {profile.profilePicture &&
-                typeof profile.profilePicture === "string" ? (
-                  <img
-                    className="editProfilePicture"
-                    src={
-                      previewUrl || `/profilePictures/${profile.profilePicture}`
-                    }
-                    alt="Profile picture"
-                  />
-                ) : (
-                  <img
-                    className="editProfilePicture"
-                    src={previewUrl || "/defaultProfilePicture.png"}
-                    alt="Profile picture"
-                  />
-                )}
-                <br />
-                <span className="file-name">
-                  {profilePicture ? profilePicture.name : ""}
-                </span>
-              </div>
-              <SimpleButton text={"Save"} onClick={handleSaveClick} />
-              <Image
-                src="/cross.png"
-                alt="Close edit"
-                width={20}
-                height={20}
-                className="closeEdit"
-                onClick={() => setIsEditing(false)}
-              />
-
-              {error && <p className="error-message">{error}</p>}
-            </div>
-          </div>
+      {showPasswordFields ? (
+        <div className="password-fields">
+          <TextInputField
+          label={"Password"}
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <TextInputField
+          label="Confirm Password"
+          type="password"
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+        />
         </div>
       ) : (
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setShowPasswordFields(true)}>Edit</button>
       )}
       {isEditingBoat && (
         <div>

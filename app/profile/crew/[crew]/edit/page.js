@@ -15,6 +15,7 @@ export default function editCrewProfilePage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [showPasswordFields, setShowPasswordFields] = useState(false);
   const [bio, setBio] = useState("");
   const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
@@ -220,16 +221,22 @@ export default function editCrewProfilePage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextInputField
-              label={"Password"}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <TextInputField
-              label="Confirm Password"
-              type="password"
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
+            {showPasswordFields ? (
+        <div className="password-fields">
+          <TextInputField
+          label={"Password"}
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <TextInputField
+          label="Confirm Password"
+          type="password"
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+        />
+        </div>
+      ) : (
+        <button onClick={() => setShowPasswordFields(true)}>Edit</button>
+      )}
             <SimpleButton text={"Save"} onClick={handleSaveClick} />
             <Image
               src="/cross.png"

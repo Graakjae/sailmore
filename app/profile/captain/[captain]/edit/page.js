@@ -16,6 +16,7 @@ export default function editCaptainProfilePage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [showPasswordFields, setShowPasswordFields] = useState(false);
   const [bio, setBio] = useState("");
   const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
@@ -83,7 +84,7 @@ export default function editCaptainProfilePage() {
   };
 
   const handleSaveClick = async () => {
-    
+
     try {
       const formData = new FormData();
       formData.append("firstName", firstName);
@@ -263,7 +264,9 @@ export default function editCaptainProfilePage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <TextInputField
+        {showPasswordFields ? (
+        <div className="password-fields">
+          <TextInputField
           label={"Password"}
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -273,15 +276,10 @@ export default function editCaptainProfilePage() {
           type="password"
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
-        {/* <SimpleButton text={"Save"} onClick={handleSaveClick} /> */}
-        <Image
-          src="/cross.png"
-          alt="Close edit"
-          width={20}
-          height={20}
-          className="closeEdit"
-          onClick={() => router.push(`/profile/captain/${params.captain}`)}
-        />
+        </div>
+      ) : (
+        <button onClick={() => setShowPasswordFields(true)}>Change password</button>
+      )}
       </div>
       <div className="edit-boat-section">
         <h3>Boat info</h3>
