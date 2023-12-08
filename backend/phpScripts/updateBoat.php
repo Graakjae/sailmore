@@ -7,11 +7,11 @@ $model = $_POST['model'];
 $year = $_POST['year'];
 $length = $_POST['length'];
 $toilet = $_POST['toilet'];
-$shower = $_POST['shower']=== 'true' ? 1 : 0;
-$kitchen = $_POST['kitchen']=== 'true' ? 1 : 0;
-$gps = $_POST['gps']=== 'true' ? 1 : 0;
-$wifi = $_POST['wifi']=== 'true' ? 1 : 0;
-$power = $_POST['power']=== 'true' ? 1 : 0;
+$shower = $_POST['shower'] === 'true' ? 1 : 0;
+$kitchen = $_POST['kitchen'] === 'true' ? 1 : 0;
+$gps = $_POST['gps'] === 'true' ? 1 : 0;
+$wifi = $_POST['wifi'] === 'true' ? 1 : 0;
+$power = $_POST['power'] === 'true' ? 1 : 0;
 
 // Use prepared statements to prevent SQL injection
 $query = "UPDATE boats SET brand = ?, model = ?, year = ?, length = ?, toilet = ?, shower = ?, kitchen = ?, gps = ?, wifi = ?, power = ? WHERE captainID = ?";

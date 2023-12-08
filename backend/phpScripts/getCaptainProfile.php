@@ -23,7 +23,7 @@ if ($result === false) {
         $data = $result->fetch_assoc();
 
         // Convert boolean values to actual booleans
-        $booleanFields = array('age');
+        $booleanFields = array('shower', 'kitchen', 'gps', 'wifi', 'power');
         foreach ($booleanFields as $field) {
             if (isset($data[$field])) {
                 $data[$field] = (bool)$data[$field];

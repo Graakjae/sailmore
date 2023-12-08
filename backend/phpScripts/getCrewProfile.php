@@ -21,12 +21,12 @@ if ($result === false) {
         $data = $result->fetch_assoc();
 
         // Convert boolean values to actual booleans
-        $booleanFields = array('age');
-        foreach ($booleanFields as $field) {
-            if (isset($data[$field])) {
-                $data[$field] = (bool)$data[$field];
-            }
-        }
+        // $booleanFields = array('age');
+        // foreach ($booleanFields as $field) {
+        //     if (isset($data[$field])) {
+        //         $data[$field] = (bool)$data[$field];
+        //     }
+        // }
     } else {
         $data = array('message' => 'No data found');
 }

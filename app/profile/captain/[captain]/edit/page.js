@@ -83,6 +83,7 @@ export default function editCaptainProfilePage() {
   };
 
   const handleSaveClick = async () => {
+    
     try {
       const formData = new FormData();
       formData.append("firstName", firstName);
@@ -118,9 +119,8 @@ export default function editCaptainProfilePage() {
       fetchProfile(params);
     } catch (error) {
       console.error("Error updating profile:", error);
-    } finally {
-      router.push(`/profile/captain/${params.captain}`);
     }
+
     try {
       // FormData is used for sending files in a POST request
       const formData = new FormData();
@@ -142,10 +142,11 @@ export default function editCaptainProfilePage() {
       const result = await response.json();
       console.log("Update result:", result);
 
-      setIsEditingBoat(false);
       fetchProfile(params);
     } catch (error) {
       console.error("Error updating boat:", error);
+    } finally {
+      router.push(`/profile/captain/${params.captain}`);
     }
   };
 
