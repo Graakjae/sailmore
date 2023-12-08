@@ -18,7 +18,7 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
     if (userRole === "captain") {
         linksToRender = captain(userId);
     } else if (userRole === "crewmember") {
-        linksToRender = crewmembers;
+        linksToRender = crewmembers(userId);
     } else {
         linksToRender = loggedout;
     }

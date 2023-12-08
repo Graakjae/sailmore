@@ -19,6 +19,21 @@ if ($resultTrips === false) {
         while ($row = $resultTrips->fetch_assoc()) {
             $tripId = $row['pk_id'];
 
+            // Fetch associated images for the trip
+            $sqlImages = "SELECT pk_id, img FROM trip_img WHERE trip_ID = ?";
+            $stmtImages = $mySQL->prepare($sqlImages);
+            $stmtImages->bind_param("i", $tripId);
+            $stmtImages->execute();
+            $resultImages = $stmtImages->get_result();
+
+            $images = array();
+            while ($imageRow = $resultImages->fetch_assoc()) {
+                $images[] = array(
+                    'pk_id' => $imageRow['pk_id'],
+                    'img' => $imageRow['img'],
+                );
+            }
+
             $dataTrips[] = array(
                 'pk_id' => $row['pk_id'],
                 'title' => $row['title'],
@@ -30,7 +45,7 @@ if ($resultTrips === false) {
                 'destination' => $row['destination'],
                 'crew_capacity' => $row['crew_capacity'],
                 'rules' => $row['rules'],
-
+                'images' => $images,
             );
         }
     } else {
