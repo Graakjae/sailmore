@@ -88,7 +88,6 @@ export default function ApplicationsPage() {
         <div>
             <h1>Applications Page</h1>
             <h2>Pending Applications</h2>
-            <p>{acceptedCrew.length}</p>
             {applications.map(
                 application =>
                     application.applicationStatus === "pending" && (

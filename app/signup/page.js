@@ -28,7 +28,6 @@ export default function signUp() {
     const { loggedIn, setLoggedIn } = useAuth();
     const [expError, setExpError] = useState(null);
 
-
     const isFormValid = () => {
         return (
             email.trim() !== "" &&
@@ -187,8 +186,7 @@ export default function signUp() {
                             <select
                                 defaultValue="none"
                                 id="exp"
-                                value={exp}
-                                onChange={(e) => {
+                                onChange={e => {
                                     setExp(e.target.value);
                                     setExpError(null); // Clear experience error when a new option is selected
                                 }}
