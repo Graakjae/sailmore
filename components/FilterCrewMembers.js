@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function FilterComponent({ applyFilter, data }) {
-  const [experienceFilter, setExperienceFilter] = useState('all');
-  const [ageFilter, setAgeFilter] = useState('all');
+  const [experienceFilter, setExperienceFilter] = useState("all");
+  const [ageFilter, setAgeFilter] = useState("all");
 
   function handleExperienceChange(value) {
     setExperienceFilter(value);
@@ -20,8 +20,8 @@ function FilterComponent({ applyFilter, data }) {
 
     return data.filter(function (item) {
       return (
-        (experienceFilter === 'all' || item.experience === experienceFilter) &&
-        (ageFilter === 'all' || item.age === ageFilter)
+        (experienceFilter === "all" || item.experience === experienceFilter) &&
+        (ageFilter === "all" || item.age === ageFilter)
       );
     });
   }
@@ -31,31 +31,50 @@ function FilterComponent({ applyFilter, data }) {
     applyFilter(filteredData);
   }
 
-  return (
-    <div>
-      <button onClick={handleApplyFilter}>Apply</button>
+  function resetFilters(e) {
+    e.preventDefault();
+    if (experienceFilter || ageFilter) {
+      setExperienceFilter(null);
+      setAgeFilter(null);
+      document.querySelector(".filter-form").reset();
+    }
+  }
 
-      <label>
-        Experience:
-        <select value={experienceFilter} onChange={function (e) { handleExperienceChange(e.target.value); }}>
+  return (
+    <div className="filter">
+      <form className="filter-form">
+        <label>Experience: </label>
+        <select
+          defaultValue="none"
+          value={experienceFilter}
+          onChange={function (e) {
+            handleExperienceChange(e.target.value);
+          }}
+        >
           <option value="all">All</option>
-          <option value="noExperience">No Experience</option>
+          <option value="no-experience">No Experience</option>
           <option value="inexperience">Inexperienced</option>
           <option value="experienced">Experienced</option>
+          <option value="expert">Expert</option>
         </select>
-      </label>
 
-      <label>
-        Age:
-        <select value={ageFilter} onChange={function (e) { handleAgeChange(e.target.value); }}>
+        <label>Age: </label>
+        <select
+          value={ageFilter}
+          onChange={function (e) {
+            handleAgeChange(e.target.value);
+          }}
+        >
           <option value="all">All</option>
-          {/* Add more age options as needed */}
           <option value="18-25">18-25</option>
           <option value="26-35">26-35</option>
-          <option value="36-50">36-50</option>
-          {/* Add more age options as needed */}
+          <option value="36-45">36-45</option>
+          <option value="46-55">46-55</option>
+          <option value="55-100">55+</option>
         </select>
-      </label>
+        <button onClick={handleApplyFilter}>Search</button>
+      </form>
+      <button onClick={resetFilters}>Reset filters</button>
     </div>
   );
 }
@@ -67,11 +86,7 @@ function ParentComponent() {
   };
 
   // Mock data for example
-  const data = [
-    { name: 'John', experience: 'experienced', age: '26-35' },
-    { name: 'Jane', experience: 'inexperienced', age: '18-25' },
-    // Add more data as needed
-  ];
+  const data = [];
 
   return (
     <div>

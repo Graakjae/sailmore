@@ -1,0 +1,42 @@
+.crewmember-page {
+  width: 92%;
+  margin: 2.5% auto;
+}
+
+.filter {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.filter-form {
+  margin-bottom: 1%;
+}
+
+.filter-form select {
+  margin-right: 1%;
+}
+
+.crewmember-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.crewmember-card {
+  width: 400px;
+  margin-bottom: 30px;
+  height: 350px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.crewmember-img {
+  height: 300px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.name-and-age {
+  font-weight: 1000;
+  font-size: 1.2em;
+}
