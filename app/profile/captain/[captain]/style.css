@@ -1,0 +1,125 @@
+.height {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+}
+
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  max-height: 500px;
+}
+
+.bio {
+  font-size: 12px;
+  margin-top: 210px;
+  margin-right: 50px;
+}
+
+.firstname {
+  font-size: 18px;
+  margin-top: 100px;
+  margin-left: 100px; 
+  max-height: 400px;/* Adjust the margin to move the text more to the right */
+}
+
+.rightWrapper img {
+  margin-right: 20px;
+  margin-top: 50px; /* Adjust the margin as needed */
+}
+
+
+.infoWrapper {
+  text-align: left;
+}
+
+/* Add the following styles to adjust the position of the image */
+img {
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
+/* Add the following styles to create a box around the boat information */
+.infoContainer {
+  width: 70%;
+  border-radius: 33px;
+  border: 1px solid #c1c1c1;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-self: flex-end; 
+  margin-top: 20px;
+  margin-left: 35px; /* Align the box to the right */
+}
+/* Add additional styles as needed for your layout */
+.buttonWrapper {
+  display: flex;
+  justify-content: flex-start; /* Align the button to the left */
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.buttonWrapper button {
+  padding: 10px 30px; /* Adjust padding to increase button size */
+  font-size: 16px; /* Adjust font size as needed */
+  background-color: #049DBF; /* Set button background color */
+  color: #fff; /* Set text color to white */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.buttonWrapper button:hover {
+  background-color: #037a9c; /* Change color on hover if needed */
+}
+/* Style the trip images */
+.tripimg {
+  width: 100%;
+}
+
+.tripimg img {
+  width: 100%; 
+  height: auto; 
+  display: block;
+  max-width: 100%;
+}
+
+.tripimg img {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 300px; 
+  display: block; 
+  border-radius: 8px;
+
+}
+
+.trips-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 70%;
+}
+
+.trip-item {
+  width: 35%;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-left: 40px;
+}
+
+/* Add this style to make the "Trips" text bigger */
+h3 {
+  font-size: 20px; /* Adjust the font size as needed */
+}
+
+.Tripstext {
+  margin-left: 100px;
+}
+
+.Tripsitems {
+  margin-left: 20px
+}
+
+.tripdetails {
+ margin-left: 20px;
+}
