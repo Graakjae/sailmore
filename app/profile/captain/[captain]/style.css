@@ -91,7 +91,6 @@ img {
   max-height: 300px; 
   display: block; 
   border-radius: 8px;
-
 }
 
 .trips-container {
@@ -122,4 +121,55 @@ h3 {
 
 .tripdetails {
  margin-left: 20px;
+}
+.notrips {
+  margin-left: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+  .flexBox {
+    flex-direction: column; /* Change to a single column layout on smaller screens */
+  }
+
+  .rightWrapper img {
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-top: 20px; /* Adjust top margin on smaller screens */
+  }
+
+  .infoContainer {
+    width: 100%; /* Full width on smaller screens */
+    margin-left: 0; /* Remove left margin on smaller screens */
+  }
+
+  .buttonWrapper {
+    margin-top: 10px; /* Adjust top margin on smaller screens */
+  }
+
+  .Tripstext,
+  .Tripsitems {
+    margin-left: 20px;
+    margin-top: 100px; /* Adjust the margin for smaller screens */
+  }
+  
+  .rightWrapper img {
+    margin-left: 70px;
+  }
+
+  .Tripstext {
+    margin-top: 750px;
+  }
+  .trips-container {
+    width: 100%; /* Full width for trip items on smaller screens */
+  }
+
+  .trip-item {
+    width: 100%; /* Full width for trip items on smaller screens */
+    margin: 0 0 20px;
+    margin-top: 0px; /* Adjust margins for better spacing */
+  }
+
+  .tripimg img {
+    border-radius: 8px;
+  }
+
 }

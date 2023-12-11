@@ -178,7 +178,9 @@ export default function captainProfilePage() {
           ))}
         </div>
       ) : (
+        <div className="notrips">
         <p>No trips found</p>
+        </div>
       )}
         </div>
       </div>
