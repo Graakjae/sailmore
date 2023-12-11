@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import TripCard from "@/components/TripCard";
 import Link from "next/link";
 import HomePageCrew from "@/components/HomePageCrew";
+import { Oval } from "react-loader-spinner";
 
 function HomePage() {
     const [trips, setTrips] = useState([]);
