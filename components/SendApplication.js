@@ -29,6 +29,7 @@ export default function Application({ maxCapacity, acceptedCrew }) {
                     }
                     if (data.success === true && data.message === "Application submitted successfully") {
                         setApplication(false);
+                        setMessage("");
                     }
                 });
         } catch (error) {

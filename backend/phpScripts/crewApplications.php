@@ -7,11 +7,10 @@ if (isset($_POST['crewMemberId'])) {
     try {
         $crewMemberId = $_POST['crewMemberId'];
 
-        $sql = "SELECT applications.pk_id, applications.applicationStatus, 
-                trip.title
-                FROM applications
-                JOIN trip ON applications.trip_ID = trip.pk_id
-                WHERE applications.crewmember_ID = ?";
+        $sql = "SELECT trip_card.title, trip_card.pk_id, trip_card.img, applications.applicationStatus 
+        FROM trip_card 
+        JOIN applications ON trip_card.pk_id = applications.trip_ID 
+        WHERE applications.crewmember_ID = ?";
 
         $stmt = $mySQL->prepare($sql);
 
