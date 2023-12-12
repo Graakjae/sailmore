@@ -30,7 +30,7 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
                     <LinkComponent
                         text={link.text}
                         href={`${link.link}`}
-                        className={`navLink`}
+                        className={`burgerMenuLinks`}
                         key={index}
                         onClick={() => setBurgerMenu(false)}
                     />

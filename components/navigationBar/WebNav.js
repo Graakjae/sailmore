@@ -23,7 +23,7 @@ function NavigationsBar({ loggedIn, setLoggedIn, userRole, userId }) {
                 <LinkComponent
                     text={link.text}
                     href={`${link.link}`}
-                    className={`${pathName === "/" ? "navLink" : "navLink2"}`}
+                    className={`${pathName === "/" ? "navLink" : "navLink2"} ${pathName === link.link ? "active" : ""}`}
                     key={index}
                 />
             ))}

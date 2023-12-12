@@ -2,13 +2,9 @@
 import Link from "next/link";
 import { useAuth } from "../../app/authContext";
 import "../../styles/NavBar.css";
-import SignOut from "../SignOut";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Hamburger from "hamburger-react";
 import BurgerMenu from "./BurgerMenu";
-import { captain, crewmembers, loggedout } from "@/constants/navLinks";
 import WebNav from "./WebNav";
 
 function NavigationsBar() {
@@ -38,7 +34,7 @@ function NavigationsBar() {
     }, [loggedIn]);
 
     return (
-        <div className="navWrapper">
+        <div className={`${pathName === "/" ? "navWrapper" : "navWrapperBorderBottom"}`}>
             <Link href="/">
                 <img
                     src={`${pathName === "/" ? "/sailmore_logo.png" : "/sailmore_logo_sort.png"}`}

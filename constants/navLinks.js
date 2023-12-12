@@ -4,17 +4,10 @@ export const captain = userId => [
         link: "/crewmembers"
     },
     {
-        text: "Your Trips",
-        link: "/trips"
-    },
-    {
         text: "Applications",
         link: "/applications"
     },
-    {
-        text: "Inbox",
-        link: "/inbox"
-    },
+
     {
         text: "Profile",
         link: `/profile/captain/${userId}`
@@ -33,10 +26,6 @@ export const crewmembers = userId => [
     {
         text: "Your applications",
         link: "/your-applications"
-    },
-    {
-        text: "Inbox",
-        link: "/inbox"
     },
     {
         text: "Profile",
