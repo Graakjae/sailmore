@@ -82,8 +82,11 @@ export default function UpdateTripPage() {
                 body: formData
             });
 
-            const result = await response.text();
+            const result = await response.json();
             console.log("Response:", result);
+            if (result.message === "Trip updated successfully") {
+                router.push(`/trip/${tripID}`); // Change the path to the desired page
+            }
         } catch (error) {
             console.error("Error updating trip:", error);
         }
@@ -102,16 +105,6 @@ export default function UpdateTripPage() {
                 if (response.ok) {
                     const result = await response.json();
                     console.log("Delete result:", result);
-
-                    // Check the success status
-                    if (result.success) {
-                        // Perform any additional actions upon successful deletion
-                        console.log("Trip deleted successfully");
-                        // Redirect to a different page after successful deletion
-                        router.push(`/profile/captain/${userId}`); // Change the path to the desired page
-                    } else {
-                        console.error("Error deleting trip:", result.error);
-                    }
                 }
             } else {
                 console.error("Failed to delete trip. HTTP status:", response.status);
@@ -182,7 +175,7 @@ export default function UpdateTripPage() {
         setNewTripImages(Array.from(selectedFiles));
     };
     console.log("newTripImages", newTripImages);
-
+    console.log("tripImages", rules);
     return (
         <div>
             <h2>Update Trip</h2>

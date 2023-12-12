@@ -70,7 +70,6 @@ export default function editCrewProfilePage() {
             formData.append("country", country);
             formData.append("exp", exp);
             formData.append("profilePicture", profilePicture);
-            formData.append("password", password);
             // Check if password fields are not empty and match before appending
             if (password !== "" && passwordConfirmation !== "") {
                 if (password !== passwordConfirmation) {
@@ -132,7 +131,6 @@ export default function editCrewProfilePage() {
     return (
         <div>
             <div>
-                <div className="background"></div>
                 <div className="editWrapper">
                     <div>
                         <div>

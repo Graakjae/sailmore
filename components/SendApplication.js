@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/app/authContext";
 import Link from "next/link";
+import Image from "next/image";
+import SimpleButton from "./buttons/SimpleButton";
+
 export default function Application({ maxCapacity, acceptedCrew }) {
     const [message, setMessage] = useState("");
     const [application, setApplication] = useState(false);
@@ -24,6 +27,9 @@ export default function Application({ maxCapacity, acceptedCrew }) {
                     if (data.success === false && data.message === "You must be logged in to apply for a trip") {
                         console.log("You must be logged in to apply for a trip");
                     }
+                    if (data.success === true && data.message === "Application submitted successfully") {
+                        setApplication(false);
+                    }
                 });
         } catch (error) {
             console.error("Error submitting application:", error);
@@ -34,22 +40,54 @@ export default function Application({ maxCapacity, acceptedCrew }) {
             {application ? (
                 loggedIn ? (
                     <div>
-                        <textarea
-                            placeholder="Enter your application message"
-                            value={message}
-                            onChange={e => setMessage(e.target.value)}
-                        />
-                        <button onClick={handleRequest}>Request to join</button>
+                        <div className="background"></div>
+                        <div className="application">
+                            <Image
+                                src="/cross.png"
+                                width={15}
+                                height={15}
+                                alt="cross"
+                                className="cross-icon"
+                                onClick={() => setApplication(false)}
+                            />
+                            <h2>Application</h2>
+                            <textarea
+                                placeholder="Enter your application message here"
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                            />
+                            <SimpleButton text={"Send application"} onClick={handleRequest} />
+                        </div>
                     </div>
                 ) : (
                     <div>
-                        you must be logged in to request to join <Link href="/login">login here</Link>
+                        <div className="not-loggedin">
+                            <Image
+                                src="/cross.png"
+                                width={15}
+                                height={15}
+                                alt="cross"
+                                className="cross-icon"
+                                onClick={() => setApplication(false)}
+                            />
+                            <p>You must be logged in to request to join</p>
+                            <Link href="/login">
+                                <p className="not-loggedin-text">Login here</p>
+                            </Link>
+                        </div>
+                        <div className="background"></div>
                     </div>
                 )
             ) : userRole === "captain" ? null : (
-                <button onClick={() => setApplication(true)} disabled={acceptedCrew.length >= maxCapacity}>
-                    Request to join
-                </button>
+                <div className="button-center">
+                    <button
+                        className="request-btn"
+                        onClick={() => setApplication(true)}
+                        disabled={acceptedCrew.length >= maxCapacity}
+                    >
+                        Request to join
+                    </button>
+                </div>
             )}
         </div>
     );

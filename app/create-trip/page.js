@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
-
+import { useAuth } from "../authContext";
 export default function createTripPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -21,6 +21,7 @@ export default function createTripPage() {
     const [tripImages, setTripImages] = useState([]);
     const [error, setError] = useState(null);
     const router = useRouter();
+    const userID = useAuth().userId;
 
     const isFormValid = () => {
         return (
@@ -61,10 +62,10 @@ export default function createTripPage() {
                 body: formData
             });
 
-            const data = await response.text();
+            const data = await response.json();
             console.log(data); // Log the response from the server
             if (data === "Trip registered successfully") {
-                router.push("/tripArticle/[id]");
+                router.push(`/profile/captain/${userID}`);
             }
         } catch (error) {
             console.error("Error:", error);
