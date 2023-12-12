@@ -99,11 +99,12 @@ img {
 .trips-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 70%;
+  width: 1000px;
+  margin-left: 20px;
 }
 
 .trip-item {
-  width: 35%;
+  width: 280px;
   box-sizing: border-box;
   padding: 20px;
   margin-left: 40px;
@@ -119,7 +120,7 @@ h3 {
 }
 
 .Tripsitems {
-  margin-left: 20px
+  max-width: 800px;
 }
 
 .tripdetails {

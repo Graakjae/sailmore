@@ -1,7 +1,7 @@
 
 .edit-profile-section select {
-        width: 361px;
-        height: 60px;
+        max-width: 361px;
+        max-height: 60px;
         flex-shrink: 0;
         border-radius: 13px;
         border: 1px solid #7b7979;
