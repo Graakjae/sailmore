@@ -171,7 +171,6 @@ export default function createTripPage() {
                                 className="descriptionTextarea"
                             />
                         </div>
-                        {/* <FileInputField label="Trip Images" type="file" onChange={handleAddTripImage} /> */}
                         <div>
                             <h3>Boat image</h3>
                             <input

@@ -204,12 +204,7 @@ export default function signUp() {
                     </div>
                     <div className="flexBox">
                         <div>
-                            <FileInputField
-                                label="Profile picture"
-                                type="file"
-                                onChange={handleProfilePictureChange}
-                                button={"Select file"}
-                            />
+                            <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
                             <img
                                 className="profilePicture"
                                 src={

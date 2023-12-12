@@ -179,12 +179,7 @@ export default function editCaptainProfilePage() {
         <div>
             <div className="edit-profile-section">
                 <div>
-                    <FileInputField
-                        label="Profile picture"
-                        type="file"
-                        onChange={handleProfilePictureChange}
-                        button={"Edit picture"}
-                    />
+                    <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
                     {profilePicture ? (
                         <Image
                             className="editProfilePicture"

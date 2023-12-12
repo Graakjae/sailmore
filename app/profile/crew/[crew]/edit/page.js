@@ -134,12 +134,7 @@ export default function editCrewProfilePage() {
                 <div className="editWrapper">
                     <div>
                         <div>
-                            <FileInputField
-                                label="Profile picture"
-                                type="file"
-                                onChange={handleProfilePictureChange}
-                                button={"Edit picture"}
-                            />
+                            <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
                             {profilePicture && typeof profilePicture === "string" ? (
                                 <img
                                     className="editProfilePicture"
