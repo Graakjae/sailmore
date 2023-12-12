@@ -33,12 +33,13 @@ function HomePage() {
         <div>
             <Image
                 src="/Båd_billede.png"
-                alt="Site Logo"
+                alt="Picture of a boat on a beach"
                 className="backgroundImage"
                 width={1000}
                 height={1000}
                 priority
             />
+
             <br></br>
             <HomePageHeader />
             <br></br>

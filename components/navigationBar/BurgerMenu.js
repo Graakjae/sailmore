@@ -24,7 +24,7 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
     }
 
     return (
-        <div className="fixed">
+        <div className="absolute">
             <div className={`${burgerMenu ? "burgerMenuOpen" : "burgerMenu"}`}>
                 {linksToRender.map((link, index) => (
                     <LinkComponent
