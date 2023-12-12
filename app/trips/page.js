@@ -2,7 +2,9 @@
 import TripCard from "../../components/TripCard";
 import Link from "next/link"; // Import Link
 import "./tripsoverview.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function TripsOverview() {
   const [trips, setTrips] = useState([]);
@@ -10,6 +12,7 @@ export default function TripsOverview() {
   const [startDate, setStartDate] = useState(null);
   const [targetArea, setTargetArea] = useState(null);
   const [targetPrice, setTargetPrice] = useState(null);
+  const [placeholder, setPlaceholder] = useState("When do you plan to travel?");
 
   async function fetchTrips() {
     try {
@@ -41,9 +44,11 @@ export default function TripsOverview() {
       });
     }
     if (targetArea) {
+      const lowerCaseTargetArea = targetArea.toLowerCase();
       newFilteredTrips = newFilteredTrips.filter((trip) => {
         return (
-          trip.startpoint === targetArea || trip.destination === targetArea
+          trip.startpoint.toLowerCase().includes(lowerCaseTargetArea) || 
+          trip.destination.toLowerCase().includes(lowerCaseTargetArea)
         );
       });
     }
@@ -56,16 +61,14 @@ export default function TripsOverview() {
     setFilteredTrips(newFilteredTrips);
   };
 
-  function resetFilters(e) {
-    e.preventDefault();
-    if (startDate || targetArea || targetPrice) {
+  function resetFilters (e) {
+      e.preventDefault();
       setFilteredTrips(trips);
       setStartDate(null);
       setTargetArea(null);
       setTargetPrice(null);
       document.querySelector(".filter-form").reset();
     }
-  }
 
   return (
     <div className="trips-page">
@@ -74,13 +77,15 @@ export default function TripsOverview() {
         <form className="filter-form" onSubmit={handleSubmit}>
           <div className="search-bar">
             <div className="search-bar-input">
-              <input
-                placeholder="When do you plan to travel?"
-                type="date"
-                onChange={(e) => setStartDate(e.target.value)}
-              />
+              <div className="pick-date search-input">
+            <DatePicker
+            selected={startDate}
+            onChange={(date) => { setStartDate(date), setPlaceholder(startDate); }} />
+            <input placeholder={placeholder} className="placeholder" disabled/>
+            </div>
               <p> | </p>
               <input
+              className="search-input"
                 type="text"
                 placeholder="Where would you like to go?"
                 onChange={(e) => setTargetArea(e.target.value)}
@@ -91,11 +96,12 @@ export default function TripsOverview() {
             </button>
           </div>
           <input
+          className="max-price"
             type="number"
             placeholder="Max. price"
             onChange={(e) => setTargetPrice(e.target.value)}
           />
-          <button onClick={resetFilters}>Reset filters</button>
+          <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button">Reset filters</button>
         </form>
       </div>
       <div className="trip-card-container">
@@ -104,7 +110,7 @@ export default function TripsOverview() {
           <Link
             href={`/trip/${trip.pk_id}`}
             key={index}
-            style={{ textDecoration: "none" }}
+            className="trip-card-inner-container"
           >
             <TripCard
               title={trip.title}

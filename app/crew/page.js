@@ -7,7 +7,7 @@ function CrewMembersPage() {
     <div className="crewmember-page">
       <h1>Crewmembers on SailMore</h1>
       <FilterCrewMembers />
-      <CrewMembers />;
+      <CrewMembers />
     </div>
   );
 }

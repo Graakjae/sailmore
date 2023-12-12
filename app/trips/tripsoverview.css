@@ -9,11 +9,14 @@
   justify-content: space-between;
 }
 
+.trip-card-inner-container {
+  text-decoration: none;
+}
+
 .trip-card {
-  width: 400px;
-  margin-bottom: 120px;
-  height: 300px;
-  border: 1px solid rgb(255, 255, 255);
+  width: 320px;
+  margin-bottom: 20px;
+  height: 320px;
 }
 
 .trip-title {
@@ -32,8 +35,8 @@
 }
 
 .trip-img {
-  height: 300px;
-  width: 400px;
+  height: 225px;
+  width: 320px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -49,24 +52,51 @@
 
 .search-bar {
   display: flex;
-  height: 75px;
-  border: 1px solid black;
+  height: 66px;
+  border: 2px solid black;
   border-radius: 24px;
   margin-bottom: 1%;
   justify-content: space-between;
   align-items: center;
 }
 
+.search-bar input {
+  font-size: 1.2em;
+}
+
 .search-bar-input {
   display: flex;
   flex-direction: row;
   width: 95%;
+  align-items: center;
 }
 
-.search-bar input {
+.pick-date input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.placeholder {
+  width: 42%;
+  position: absolute;
+  z-index: -5;
+}
+
+.search-input {
   width: 45%;
   border: 0;
   margin: 0 40px;
+}
+
+.react-datepicker-wrapper {
+  width: 45%;
+  border: 0;
+  margin: 0
+}
+
+.search-bar input:focus {
+  outline: none;
 }
 
 .search-bar button {
@@ -74,18 +104,153 @@
 }
 
 .search-bar p {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 1;
+  margin-bottom: 5px;
   color: black;
 }
 
 .search-bar button {
   justify-content: flex-end;
-  width: 5%;
+  width: 6%;
   height: 82%;
-  border-radius: 250px;
+  background-color: #049DBF;
+  border-radius: 20px;
+  margin-right: 8px;
 }
 
 .search-bar img {
-  width: 66%;
+  width: 33%;
+}
+
+.pick-date {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.react-datepicker-wrapper input {
+  width: 100%;
+  overflow: hidden;
+}
+
+.max-price {
+  border-radius: 24px;
+  border: solid 1px black;
+  padding-left: 8px;
+  height: 30px;
+  margin-right: 20px;
+  width: 116px;
+}
+
+.reset-button {
+  height: 30px;
+  border-radius: 24px;
+  padding: 0 20px;
+  border: none;
+  background-color: #049DBF;
+  color: white;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .trips-page {
+    width: 94%;
+    margin: 2.5% auto;
+  }
+  
+  .trip-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .trip-card-inner-container {
+    width: 49%;
+  }
+
+  .trip-card {
+    width: 100%;
+    min-height: 230px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .trip-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .trip-title {
+    font-size: 1em;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 198px; 
+    white-space: nowrap;
+  }
+  
+  .trip-area {
+    font-size: 0.9em;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 198px; 
+    white-space: nowrap;
+  }
+  
+  .trip-dates,
+  .trip-price {
+    color: #000;
+    font-size: 0.9em;
+  }
+
+  .search-bar {
+    display: block;
+    border: none;
+    margin-bottom: 300px;
+  }
+
+  .search-bar p {
+    display: none;
+  }
+
+  .search-bar-input {
+    display: block;
+  }
+
+  .search-bar input {
+    font-size: 1em;
+  }
+
+  .search-input {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .pick-date {
+    display: block;
+    padding: 10px;
+  }
+
+  .placeholder {
+    left: 2%;
+    width: 50%;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border: 1px solid black;
+  }
 }
