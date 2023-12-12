@@ -52,11 +52,6 @@ export default function crewProfilePage() {
     }
   };
 
-  const formatDate = (date) => {
-    const options = { year: "numeric", day: "2-digit", month: "2-digit" };
-    return new Intl.DateTimeFormat("de", options).format(age);
-  };
-
   return (
     <div className="height">
       <div className="flexBox">
