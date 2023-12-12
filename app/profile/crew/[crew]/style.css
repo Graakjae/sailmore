@@ -142,8 +142,8 @@ p {
     }
   
     .infoContainer {
-      width: 100%; /* Full width on smaller screens */
-      margin-left: 0; /* Remove left margin on smaller screens */
+      width: 70%; /* Full width on smaller screens */
+      margin-left: 95px; /* Remove left margin on smaller screens */
     }
   
     .buttonWrapper {

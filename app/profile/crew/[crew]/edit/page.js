@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
 import { useRouter } from "next/navigation";
+import "./style.css";
 
 export default function editCrewProfilePage() {
     const [firstName, setFirstName] = useState("");
