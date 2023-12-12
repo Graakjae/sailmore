@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
 import { useRouter } from "next/navigation";
+import "./style.css";
 
 export default function editCrewProfilePage() {
     const [firstName, setFirstName] = useState("");
@@ -171,7 +172,7 @@ export default function editCrewProfilePage() {
                             onChange={e => setCountry(e.target.value)}
                         />
                         <div>
-                            <label htmlFor="exp">Experience</label>
+                            <h3 htmlFor="exp">Experience </h3>
                             <select
                                 defaultValue="none"
                                 id="exp"
@@ -190,9 +191,11 @@ export default function editCrewProfilePage() {
                             </select>
                             {expError && <p className="error-message">{expError}</p>}
                         </div>
-                        <div>
-                            <h3>Bio</h3>
-                            <textarea value={bio} onChange={e => setBio(e.target.value)} className="bioInput" />
+                        <div className="bio-section">
+                    <h3 className="biotext">Bio</h3>
+                        <textarea value={bio}  
+                        onChange={e => setBio(e.target.value)} 
+                        className="bioInput" />
                         </div>
                         <TextInputField
                             label={"E-mail"}
@@ -214,8 +217,9 @@ export default function editCrewProfilePage() {
                                 />
                             </div>
                         ) : (
-                            <button onClick={() => setShowPasswordFields(true)}>Edit</button>
+                            <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>Change password</button>
                         )}
+                        <div className="save-button">
                         <SimpleButton text={"Save"} onClick={handleSaveClick} />
                         <Image
                             src="/cross.png"
@@ -225,6 +229,7 @@ export default function editCrewProfilePage() {
                             className="closeEdit"
                             onClick={() => router.push(`/profile/crew/${params.crew}`)}
                         />
+                        </div>
                     </div>
                 </div>
             </div>
