@@ -125,16 +125,7 @@ export default function signUp() {
             <div className="signupWrapper">
                 <div>
                     <h2>Sign up here</h2>
-                    <div>
-                        <label htmlFor="role">Select Role:</label>
-                        <select id="role" defaultValue="none" onChange={e => setRole(e.target.value)}>
-                            <option value="none" disabled hidden>
-                                Select an Option
-                            </option>
-                            <option value="captains">Captain</option>
-                            <option value="crewmember">Crew</option>
-                        </select>
-                    </div>
+
                     <div className="grid">
                         <TextInputField
                             label="First name"
@@ -182,7 +173,7 @@ export default function signUp() {
                             onChange={e => setCountry(e.target.value)}
                         />
                         <div>
-                            <label htmlFor="exp">Experience</label>
+                            <h3 htmlFor="exp">Experience</h3>
                             <select
                                 defaultValue="none"
                                 id="exp"
@@ -200,6 +191,18 @@ export default function signUp() {
                                 <option value="Expert sailor">Expert sailor</option>
                             </select>
                             {expError && <p className="error-message">{expError}</p>}
+                        </div>
+                        <div>
+                            <h3 htmlFor="role" className="select">
+                                Select Role:
+                            </h3>
+                            <select id="role" defaultValue="none" onChange={e => setRole(e.target.value)}>
+                                <option value="none" disabled hidden>
+                                    Select a role
+                                </option>
+                                <option value="captains">Captain</option>
+                                <option value="crewmember">Crew</option>
+                            </select>
                         </div>
                     </div>
                     <div className="flexBox">

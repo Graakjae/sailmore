@@ -43,7 +43,22 @@
     text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+select {
+    width: 360px;
+    height: 60px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #7b7979;
+    border-radius: 13px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+option:checked {
+    background-color: #e0e0e0;
+}
+
+@media only screen and (max-width: 1000px) {
     .signupWrapper {
         width: 90%;
     }
@@ -56,9 +71,7 @@
         width: 100px;
         height: 100px;
     }
-    .date {
-        width: 250px;
-    }
+
     input {
         width: 250px;
     }
@@ -69,5 +82,14 @@
 
     h3 {
         font-size: 20px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .date {
+        width: 250px;
+    }
+
+    select {
+        width: 260px;
     }
 }
