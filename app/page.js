@@ -4,13 +4,11 @@ import "./styles.css";
 import Image from "next/image";
 import Footer from "/components/Footer";
 import HomePageHeader from "/components/HomePageHeader";
-import LoggedIn from "@/components/loggedIn";
-import CrewMembers from "@/components/CrewMembers";
-import ExploreTripsButton from "@/components/buttons/ExploreTripsButton";
-import MoreCrewMembersButton from "@/components/buttons/MoreCrewMembersButton";
 import React, { useState, useEffect } from "react";
 import TripCard from "@/components/TripCard";
 import Link from "next/link";
+import HomePageCrew from "@/components/HomePageCrew";
+import { Oval } from "react-loader-spinner";
 
 function HomePage() {
     const [trips, setTrips] = useState([]);
@@ -41,7 +39,6 @@ function HomePage() {
                 height={1000}
                 priority
             />
-            <LoggedIn />
             <br></br>
             <HomePageHeader />
             <br></br>
@@ -55,7 +52,7 @@ function HomePage() {
                         start_date={trip.start_date}
                         end_date={trip.end_date}
                         price={trip.price}
-                        img={trip.img}
+                        img={`/trip_img/${trip.img ? trip.img : "/defaultTripImage.jpg"}`}
                         key={index}
                         trip={trip}
                     />

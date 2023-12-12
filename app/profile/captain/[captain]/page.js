@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
-import { format } from "date-fns";
+import { calculateAge } from "components/calculateAge";
 
 export default function captainProfilePage() {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +14,7 @@ export default function captainProfilePage() {
   const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
   const [age, setAge] = useState(new Date());
-  const [profilePicture, setProfilePicture] = useState();
+  const [profilePicture, setProfilePicture] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState(0);
@@ -49,6 +49,7 @@ export default function captainProfilePage() {
       setEmail(result.email);
       setCountry(result.country);
       setExp(result.exp);
+      setAge(new Date(result.age));
       setBio(result.bio);
       setProfilePicture(result.profilePicture);
       setBrand(result.brand);
@@ -93,11 +94,6 @@ export default function captainProfilePage() {
     }
   };
 
-  const formatDate = (date) => {
-    const options = { year: "numeric", day: "2-digit", month: "2-digit" };
-    return new Intl.DateTimeFormat("de", options).format(age);
-  };
-
   return (
     <div className="height">
       <div className="flexBox">
@@ -107,15 +103,24 @@ export default function captainProfilePage() {
           </h2>
         </div>
         <div className="rigthWrapper">
-          <Image
-            src={`/profilePictures/${profilePicture}`}
-            alt="Profile image"
-            width={400}
-            height={400}
-          />
+          {profilePicture ? (
+            <Image
+              src={`/profilePictures/${profilePicture}`}
+              alt="Profile image"
+              width={400}
+              height={400}
+            />
+          ) : (
+            <Image
+              src="/profilePictures/defaultProfilePicture.png"
+              alt="Profile image"
+              width={400}
+              height={400}
+            />
+          )}
           <div className="infoWrapper">
             <h3>
-              {firstName}, {formatDate(age)}
+              {firstName}, {calculateAge(age)}
             </h3>
             <p>From {country}</p>
             <p>{exp}</p>

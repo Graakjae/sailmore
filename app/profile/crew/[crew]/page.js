@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import { calculateAge } from "components/calculateAge";
 
 export default function crewProfilePage() {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +15,9 @@ export default function crewProfilePage() {
   const [country, setCountry] = useState("");
   const [exp, setExp] = useState("");
   const [age, setAge] = useState(new Date());
-  const [profilePicture, setProfilePicture] = useState();
+  const [profilePicture, setProfilePicture] = useState(
+    "defaultProfilePicture.png"
+  );
   const params = useParams();
 
   useEffect(() => {
@@ -37,6 +40,7 @@ export default function crewProfilePage() {
       setEmail(result.email);
       setCountry(result.country);
       setExp(result.exp);
+      setAge(new Date(result.age));
       setBio(result.bio);
       setProfilePicture(result.profilePicture);
       // Check if the result is an object or an array
@@ -64,12 +68,13 @@ export default function crewProfilePage() {
           <Image
             src={`/profilePictures/${profilePicture}`}
             alt="Profile image"
-            width={400}
-            height={400}
+            width={300}
+            height={300}
+            priority
           />
           <div className="infoWrapper">
             <h3>
-              {firstName}, {formatDate(age)}
+              {firstName}, {calculateAge(age)}
             </h3>
             <p>From {country}</p>
             <p>{exp}</p>

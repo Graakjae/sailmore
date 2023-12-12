@@ -9,11 +9,16 @@ $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        // Append each item to the $data array
+         // Create a DateTime object for the birthdate
+         $birthdate = new DateTime($row['age']);
+         // Create a DateTime object for the current date
+         $now = new DateTime();
+         // Calculate the difference between the two dates
+         $age = $now->diff($birthdate)->y;
         $data[] = array(
             'firstname' => $row['firstname'],
             'lastname' => $row['lastname'],
-            'age' => $row['age'],
+            'age' => $age,
             'bio' => $row['bio'],
             'country' => $row['country'],
             'exp' => $row['exp'],
