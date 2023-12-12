@@ -97,76 +97,87 @@ export default function captainProfilePage() {
   return (
     <div className="height">
       <div className="flexBox">
-        <div className="bio">
+        <div className="firstname">
           <h2>
             {firstName} {lastName}
           </h2>
-        </div>
-        <div className="rigthWrapper">
-          {profilePicture ? (
-            <Image
-              src={`/profilePictures/${profilePicture}`}
-              alt="Profile image"
-              width={400}
-              height={400}
-            />
-          ) : (
-            <Image
-              src="/profilePictures/defaultProfilePicture.png"
-              alt="Profile image"
-              width={400}
-              height={400}
-            />
-          )}
-          <div className="infoWrapper">
-            <h3>
-              {firstName}, {calculateAge(age)}
-            </h3>
-            <p>From {country}</p>
-            <p>{exp}</p>
-            <p>{bio}</p>
+          <p>
+            {bio}
+          </p>
+          </div>
+        <div className="rightWrapper">
+          <Image
+            src={`/profilePictures/${profilePicture}`}
+            alt="Profile image"
+            width={400}
+            height={400}
+          />
+          <div className="infoContainer">
+            <div className="infoWrapper">
+              <h3>{firstName}</h3>
+              <h3>{formatDate(age)}</h3>
+              <p>From: {country}</p>
+              <p>Experience: {exp}</p>
+              <br />
+            </div>
+            <div className="boatInfoBox">
+              <h3>Boat</h3>
+              <p>
+                Brand: {brand}
+              </p>
+              <p>
+                Model: {model}
+              </p>
+              <p>Year: {year}</p>
+              <p>Length: {length} feet</p>
+              <div className="buttonWrapper">
+                <Link href={`/profile/captain/${params.captain}/edit`}>
+                  <button>Edit</button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="infoWrapper">
-        <h3>Boat</h3>
-        <p>
-          {brand} {model}
-        </p>
-        <p>Year {year}</p>
-        <p>Length: {length} feet</p>
-      </div>
-      <Link href={`/profile/captain/${params.captain}/edit`}>
-        <button>Edit</button>
-      </Link>
       <div>
-        <h3>Trips</h3>
-        {trips.length > 0 ? (
-          trips.map((trip) => (
-            <div key={trip.trip_id}>
+      <div className="Tripstext">
+      <h3>Trips</h3>
+      </div>
+      <div className="Tripsitems">
+      {trips.length > 0 ? (
+        <div className="trips-container">
+          {trips.map((trip, index) => (
+            <div key={trip.trip_id} className="trip-item">
               <div>
-                <h5>Images</h5>
-                {trip.images.length > 0 ? (
-                  <Image
-                    src={`/trip_img/${trip.images[0]}`}
-                    alt={`Image of ${trip.title}`}
-                    width={100}
-                    height={100}
-                  />
-                ) : (
-                  <p>No images for this trip</p>
-                )}
+                <div className="tripimg">
+                  {trip.images.length > 0 ? (
+                    <Image
+                      src={`/trip_img/${trip.images[0]}`}
+                      alt={`Image of ${trip.title}`}
+                      width={200}
+                      height={200}
+                    />
+                  ) : (
+                    <p>No images for this trip</p>
+                  )}
+                </div>
               </div>
+              <div className="tripdetails">
               <h4>{trip.title}</h4>
               <p>Start Date: {trip.start_date}</p>
               <p>End Date: {trip.end_date}</p>
               <p>Price: {trip.price}</p>
             </div>
-          ))
-        ) : (
-          <p>No trips found</p>
-        )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="notrips">
+        <p>No trips found</p>
+        </div>
+      )}
+        </div>
       </div>
     </div>
   );
-}
+};

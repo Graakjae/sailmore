@@ -9,7 +9,7 @@ import FileInputField from "@/components/inputs/fileInput";
 import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 import { useRouter } from "next/navigation";
-
+import "./style.css";
 export default function editCaptainProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -177,128 +177,136 @@ export default function editCaptainProfilePage() {
 
     return (
         <div>
-            <div className="edit-profile-section">
-                <div>
-                    <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
-                    {profilePicture ? (
-                        <Image
-                            className="editProfilePicture"
-                            src={previewUrl || `/profilePictures/${profilePicture}`}
-                            alt="Profile picture"
-                            width={300}
-                            height={300}
+            <div>
+                <div className="edit-profile-section">
+                    <div className="profilesection">
+                    <div className="profilepicture">
+                        <FileInputField
+                            label="Profile picture"
+                            type="file"
+                            onChange={handleProfilePictureChange}
+                            
                         />
-                    ) : (
-                        <Image
-                            className="editProfilePicture"
-                            src={previewUrl || "/profilePictures/defaultProfilePicture.png"}
-                            alt="Profile picture"
-                            width={300}
-                            height={300}
-                        />
-                    )}
-                    <br />
-                    <span className="file-name">{profilePicture ? profilePicture.name : ""}</span>
-                </div>
-                <TextInputField
-                    label={"First name"}
-                    type="text"
-                    value={firstName}
-                    onChange={e => setFirstName(e.target.value)}
-                />
-                <TextInputField
-                    label={"Last name"}
-                    type="text"
-                    value={lastName}
-                    onChange={e => setLastName(e.target.value)}
-                />
-                {error && <p className="error-message">{error}</p>}
-                <TextInputField
-                    label={"Country"}
-                    type="text"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                />
-                <div>
-                    <label htmlFor="exp">Experience</label>
-                    <select
-                        defaultValue="none"
-                        id="exp"
-                        onChange={e => {
-                            setExp(e.target.value);
-                            setExpError(null); // Clear experience error when a new option is selected
-                        }}
-                    >
-                        <option value="none" disabled hidden>
-                            Select Experience
-                        </option>
-                        <option value="No experience">No Experience</option>
-                        <option value="Inexperienced sailor">Inexperienced sailor</option>
-                        <option value="Experienced sailor">Experienced sailor</option>
-                        <option value="Expert sailor">Expert sailor</option>
-                    </select>
-                    {expError && <p className="error-message">{expError}</p>}
-                </div>
-                <div>
-                    <h3>Bio</h3>
-                    <textarea value={bio} onChange={e => setBio(e.target.value)} className="bioInput" />
-                </div>
-                <TextInputField label={"E-mail"} type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                {showPasswordFields ? (
-                    <div className="password-fields">
-                        <TextInputField
-                            label={"Password"}
-                            type="password"
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        <TextInputField
-                            label="Confirm Password"
-                            type="password"
-                            onChange={e => setPasswordConfirmation(e.target.value)}
-                        />
+                        {profilePicture ? (
+                            <Image
+                                className="editProfilePicture"
+                                src={previewUrl || `/profilePictures/${profilePicture}`}
+                                alt="Profile picture"
+                                width={300}
+                                height={300}
+                            />
+                        ) : (
+                            <Image
+                                className="editProfilePicture"
+                                src={previewUrl || "/profilePictures/defaultProfilePicture.png"}
+                                alt="Profile picture"
+                                width={300}
+                                height={300}
+                            />
+                        )}
+                        <br />
+                        <span className="file-name">{profilePicture ? profilePicture.name : ""}</span>
                     </div>
-                ) : (
-                    <button onClick={() => setShowPasswordFields(true)}>Change password</button>
-                )}
-            </div>
-            <div className="edit-boat-section">
-                <h3>Boat info</h3>
-                <TextInputField
-                    label={"Boat brand"}
-                    type="text"
-                    value={brand}
-                    onChange={e => setBrand(e.target.value)}
-                />
-                <TextInputField label={"Model"} type="text" value={model} onChange={e => setModel(e.target.value)} />
-                <TextInputField label={"Year"} type="number" value={year} onChange={e => setYear(e.target.value)} />
-                <TextInputField
-                    label={"Length"}
-                    type="number"
-                    value={length}
-                    onChange={e => setLength(e.target.value)}
-                />
-                <TextInputField
-                    label={"Toilet"}
-                    type="number"
-                    value={toilet}
-                    onChange={e => setToilet(e.target.value)}
-                />
-                <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
-                <SwitchToggle text={"Shower"} onChange={() => setShower(!shower)} value={shower} />
-                <SwitchToggle text={"Kitchen"} onChange={() => setKitchen(!kitchen)} value={kitchen} />
-                <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
-                <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
-                <SimpleButton text={"Save"} onClick={handleSaveClick} />
-                <Image
-                    src="/cross.png"
-                    alt="Close edit"
-                    width={20}
-                    height={20}
-                    className="closeEdit"
-                    onClick={() => router.push(`/profile/captain/${params.captain}`)}
-                />
-                {error && <p className="error-message">{error}</p>}
+                    <TextInputField
+                        label={"First name"}
+                        type="text"
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)}
+                    />
+                    <TextInputField
+                        label={"Last name"}
+                        type="text"
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
+                    />
+                    {error && <p className="error-message">{error}</p>}
+                    <TextInputField
+                        label={"Country"}
+                        type="text"
+                        value={country}
+                        onChange={e => setCountry(e.target.value)}
+                    />
+                    <div>
+                        <h3 htmlFor="exp">Experience</h3>
+                        <select
+                            defaultValue="none"
+                            id="exp"
+                            onChange={e => {
+                                setExp(e.target.value);
+                                setExpError(null); // Clear experience error when a new option is selected
+                            }}
+                        >
+                            <option value="none" disabled hidden>
+                                Select Experience
+                            </option>
+                            <option value="No experience">No Experience</option>
+                            <option value="Inexperienced sailor">Inexperienced sailor</option>
+                            <option value="Experienced sailor">Experienced sailor</option>
+                            <option value="Expert sailor">Expert sailor</option>
+                        </select>
+                        {expError && <p className="error-message">{expError}</p>}
+                        </div>
+
+                    <div className="bio-section">
+                    <h3 className="biotext">Bio</h3>
+                        <textarea value={bio}  
+                        onChange={e => setBio(e.target.value)} 
+                        className="bioInput" />
+                    </div>
+                    <TextInputField label={"E-mail"} type="text" value={email} onChange={e => setEmail(e.target.value)} />
+                    {showPasswordFields ? (
+                        <div className="password-fields">
+                            <TextInputField
+                                label={"Password"}
+                                type="password"
+                                onChange={e => setPassword(e.target.value)}
+                            />
+                            <TextInputField
+                                label="Confirm Password"
+                                type="password"
+                                onChange={e => setPasswordConfirmation(e.target.value)}
+                            />
+                        </div>
+
+                    ) : (
+                        <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>Change password</button>
+                    )}
+                    </div>
+                    <div className="boat-edit-section">
+                    <h3>Boat info: </h3>
+                    <TextInputField
+                        label={"Boat brand"}
+                        type="text"
+                        value={brand}
+                        onChange={e => setBrand(e.target.value)}
+                    />
+                    <TextInputField label={"Model"} type="text" value={model} onChange={e => setModel(e.target.value)} />
+                    <TextInputField label={"Year"} type="number" value={year} onChange={e => setYear(e.target.value)} />
+                    <TextInputField
+                        label={"Length"}
+                        type="number"
+                        value={length}
+                        onChange={e => setLength(e.target.value)}
+                    />
+                    <TextInputField
+                        label={"Toilet"}
+                        type="number"
+                        value={toilet}
+                        onChange={e => setToilet(e.target.value)}
+                    />
+                    <div className="togglebutton">
+                    <SwitchToggle text={"GPS"} onChange={() => setGPS(!GPS)} value={GPS} />
+                    <SwitchToggle text={"Shower"} onChange={() => setShower(!shower)} value={shower} />
+                    <SwitchToggle text={"Kitchen"} onChange={() => setKitchen(!kitchen)} value={kitchen} />
+                    <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
+                    <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
+                    </div>
+                    <SimpleButton text={"Save"} onClick={handleSaveClick} />
+                    {error && <p className="error-message">{error}</p>}
+                    
+                </div>
             </div>
         </div>
+    </div>
     );
 }

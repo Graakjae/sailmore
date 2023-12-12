@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { calculateAge } from "components/calculateAge";
-
+import "./style.css";
 export default function crewProfilePage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -56,35 +56,39 @@ export default function crewProfilePage() {
     }
   };
 
-  return (
-    <div className="height">
-      <div className="flexBox">
-        <div className="bio">
-          <h2>
-            {firstName} {lastName}
-          </h2>
+    return (
+        <div className="height">
+            <div className="flexBox">
+                <div className="bio">
+                    <h2>
+                        {firstName} {lastName}
+                    </h2>
+                    <p>{bio}</p>
+                </div>
+                <div className="rightWrapper">
+                    <Image
+                        src={`/profilePictures/${profilePicture}`}
+                        alt="Profile image"
+                        width={400}
+                        height={400}
+                        priority
+                    />
+                <div className="infoContainer">
+                    <div className="infoWrapper">
+                        <h3>
+                            {firstName}, {calculateAge(age)}
+                        </h3>
+                        <p>From: {country}</p>
+                        <p>Experience: {exp}</p>
+                        <div className="buttonWrapper">
+                        <Link href={`/profile/crew/${params.crew}/edit`}>
+                            <button>Edit</button>
+                        </Link>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="rigthWrapper">
-          <Image
-            src={`/profilePictures/${profilePicture}`}
-            alt="Profile image"
-            width={300}
-            height={300}
-            priority
-          />
-          <div className="infoWrapper">
-            <h3>
-              {firstName}, {calculateAge(age)}
-            </h3>
-            <p>From {country}</p>
-            <p>{exp}</p>
-            <p>{bio}</p>
-          </div>
-        </div>
-      </div>
-      <Link href={`/profile/crew/${params.crew}/edit`}>
-        <button>Edit</button>
-      </Link>
-    </div>
-  );
+    );
 }
