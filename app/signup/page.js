@@ -79,7 +79,7 @@ export default function signUp() {
             if (data === "User registered successfully") {
                 console.log("User signed up successfully");
                 setLoggedIn(true);
-                router.push("/Profile");
+                router.push("/");
             } else {
                 setError(data); // Display error message if signup fails
             }
@@ -219,7 +219,6 @@ export default function signUp() {
                                 }
                                 alt="Profile picture"
                             />
-                            <br></br>
                             <span className="file-name">{profilePicture ? profilePicture.name : ""}</span>
                         </div>
                     </div>

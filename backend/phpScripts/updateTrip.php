@@ -23,33 +23,37 @@ $query = "UPDATE trip SET title = ?, description = ?, startpoint = ?, destinatio
 $stmt = $mySQL->prepare($query);
 
 // Bind parameters
-$stmt->bind_param("ssssssiiisi", $title, $description, $startpoint, $destination, $start_date, $end_date, $price, $crew_capacity, $rules, $userID, $tripID);
+$stmt->bind_param("ssssssiissi", $title, $description, $startpoint, $destination, $start_date, $end_date, $price, $crew_capacity, $rules, $userID, $tripID);
 
 
-$tripImages = $_FILES['trip_img'];
+if(isset($_FILES['trip_img'])) {
+    
+    $tripImages = $_FILES['trip_img'];
 
-foreach ($tripImages['tmp_name'] as $key => $tempPath) {
-    // Adjust the uploadPath to include the correct directory structure
-    $originalFileName = $userID . "_" . $tripImages['name'][$key];
-    $uploadPath = $rootPath . '/public/trip_img/' . $originalFileName;
-    // Create the destination directory if it doesn't exist
-    $destinationDirectory = $rootPath . '/public/trip_img/';
-    if (!is_dir($destinationDirectory)) {
-        mkdir($destinationDirectory, 0755, true);
-    }
-
-    if (move_uploaded_file($tempPath, $uploadPath)) {
-        // Insert each image into the trip_img table with the original file name
-        $insertImages =
-            "INSERT INTO trip_img (img, trip_ID) VALUES ('$originalFileName', '$tripID')";
-        if ($mySQL->query($insertImages) !== TRUE) {
-            echo "Error inserting images: " . $insertImages . "<br>" . $mySQL->error;
-            exit;
+    foreach ($tripImages['tmp_name'] as $key => $tempPath) {
+        // Adjust the uploadPath to include the correct directory structure
+        $originalFileName = $userID . "_" . $tripImages['name'][$key];
+        $uploadPath = $rootPath . '/public/trip_img/' . $originalFileName;
+        // Create the destination directory if it doesn't exist
+        $destinationDirectory = $rootPath . '/public/trip_img/';
+        if (!is_dir($destinationDirectory)) {
+            mkdir($destinationDirectory, 0755, true);
         }
-    } else {
-        echo "Error moving uploaded file: $tempPath to $uploadPath<br>";
+
+        if (move_uploaded_file($tempPath, $uploadPath)) {
+            // Insert each image into the trip_img table with the original file name
+            $insertImages =
+                "INSERT INTO trip_img (img, trip_ID) VALUES ('$originalFileName', '$tripID')";
+            if ($mySQL->query($insertImages) !== TRUE) {
+                echo "Error inserting images: " . $insertImages . "<br>" . $mySQL->error;
+                exit;
+            }
+        } else {
+            echo "Error moving uploaded file: $tempPath to $uploadPath<br>";
+        }
     }
 }
+
 
 // Initialize response array
 $response = array();
