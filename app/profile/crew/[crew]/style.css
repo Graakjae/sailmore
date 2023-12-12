@@ -1,0 +1,180 @@
+.height {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+  }
+  
+  .flexBox {
+    display: flex;
+    justify-content: space-between;
+    width: 96%;
+    max-height: 500px;
+  }
+  
+  .bio {
+    width: 96%;
+    font-size: 18px;
+    margin-top: 100px;
+    margin-left: 100px;
+    max-height: 500px;
+  }
+  
+  .firstname {
+    font-size: 18px;
+    margin-top: 100px;
+    margin-left: 100px; 
+    max-height: 400px;/* Adjust the margin to move the text more to the right */
+  }
+  
+
+  .rightWrapper img {
+    margin-right: 0px;
+    margin-top: 40px;
+    padding: 20px; /* Adjust the margin as needed */
+  }
+  
+  
+  .infoWrapper {
+    text-align: left;
+  }
+ 
+  .infoContainer {
+    width: 70%;
+    border-radius: 33px;
+    border: 1px solid #c1c1c1;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px; /* Align the box to the right */
+    margin-left: 40px;
+  }
+  /* Add additional styles as needed for your layout */
+  .buttonWrapper {
+    display: flex;
+    justify-content: flex-start; /* Align the button to the left */
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+  .buttonWrapper button {
+    padding: 10px 30px; /* Adjust padding to increase button size */
+    font-size: 16px; /* Adjust font size as needed */
+    background-color: #049DBF; /* Set button background color */
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+  
+  .buttonWrapper button:hover {
+    background-color: #037a9c; /* Change color on hover if needed */
+  }
+  /* Style the trip images */
+  .tripimg {
+    width: 100%;
+  }
+  
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+  .tripimg img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+    max-width: 100%;
+  }
+  
+  .tripimg img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    max-height: 300px; 
+    display: block; 
+    border-radius: 8px;
+  }
+  
+  .trips-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
+  }
+  
+  .trip-item {
+    width: 35%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-left: 40px;
+  }
+  
+  /* Add this style to make the "Trips" text bigger */
+  h3 {
+    font-size: 20px; /* Adjust the font size as needed */
+  }
+  
+  .Tripstext {
+    margin-left: 100px;
+  }
+  
+  .Tripsitems {
+    margin-left: 20px
+  }
+  
+  .tripdetails {
+   margin-left: 20px;
+  }
+  .notrips {
+    margin-left: 80px;
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .flexBox {
+      flex-direction: column; /* Change to a single column layout on smaller screens */
+    }
+  
+    .rightWrapper img {
+      margin-right: 0; /* Remove right margin on smaller screens */
+      margin-top: 20px; /* Adjust top margin on smaller screens */
+    }
+  
+    .infoContainer {
+      width: 100%; /* Full width on smaller screens */
+      margin-left: 0; /* Remove left margin on smaller screens */
+    }
+  
+    .buttonWrapper {
+      margin-top: 10px; /* Adjust top margin on smaller screens */
+    }
+  
+    .Tripstext,
+    .Tripsitems {
+      margin-left: 20px;
+      margin-top: 100px; /* Adjust the margin for smaller screens */
+    }
+    
+    .rightWrapper img {
+      margin-left: 70px;
+    }
+  
+    .Tripstext {
+      margin-top: 750px;
+    }
+    .trips-container {
+      width: 100%; /* Full width for trip items on smaller screens */
+    }
+  
+    .trip-item {
+      width: 100%; /* Full width for trip items on smaller screens */
+      margin: 0 0 20px;
+      margin-top: 0px; /* Adjust margins for better spacing */
+    }
+  
+    .tripimg img {
+      border-radius: 8px;
+    }
+  
+  }
