@@ -40,6 +40,7 @@
  
   .infoContainer {
     width: 70%;
+    height: 160px;
     border-radius: 33px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
@@ -47,7 +48,6 @@
     flex-direction: column;
     padding: 30px;
     margin-top: 20px;
-    margin-bottom: 40px; /* Align the box to the right */
     margin-left: 40px;
   }
   /* Add additional styles as needed for your layout */
