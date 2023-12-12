@@ -64,7 +64,7 @@
         top: 20px;
         right: 20px;
     }
-    .fixed {
+    .absolute {
         position: absolute;
         top: 0;
         left: 0;
