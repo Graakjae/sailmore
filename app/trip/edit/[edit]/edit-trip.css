@@ -8,18 +8,34 @@
     max-width: 1200px;
     padding: 0 20px;
 }
+
 .edit-wrapper {
     width: 80%;
     border-radius: 33px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 20px 0;
 }
 
+.trip-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+.trip-img img {
+    width: 100%;
+    max-height: auto;
+    margin-bottom: 1%;
+}
+
 .delete-btn {
-    position: absolute;
+    transform: translateX(50%);
     background-color: #ff0000;
     color: #fff;
     border: none;
@@ -30,4 +46,59 @@
     font-size: 1.2rem;
     font-weight: 600;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+}
+
+.delete-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    width: 6%; /* Adjust as needed */
+}
+.rules {
+    height: 100px;
+    width: 360px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.date {
+    width: 350px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 1px solid #7b7979;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: large;
+    padding-left: 10px;
+    outline: none;
+}
+
+.updatetrip {
+    background-color: #049dbf;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 38px;
+    color: #fff;
+    min-width: 240px;
+    border: none;
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+.add-img-button input[type="file" i] {
+    background-color: #049dbf !important;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 24px;
+    color: #fff;
+    border: none;
+    font-size: 25px;
+    margin-bottom: 20px;
+    width: 40%;
 }

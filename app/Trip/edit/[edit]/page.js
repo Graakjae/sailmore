@@ -180,10 +180,8 @@ export default function UpdateTripPage() {
     return (
         <div className="flex-container">
             <div className="edit-wrapper">
+                <div className="inner-container">
                 <h2>Update Trip</h2>
-                <button onClick={handleDeleteTrip} className="delete-btn">
-                    Delete Trip
-                </button>
 
                 <form onSubmit={handleUpdateTrip}>
                     <TextInputField
@@ -249,16 +247,18 @@ export default function UpdateTripPage() {
                             onChange={e => setRules(e.target.value)}
                         />
                     </div>
-                    <div>
-                        <label htmlFor="imageInput">Add Images</label>
-                        <input id="imageInput" type="file" accept="image/*" multiple onChange={handleFileChange} />
-                    </div>
+                <div>
+                    <label htmlFor="imageInput"><h3>Add Images</h3></label>
+                    <input type="file" accept="image/*" multiple className="add-img-button" onChange={handleFileChange} />
+                </div>
                     {tripImages.map((image, index) => (
-                        <div key={index}>
-                            <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
-                            <button onClick={() => handleDeleteImage(image.pk_id)}>Delete Image</button>
+                    <div className="trip-img" key={index}>
+                        <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
+                        <div className="delete-img" onClick={() => handleDeleteImage(image.pk_id)}>
+                            <img src="/cross.png" alt="Delete Image" />
                         </div>
-                    ))}
+                    </div>
+                ))}
                     {newTripImages.map((image, index) => (
                         <Image
                             key={index}
@@ -266,10 +266,15 @@ export default function UpdateTripPage() {
                             alt={`Image ${index + 1} of the trip`}
                             width={200}
                             height={200}
+                            
                         />
                     ))}
-                    <button type="submit">Update Trip</button>
+                    <button type="submit" className="updatetrip">Update Trip</button>
                 </form>
+                <button onClick={handleDeleteTrip} className="delete-btn">
+                    Delete Trip
+                </button>
+            </div>
             </div>
         </div>
     );
