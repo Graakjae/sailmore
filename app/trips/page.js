@@ -90,8 +90,14 @@ export default function TripsOverview() {
                 placeholder="Where would you like to go?"
                 onChange={(e) => setTargetArea(e.target.value)}
               />
+              <input
+                className="max-price-mobile"
+                  type="number"
+                  placeholder="Max. price"
+                  onChange={(e) => setTargetPrice(e.target.value)}
+                />
             </div>
-            <button type="submit">
+            <button type="submit" className="submit-button">
               <img src="/search.png" />
             </button>
           </div>
@@ -101,6 +107,12 @@ export default function TripsOverview() {
             placeholder="Max. price"
             onChange={(e) => setTargetPrice(e.target.value)}
           />
+          <div className="mobile-buttons">
+          <button type="submit" className="submit-button-mobile">
+              <img src="/search.png" />
+            </button>
+          <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button-mobile">Reset filters</button>
+          </div>
           <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button">Reset filters</button>
         </form>
       </div>

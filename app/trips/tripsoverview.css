@@ -158,11 +158,23 @@
   font-weight: 600;
 }
 
+.max-price-mobile {
+  display: none;
+}
+
+.submit-button-mobile {
+  display: none;
+}
+
+.mobile-buttons {
+  display: none;
+}
+
 @media only screen and (max-width: 500px) {
 
   .trips-page {
     width: 94%;
-    margin: 2.5% auto;
+    margin: 4% auto 5%;
   }
   
   .trip-card-container {
@@ -216,7 +228,7 @@
   .search-bar {
     display: block;
     border: none;
-    margin-bottom: 300px;
+    margin-bottom: 82px;
   }
 
   .search-bar p {
@@ -225,6 +237,7 @@
 
   .search-bar-input {
     display: block;
+    margin-bottom: 2.5%;
   }
 
   .search-bar input {
@@ -242,10 +255,12 @@
   .pick-date {
     display: block;
     padding: 10px;
+    margin-bottom: 2%;
   }
 
   .placeholder {
-    left: 2%;
+    left: 2.5%;
+    top: 30%;
     width: 50%;
   }
 
@@ -253,4 +268,69 @@
     outline: none;
     border: 1px solid black;
   }
+
+  .search-bar img {
+    width: 20%;
+  }
+
+  .max-price {
+    display: none;
+  }
+
+  .max-price-mobile {
+    display: block;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 2%;
+  }
+
+  .submit-button {
+    display: none;
+  }
+
+  .submit-button-mobile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 49%;
+    height: 40px;
+    background-color: #049DBF;
+    border-radius: 12px;
+    margin-right: 8px;
+    border: none;
+  }
+
+  .submit-button-mobile img {
+    width: 12%;
+  }
+
+  .reset-button-mobile {
+    width: 49%;
+    height: 40px;
+    border-radius: 12px;
+    padding: 0 20px;
+    border: none;
+    background-color: #049DBF;
+    color: white;
+    font-weight: 600;
+  }
+
+  .mobile-buttons {
+    display: flex;
+    margin-top: 2%;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 8%;
+  }
+
+  .reset-button {
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
 }
