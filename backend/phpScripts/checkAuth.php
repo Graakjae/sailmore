@@ -1,5 +1,5 @@
 <?php
-include '../../db/mysql.php';
+include '../db/mysql.php';
 session_start();
 
 $response = array('loggedIn' => false, 'userId' => null, 'role' => 'none');

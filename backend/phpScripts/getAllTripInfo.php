@@ -1,5 +1,5 @@
 <?php
-include "../../db/mysql.php";
+include "../db/mysql.php";
 
 // Retrieve trip ID from the URL path
 $trip = $_GET["trip"];

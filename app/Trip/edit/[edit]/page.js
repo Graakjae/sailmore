@@ -8,6 +8,7 @@ import TextInputField from "@/components/inputs/textInputField";
 import { useAuth } from "@/app/authContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import "./edit-trip.css";
 
 export default function UpdateTripPage() {
     const params = useParams();
@@ -177,80 +178,99 @@ export default function UpdateTripPage() {
     console.log("newTripImages", newTripImages);
     console.log("tripImages", rules);
     return (
-        <div>
-            <h2>Update Trip</h2>
-            <button onClick={handleDeleteTrip}>Delete Trip</button>
+        <div className="flex-container">
+            <div className="edit-wrapper">
+                <h2>Update Trip</h2>
+                <button onClick={handleDeleteTrip} className="delete-btn">
+                    Delete Trip
+                </button>
 
-            <form onSubmit={handleUpdateTrip}>
-                <TextInputField label={"Title"} type="text" value={title} onChange={e => setTitle(e.target.value)} />
-                <TextInputField
-                    label={"Description"}
-                    type="text"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                />
-                <TextInputField
-                    label={"Startpoint"}
-                    type="text"
-                    value={startpoint}
-                    onChange={e => setStartPoint(e.target.value)}
-                />
-                <TextInputField
-                    label={"Destination"}
-                    type="text"
-                    value={destination}
-                    onChange={e => setDestination(e.target.value)}
-                />
-                <div>
-                    <h3>Start date</h3>
-                    <DatePicker
-                        className="date"
-                        dateFormat="dd/MM/yy"
-                        selected={start_date}
-                        onChange={date => setStartDate(date)}
+                <form onSubmit={handleUpdateTrip}>
+                    <TextInputField
+                        label={"Title"}
+                        type="text"
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
                     />
-                </div>
-                <div>
-                    <h3>End date</h3>
-                    <DatePicker
-                        className="date"
-                        dateFormat="dd/MM/yy"
-                        selected={end_date}
-                        onChange={date => setEndDate(date)}
+                    <TextInputField
+                        label={"Description"}
+                        type="text"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
                     />
-                </div>
-                <TextInputField label={"Price"} type="text" value={price} onChange={e => setPrice(e.target.value)} />
-                <TextInputField
-                    label={"Crew capacity"}
-                    type="text"
-                    value={crew_capacity}
-                    onChange={e => setCrewCapacity(e.target.value)}
-                />
-                <div>
-                    <h3>Rules</h3>
-                    <textarea className="rules" type="text" value={rules} onChange={e => setRules(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="imageInput">Add Images</label>
-                    <input id="imageInput" type="file" accept="image/*" multiple onChange={handleFileChange} />
-                </div>
-                {tripImages.map((image, index) => (
-                    <div key={index}>
-                        <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
-                        <button onClick={() => handleDeleteImage(image.pk_id)}>Delete Image</button>
+                    <TextInputField
+                        label={"Startpoint"}
+                        type="text"
+                        value={startpoint}
+                        onChange={e => setStartPoint(e.target.value)}
+                    />
+                    <TextInputField
+                        label={"Destination"}
+                        type="text"
+                        value={destination}
+                        onChange={e => setDestination(e.target.value)}
+                    />
+                    <div>
+                        <h3>Start date</h3>
+                        <DatePicker
+                            className="date"
+                            dateFormat="dd/MM/yy"
+                            selected={start_date}
+                            onChange={date => setStartDate(date)}
+                        />
                     </div>
-                ))}
-                {newTripImages.map((image, index) => (
-                    <Image
-                        key={index}
-                        src={URL.createObjectURL(image)}
-                        alt={`Image ${index + 1} of the trip`}
-                        width={200}
-                        height={200}
+                    <div>
+                        <h3>End date</h3>
+                        <DatePicker
+                            className="date"
+                            dateFormat="dd/MM/yy"
+                            selected={end_date}
+                            onChange={date => setEndDate(date)}
+                        />
+                    </div>
+                    <TextInputField
+                        label={"Price"}
+                        type="text"
+                        value={price}
+                        onChange={e => setPrice(e.target.value)}
                     />
-                ))}
-                <button type="submit">Update Trip</button>
-            </form>
+                    <TextInputField
+                        label={"Crew capacity"}
+                        type="text"
+                        value={crew_capacity}
+                        onChange={e => setCrewCapacity(e.target.value)}
+                    />
+                    <div>
+                        <h3>Rules</h3>
+                        <textarea
+                            className="rules"
+                            type="text"
+                            value={rules}
+                            onChange={e => setRules(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="imageInput">Add Images</label>
+                        <input id="imageInput" type="file" accept="image/*" multiple onChange={handleFileChange} />
+                    </div>
+                    {tripImages.map((image, index) => (
+                        <div key={index}>
+                            <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
+                            <button onClick={() => handleDeleteImage(image.pk_id)}>Delete Image</button>
+                        </div>
+                    ))}
+                    {newTripImages.map((image, index) => (
+                        <Image
+                            key={index}
+                            src={URL.createObjectURL(image)}
+                            alt={`Image ${index + 1} of the trip`}
+                            width={200}
+                            height={200}
+                        />
+                    ))}
+                    <button type="submit">Update Trip</button>
+                </form>
+            </div>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 <?php
-include '../../db/mysql.php';
+include '../db/mysql.php';
 session_start();
 
 // Set maximum allowed file size to 2MB
