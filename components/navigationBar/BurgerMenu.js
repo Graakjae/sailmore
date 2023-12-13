@@ -31,8 +31,6 @@ function BurgerMenu({ loggedIn, burgerMenu, setBurgerMenu, userRole, userId }) {
                         onClick={() => setBurgerMenu(false)}
                     />
                 ))}
-
-                {loggedIn && <SignOut />}
             </div>
             <div
                 onClick={() => setBurgerMenu(!burgerMenu)}
