@@ -19,7 +19,7 @@
 
 .firstname {
   font-size: 18px;
-  margin-top: 100px;
+  margin-top: 60px;
   margin-left: 100px; 
   max-height: 400px;/* Adjust the margin to move the text more to the right */
 }
@@ -51,7 +51,8 @@ img {
   padding: 30px;
   align-self: flex-end; 
   margin-top: 20px;
-  margin-left: 45px; /* Align the box to the right */
+  margin-left: 45px;
+  margin-bottom: 40px; /* Align the box to the right */
 }
 /* Add additional styles as needed for your layout */
 .buttonWrapper {
@@ -127,7 +128,7 @@ h3 {
  margin-left: 20px;
 }
 .notrips {
-  margin-left: 80px;
+  margin-left: 100px;
 }
 
 @media only screen and (max-width: 500px) {
@@ -175,5 +176,9 @@ h3 {
   .tripimg img {
     border-radius: 8px;
   }
-
+  
+  .notrips {
+    margin-left: 0px;
+    margin-top: 100px;
+  }
 }

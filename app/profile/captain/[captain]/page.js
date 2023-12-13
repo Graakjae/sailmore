@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
 import { calculateAge } from "components/calculateAge";
+import "./style.css";
 
 export default function captainProfilePage() {
   const [firstName, setFirstName] = useState("");
@@ -114,8 +115,7 @@ export default function captainProfilePage() {
           />
           <div className="infoContainer">
             <div className="infoWrapper">
-              <h3>{firstName}</h3>
-              <h3>{formatDate(age)}</h3>
+              <h3>{firstName}, {calculateAge(age)}</h3>
               <p>From: {country}</p>
               <p>Experience: {exp}</p>
               <br />
