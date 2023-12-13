@@ -334,3 +334,32 @@
   }
 
 }
+
+@media only screen and (max-width: 380px) {
+
+.trip-title {
+  font-size: 1em;
+  color: #000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 172px; 
+  white-space: nowrap;
+}
+
+.trip-area {
+  font-size: 0.9em;
+  color: #000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 172px; 
+  white-space: nowrap;
+}
+
+.max-price-mobile {
+  width: 99%;
+}
+
+.search-input {
+  width: 99%;
+}
+}
