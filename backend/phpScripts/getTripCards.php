@@ -1,10 +1,6 @@
 <?php
 
-// Get root folder  
-$rootFolder = $_SERVER['DOCUMENT_ROOT'];
-$fullPath = $rootFolder . "/db/mysql.php";
-
-include $fullPath;
+include "../db/mysql.php";
 
 // Initialize an empty array to store the data
 $data = array();
