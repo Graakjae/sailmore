@@ -1,7 +1,7 @@
 export const captain = userId => [
     {
         text: "Find crew members",
-        link: "/crewmembers"
+        link: "/crew"
     },
     {
         text: "Applications",
@@ -40,7 +40,7 @@ export const loggedout = [
     },
     {
         text: "Find crew members",
-        link: "/crewmembers"
+        link: "/crew"
     },
     {
         text: "Login",
