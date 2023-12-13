@@ -2,8 +2,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import CrewCapacity from "@/components/CrewCapacity";
-import CaptainCard from "@/components/CaptainCard";
 import Link from "next/link";
 import { useAuth } from "@/app/authContext";
 import Application from "@/components/SendApplication";
@@ -19,8 +17,8 @@ export default function TripPage() {
     const [maxCapacity, setMaxCapacity] = useState(0);
     const { trip: tripParam } = useParams();
     const userId = useAuth().userId;
-
-    console.log(useAuth().userId);
+    const loggedIn = useAuth().loggedIn;
+    const userRole = useAuth().userRole;
     useEffect(() => {
         if (tripParam) {
             fetchTrip(tripParam);
@@ -160,22 +158,65 @@ export default function TripPage() {
 
                         <p>{trip.description}</p>
                         {/* <CrewCapacity capacity={trip.crew_capacity} trip={trip} /> */}
-                        <div className="rules">
-                            <Image src={`/icons/icon_rules.png`} alt="rules" width={20} height={20} />
-                            <p>Rules</p>
+                        <div className="rules-wrapper">
+                            <div className="rules">
+                                <Image src={`/icons/icon_rules.png`} alt="rules" width={20} height={20} />
+                                <h3>Rules</h3>
+                            </div>
+                            <p>{trip.rules}</p>
                         </div>
-                        <p>{trip.rules}</p>
+                        <div>
+                            <h3>Equipment</h3>
+                            <div className="grid">
+                                {trip.gps === 1 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_gps.png`} alt="gps" width={20} height={20} />
+                                        <p>GPS</p>
+                                    </div>
+                                ) : null}
+                                {trip.shower === 1 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_bath.png`} alt="shower" width={20} height={20} />
+                                        <p>Shower</p>
+                                    </div>
+                                ) : null}
+                                {trip.power === 1 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_lightning.png`} alt="power" width={20} height={20} />
+                                        <p>Power</p>
+                                    </div>
+                                ) : null}
+                                {trip.toilet > 0 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_toilet.png`} alt="toilet" width={20} height={20} />
+                                        <p>{trip.toilet} toilet(s)</p>
+                                    </div>
+                                ) : null}
+                                {trip.kitchen === 1 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_kitchen.png`} alt="kitchen" width={20} height={20} />
+                                        <p>Kitchen</p>
+                                    </div>
+                                ) : null}
+                                {trip.wifi === 1 ? (
+                                    <div className="equipment">
+                                        <Image src={`/icons/icon_wifi.png`} alt="wifi" width={20} height={20} />
+                                        <p>Wifi</p>
+                                    </div>
+                                ) : null}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="right-wrapper">
-                        {userId == trip.captain_ID ? (
+                        {userId != trip.captain_ID || userId === null ? null : (
                             <Link href={`/trip/edit/${tripParam}`} className="button-end">
                                 <div className="edit-btn">
                                     <Image src="/icons/icon_Pen.png" alt="edit" width={15} height={15} />
                                     <p>Edit trip</p>
                                 </div>
                             </Link>
-                        ) : null}
+                        )}
                         <div className="crew-wrapper">
                             <div className="important-info">
                                 <Image src={`/icons/icon_coins.png`} alt="price" width={20} height={20} />
@@ -223,7 +264,7 @@ export default function TripPage() {
                                             width={30}
                                             height={30}
                                         />
-                                        <p>you?</p>
+                                        <p>You?</p>
                                     </div>
                                 ))}
                             </ul>

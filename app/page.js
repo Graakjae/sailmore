@@ -9,10 +9,11 @@ import TripCard from "@/components/TripCard";
 import Link from "next/link";
 import HomePageCrew from "@/components/HomePageCrew";
 import { Oval } from "react-loader-spinner";
-
+import { useAuth } from "./authContext";
 function HomePage() {
     const [trips, setTrips] = useState([]);
     const [filteredTrips, setFilteredTrips] = useState([]);
+    console.log(useAuth());
 
     async function fetchTrips() {
         try {

@@ -62,7 +62,7 @@ export default function createTripPage() {
                 body: formData
             });
 
-            const data = await response.json();
+            const data = await response.text();
             console.log(data); // Log the response from the server
             if (data === "Trip registered successfully") {
                 router.push(`/profile/captain/${userID}`);
