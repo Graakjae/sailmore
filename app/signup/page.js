@@ -11,7 +11,7 @@ import FileInputField from "@/components/inputs/fileInput";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../authContext";
 
-export default function signUp() {
+export default function SignUp() {
     const [exp, setExp] = useState("none");
     const [country, setCountry] = useState("");
     const [email, setEmail] = useState("");

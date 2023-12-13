@@ -9,7 +9,7 @@ import SignOut from "@/components/SignOut";
 import "./captain-profile.css";
 import { useAuth } from "@/app/authContext";
 
-export default function captainProfilePage() {
+export default function CaptainProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -113,7 +113,9 @@ export default function captainProfilePage() {
                     />
                     <div className="infoContainer">
                         <div className="infoWrapper">
-                            <h3>{firstName}, {calculateAge(age)}</h3>
+                            <h3>
+                                {firstName}, {calculateAge(age)}
+                            </h3>
                             <p>From: {country}</p>
                             <p>Experience: {exp}</p>
                             <br />

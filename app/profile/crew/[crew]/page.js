@@ -9,7 +9,7 @@ import { calculateAge } from "components/calculateAge";
 import "./crew-profile.css";
 import { useAuth } from "@/app/authContext";
 import SignOut from "@/components/SignOut";
-export default function crewProfilePage() {
+export default function CrewProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");

@@ -10,7 +10,7 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import SwitchToggle from "@/components/inputs/toggle";
 import { useRouter } from "next/navigation";
 import "./style.css";
-export default function editCaptainProfilePage() {
+export default function EditCaptainProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");

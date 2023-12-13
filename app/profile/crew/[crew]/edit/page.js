@@ -10,7 +10,7 @@ import SimpleButton from "@/components/buttons/SimpleButton";
 import { useRouter } from "next/navigation";
 import "./style.css";
 
-export default function editCrewProfilePage() {
+export default function EditCrewProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -192,10 +192,8 @@ export default function editCrewProfilePage() {
                             {expError && <p className="error-message">{expError}</p>}
                         </div>
                         <div className="bio-section">
-                    <h3 className="biotext">Bio</h3>
-                        <textarea value={bio}  
-                        onChange={e => setBio(e.target.value)} 
-                        className="bioInput" />
+                            <h3 className="biotext">Bio</h3>
+                            <textarea value={bio} onChange={e => setBio(e.target.value)} className="bioInput" />
                         </div>
                         <TextInputField
                             label={"E-mail"}
@@ -217,18 +215,20 @@ export default function editCrewProfilePage() {
                                 />
                             </div>
                         ) : (
-                            <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>Change password</button>
+                            <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>
+                                Change password
+                            </button>
                         )}
                         <div className="save-button">
-                        <SimpleButton text={"Save"} onClick={handleSaveClick} />
-                        <Image
-                            src="/cross.png"
-                            alt="Close edit"
-                            width={20}
-                            height={20}
-                            className="closeEdit"
-                            onClick={() => router.push(`/profile/crew/${params.crew}`)}
-                        />
+                            <SimpleButton text={"Save"} onClick={handleSaveClick} />
+                            <Image
+                                src="/cross.png"
+                                alt="Close edit"
+                                width={20}
+                                height={20}
+                                className="closeEdit"
+                                onClick={() => router.push(`/profile/crew/${params.crew}`)}
+                            />
                         </div>
                     </div>
                 </div>
