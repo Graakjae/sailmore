@@ -113,8 +113,7 @@ export default function captainProfilePage() {
                     />
                     <div className="infoContainer">
                         <div className="infoWrapper">
-                            <h3>{firstName}</h3>
-                            <h3>{calculateAge(age)}</h3>
+                            <h3>{firstName}, {calculateAge}</h3>
                             <p>From: {country}</p>
                             <p>Experience: {exp}</p>
                             <br />
