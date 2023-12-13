@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { calculateAge } from "components/calculateAge";
+import { CalculateAge } from "components/CalculateAge";
 import "./crew-profile.css";
 import { useAuth } from "@/app/authContext";
 import SignOut from "@/components/SignOut";
@@ -75,7 +75,7 @@ export default function CrewProfilePage() {
                     <div className="infoContainer">
                         <div className="infoWrapper">
                             <h3>
-                                {firstName}, {calculateAge(age)}
+                                {firstName}, {CalculateAge(age)}
                             </h3>
                             <p>From: {country}</p>
                             <p>Experience: {exp}</p>

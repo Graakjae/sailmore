@@ -1,15 +1,11 @@
 <?php
 
-// Get root folder  
-$rootFolder = $_SERVER['DOCUMENT_ROOT'];
-$fullPath = $rootFolder . "/db/mysql.php";
-
-include $fullPath;
+include "../db/mysql.php";
 
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT * FROM trip_card";
+$sql = "SELECT pk_id, title, startpoint, destination, start_date, end_date, price, img FROM trip_card";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -23,7 +19,7 @@ if ($result->num_rows > 0) {
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
-            'img' => $row['img']
+            'img' => $row['img'],
         );
     }
 } else {

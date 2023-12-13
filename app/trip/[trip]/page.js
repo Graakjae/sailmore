@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/app/authContext";
 import Application from "@/components/SendApplication";
-import { calculateAge } from "/components/calculateAge";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
