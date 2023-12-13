@@ -72,6 +72,15 @@
     gap: 5px;
 }
 
+.rules-wrapper {
+    margin: 10px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .crew-wrapper {
     border-radius: 33px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
@@ -223,6 +232,12 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.equipment {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
 }
 
 @media only screen and (max-width: 768px) {

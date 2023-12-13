@@ -55,9 +55,11 @@ if (!empty($_FILES['trip_img']['name'][0])) {
         }
 
         if (move_uploaded_file($tempPath, $uploadPath)) {
-            // Insert each image into the trip_img table with the original file name
+           $priorityImage = ($key === 0) ? 1 : 0;
+
+            // Insert each image into the trip_img table with the original file name and priorityImage value
             $insertImages =
-                "INSERT INTO trip_img (img, trip_ID) VALUES ('$originalFileName', '$tripId')";
+                "INSERT INTO trip_img (img, trip_ID, primary_img) VALUES ('$originalFileName', '$tripId', '$priorityImage')";
 
             if ($mySQL->query($insertImages) !== TRUE) {
                 echo "Error inserting images: " . $insertImages . "<br>" . $mySQL->error;
@@ -66,6 +68,18 @@ if (!empty($_FILES['trip_img']['name'][0])) {
         } else {
             echo "Error moving uploaded file: $tempPath to $uploadPath<br>";
         }
+    }
+} else {
+    // If no image is uploaded, set a default image with priorityImage = 1
+    $defaultImage = 'default_image.jpg';
+
+    // Insert the default image into the trip_img table with priorityImage = 1
+    $insertDefaultImage =
+        "INSERT INTO trip_img (img, trip_ID, primary_img) VALUES ('$defaultImage', '$tripId', '1')";
+
+    if ($mySQL->query($insertDefaultImage) !== TRUE) {
+        echo "Error inserting default image: " . $insertDefaultImage . "<br>" . $mySQL->error;
+        exit;
     }
 }
 
