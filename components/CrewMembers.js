@@ -34,7 +34,8 @@ const CrewMemberList = () => {
             <p className="name-and-age">
               {crewmember.firstname} {crewmember.lastname}, {crewmember.age}
             </p>
-            <p>{crewmember.exp}</p>
+            <p className="crew-country">{crewmember.country}</p>
+            <p className="crew-exp">{crewmember.exp}</p>
           </div>
         ))}
       </div>

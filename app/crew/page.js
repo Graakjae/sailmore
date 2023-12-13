@@ -5,7 +5,7 @@ import "./crewmembers.css";
 function CrewMembersPage() {
   return (
     <div className="crewmember-page">
-      <h1>Crewmembers on SailMore</h1>
+      <h1>SailMore Crew</h1>
       <FilterCrewMembers />
       <CrewMembers />
     </div>

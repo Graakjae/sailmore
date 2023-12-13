@@ -108,10 +108,10 @@ export default function TripsOverview() {
             onChange={(e) => setTargetPrice(e.target.value)}
           />
           <div className="mobile-buttons">
+          <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button-mobile">Reset filters</button>
           <button type="submit" className="submit-button-mobile">
               <img src="/search.png" />
             </button>
-          <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button-mobile">Reset filters</button>
           </div>
           <button onClick={(e) => {resetFilters(e); setPlaceholder("When do you plan to travel?");}} className="reset-button">Reset filters</button>
         </form>
