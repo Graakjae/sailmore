@@ -24,9 +24,11 @@ function SignOut() {
         }
     };
     return (
+        <div className="signout-div">
         <button className="signout-btn" onClick={handleSignout}>
-            Sign Out
+            Sign out
         </button>
+        </div>
     );
 }
 export default SignOut;

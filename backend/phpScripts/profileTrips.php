@@ -5,7 +5,7 @@ include "../../db/mysql.php";
 $userId = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
 
 // Use prepared statements to prevent SQL injection
-$sqlTrips = "SELECT pk_id, title, start_date, end_date, price FROM trip WHERE captain_ID = ?";
+$sqlTrips = "SELECT pk_id, title, startpoint, destination, start_date, end_date, price FROM trip WHERE captain_ID = ?";
 $stmtTrips = $mySQL->prepare($sqlTrips);
 $stmtTrips->bind_param("i", $userId);
 $stmtTrips->execute();
@@ -37,6 +37,8 @@ if ($resultTrips === false) {
             $dataTrips[] = array(
                 'trip_id' => $tripId,
                 'title' => $row['title'],
+                'startpoint' => $row['startpoint'],
+                'destination' => $row['destination'],
                 'start_date' => $row['start_date'],
                 'end_date' => $row['end_date'],
                 'price' => $row['price'],
