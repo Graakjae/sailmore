@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         // Fetch updated applications
-        $sql = "SELECT applications.*, crewmember.firstname AS crewmember_firstname, trip.title AS trip_title, trip.crew_capacity AS trip_crew_capacity
+        $sql = "SELECT applications.*, crewmember.firstname, crewmember.lastname, crewmember.profilePicture, crewmember.age, crewmember.exp, trip.title, trip.crew_capacity
                 FROM applications
                 JOIN crewmember ON applications.crewmember_ID = crewmember.pk_id
                 JOIN trip ON applications.trip_ID = trip.pk_id

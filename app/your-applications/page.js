@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/app/authContext";
-
+import { nanoid } from "nanoid";
+import Image from "next/image";
+import "./your-applications.css";
+import Link from "next/link";
 export default function YourApplicationsPage() {
     const [applications, setApplications] = useState([]);
     const crewMemberId = useAuth().userId;
@@ -37,16 +40,24 @@ export default function YourApplicationsPage() {
     console.log("applications:", applications);
     return (
         <div>
-            <h1>Your Applications Page</h1>
-            <h2>Your Applications</h2>
-            {applications.map(application => (
-                <div key={application.pk_id}>
-                    <div>
-                        <p>Trip: {application.title}</p>
-                        <p>Status: {application.applicationStatus}</p>
-                    </div>
-                </div>
-            ))}
+            <h2 className="title">Your Applications</h2>
+            <div className="flexbox">
+                {applications.map(application => (
+                    <Link href={`/trip/${application.pk_id}`} key={nanoid()} className="crewApplication">
+                        <Image
+                            src={`/trip_img/${application.img}`}
+                            alt={application.title}
+                            width={200}
+                            height={200}
+                            className="application-image"
+                        />
+                        <div className="crewApplicationInfo">
+                            <p>{application.title}</p>
+                            <p>Status: {application.applicationStatus}</p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
         </div>
     );
 }

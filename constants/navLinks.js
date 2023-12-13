@@ -30,9 +30,6 @@ export const crewmembers = userId => [
     {
         text: "Profile",
         link: `/profile/crew/${userId}`
-    },
-    {
-        text: "Logout"
     }
 ];
 

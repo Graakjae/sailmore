@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/app/authContext";
-
+import "./application.css";
+import Image from "next/image";
+import Link from "next/link";
 export default function ApplicationsPage() {
     const [applications, setApplications] = useState([]);
     const [acceptedCrew, setAcceptedCrew] = useState([]);
@@ -85,38 +87,59 @@ export default function ApplicationsPage() {
 
     console.log(acceptedCrew);
     return (
-        <div>
-            <h1>Applications Page</h1>
-            <h2>Pending Applications</h2>
-            {applications.map(
-                application =>
-                    application.applicationStatus === "pending" && (
-                        <div key={application.pk_id}>
-                            <div>
-                                <p>Crewmember: {application.crewmember_firstname}</p>
-                                <p>Trip: {application.trip_title}</p>
-                                <p>Message: {application.msg}</p>
-                                {application.applicationStatus === "pending" && (
+        <div className="applications-wrapper">
+            <h2>Applications Page</h2>
+            <h3 className="pending">Pending Applications</h3>
+            <div className="grid">
+                {applications.map(
+                    application =>
+                        application.applicationStatus === "pending" && (
+                            <div key={application.pk_id}>
+                                <div className="application-wrapper">
                                     <div>
-                                        <p>hej{application.trip_crew_capacity}</p>
-                                        <button
-                                            onClick={() => handleDecision("accepted", application.pk_id)}
-                                            disabled={acceptedCrew.length >= application.trip_crew_capacity}
-                                        >
-                                            Accept
-                                        </button>
-                                        <button
-                                            onClick={() => handleDecision("declined", application.pk_id)}
-                                            disabled={acceptedCrew.length >= application.trip_crew_capacity}
-                                        >
-                                            Decline
-                                        </button>
+                                        <h3>Applying for: {application.title}</h3>
                                     </div>
-                                )}
+                                    <Link href={`/profile/crew/${application.crewmember_ID}`} className="profile">
+                                        <Image
+                                            src={`/profilePictures/${application.profilePicture}`}
+                                            alt="Profile Image"
+                                            width={50}
+                                            height={50}
+                                            className="profilePicture"
+                                        />
+                                        <div>
+                                            <h3>
+                                                {application.firstname} {application.lastname}
+                                            </h3>
+                                            <p>{application.exp}</p>
+                                        </div>
+                                    </Link>
+                                    <div>
+                                        <p className="message">{application.msg}</p>
+                                    </div>
+                                    {application.applicationStatus === "pending" && (
+                                        <div className="buttons-wrapper">
+                                            <button
+                                                className="button"
+                                                onClick={() => handleDecision("accepted", application.pk_id)}
+                                                disabled={acceptedCrew.length >= application.trip_crew_capacity}
+                                            >
+                                                Accept
+                                            </button>
+                                            <button
+                                                className="button"
+                                                onClick={() => handleDecision("declined", application.pk_id)}
+                                                disabled={acceptedCrew.length >= application.trip_crew_capacity}
+                                            >
+                                                Decline
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    )
-            )}
+                        )
+                )}
+            </div>
         </div>
     );
 }

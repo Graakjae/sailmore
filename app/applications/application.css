@@ -1,0 +1,82 @@
+.applications-wrapper {
+    padding: 0 5%;
+}
+.application-wrapper {
+    margin-top: 10px;
+    height: 300px;
+    border: 1px solid #7b7979;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.pending {
+    margin-top: 30px;
+}
+
+.application-wrapper div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.message {
+    overflow: scroll;
+    height: 150px;
+}
+
+.button {
+    background-color: #049dbf;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 38px;
+    color: #fff;
+    min-width: 100px;
+    border: none;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+}
+
+.profilePicture {
+    border-radius: 13px;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .button {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .button {
+        margin-bottom: 0;
+    }
+}

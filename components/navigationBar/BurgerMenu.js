@@ -1,11 +1,7 @@
 "use client";
-import Link from "next/link";
-import { useAuth } from "../../app/authContext";
 import "../../styles/NavBar.css";
 import SignOut from "../SignOut";
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import Hamburger from "hamburger-react";
 import { captain, crewmembers, loggedout } from "@/constants/navLinks";
 import LinkComponent from "./LinkComponent";

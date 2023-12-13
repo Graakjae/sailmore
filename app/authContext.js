@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
                 setUserRole(data.role);
             })
             .catch(error => console.error("Error checking authentication:", error));
-    }, []);
+    }, [loggedIn]);
 
     const value = {
         loggedIn,
