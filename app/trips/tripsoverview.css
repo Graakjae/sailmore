@@ -1,29 +1,374 @@
+.trips-page {
+  width: 92%;
+  margin: 2.5% auto;
+}
+
+.trip-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.trip-card-inner-container {
+  text-decoration: none;
+}
+
+.trip-card {
+  width: 320px;
+  margin-bottom: 20px;
+  height: 320px;
+}
+
+.trip-title {
+  font-size: 1.2em;
+  color: #000;
+}
+
+.trip-area {
+  font-size: 1.2em;
+  color: #000;
+}
+
+.trip-dates,
+.trip-price {
+  color: #000;
+}
+
+.trip-img {
+  height: 225px;
+  width: 320px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .filter {
-  margin-left: 4%;
   margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .filter-form {
   margin-bottom: 1%;
 }
 
-.trip-card-container {
+.search-bar {
   display: flex;
-  flex-wrap: wrap;
-  width: 92%;
-  margin: 2.5% auto;
+  height: 66px;
+  border: 2px solid black;
+  border-radius: 24px;
+  margin-bottom: 1%;
   justify-content: space-between;
+  align-items: center;
 }
 
-.trip-card {
-  padding: 10px;
-  border: 1px solid #000;
-  width: 300px;
-  margin-bottom: 30px;
+.search-bar input {
+  font-size: 1.2em;
 }
 
-.trip-img {
-  height: 200px;
-  width: 300px;
-  object-fit: cover;
+.search-bar-input {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  align-items: center;
+}
+
+.pick-date input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.placeholder {
+  width: 42%;
+  position: absolute;
+  z-index: -5;
+}
+
+.search-input {
+  width: 45%;
+  border: 0;
+  margin: 0 40px;
+}
+
+.react-datepicker-wrapper {
+  width: 45%;
+  border: 0;
+  margin: 0
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+.search-bar button {
+  border: 0;
+}
+
+.search-bar p {
+  font-size: 2.5em;
+  font-weight: 1;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.search-bar button {
+  justify-content: flex-end;
+  width: 6%;
+  height: 82%;
+  background-color: #049DBF;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+
+.search-bar img {
+  width: 33%;
+}
+
+.pick-date {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.react-datepicker-wrapper input {
+  width: 100%;
+  overflow: hidden;
+}
+
+.max-price {
+  border-radius: 24px;
+  border: solid 1px black;
+  padding-left: 12px;
+  height: 30px;
+  margin-right: 20px;
+  width: 118px;
+}
+
+.reset-button {
+  height: 30px;
+  border-radius: 24px;
+  padding: 0 26px;
+  border: none;
+  background-color: #049DBF;
+  color: white;
+  font-weight: 600;
+  width: 130px;
+}
+
+.max-price-mobile {
+  display: none;
+}
+
+.submit-button-mobile {
+  display: none;
+}
+
+.mobile-buttons {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .trips-page {
+    width: 94%;
+    margin: 4% auto 5%;
+  }
+  
+  .trip-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .trip-card-inner-container {
+    width: 49%;
+  }
+
+  .trip-card {
+    width: 100%;
+    min-height: 230px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .trip-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .trip-title {
+    font-size: 1em;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 198px; 
+    white-space: nowrap;
+  }
+  
+  .trip-area {
+    font-size: 0.9em;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 198px; 
+    white-space: nowrap;
+  }
+  
+  .trip-dates,
+  .trip-price {
+    color: #000;
+    font-size: 0.9em;
+  }
+
+  .search-bar {
+    display: block;
+    border: none;
+    margin-bottom: 77px;
+  }
+
+  .search-bar p {
+    display: none;
+  }
+
+  .search-bar-input {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .search-bar input {
+    font-size: 1em;
+  }
+
+  .search-input {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .pick-date {
+    display: block;
+    padding: 10px;
+    margin-bottom: 2%;
+    height: 18.4px;
+  }
+
+  .placeholder {
+    left: 2.5%;
+    top: 30%;
+    width: 50%;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border: 1px solid black;
+  }
+
+  .search-bar img {
+    width: 20%;
+  }
+
+  .max-price {
+    display: none;
+  }
+
+  .max-price-mobile {
+    display: block;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 2%;
+  }
+
+  .submit-button {
+    display: none;
+  }
+
+  .submit-button-mobile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 49%;
+    height: 40px;
+    background-color: #049DBF;
+    border-radius: 12px;
+    border: none;
+  }
+
+  .submit-button-mobile img {
+    width: 12%;
+  }
+
+  .reset-button-mobile {
+    width: 49%;
+    height: 40px;
+    border-radius: 12px;
+    padding: 0 20px;
+    border: none;
+    background-color: #049DBF;
+    color: white;
+    font-weight: 600;
+  }
+
+  .mobile-buttons {
+    display: flex;
+    margin-top: 0;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 8%;
+  }
+
+  .reset-button {
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .filter {
+    margin-bottom: 0;
+  }
+
+  .filter-form {
+    margin-bottom: 0;
+  }
+
+}
+
+@media only screen and (max-width: 380px) {
+
+.trip-title {
+  font-size: 1em;
+  color: #000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 172px; 
+  white-space: nowrap;
+}
+
+.trip-area {
+  font-size: 0.9em;
+  color: #000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 172px; 
+  white-space: nowrap;
+}
+
+.max-price-mobile {
+  width: 99%;
+}
+
+.search-input {
+  width: 99%;
+}
 }
