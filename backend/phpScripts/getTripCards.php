@@ -5,7 +5,7 @@ include "../db/mysql.php";
 // Initialize an empty array to store the data
 $data = array();
 
-$sql = "SELECT * FROM trip_card";
+$sql = "SELECT pk_id, title, startpoint, destination, start_date, end_date, price, img FROM trip_card";
 $result = $mySQL->query($sql);
 
 if ($result->num_rows > 0) {
@@ -14,14 +14,12 @@ if ($result->num_rows > 0) {
         $data[] = array(
             'pk_id' => $row['pk_id'],
             'title' => $row['title'],
-            'description' => $row['description'],
             'startpoint' => $row['startpoint'],
             'destination' => $row['destination'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
             'img' => $row['img'],
-            'captain_ID' => $row['captain_ID']
         );
     }
 } else {
