@@ -1,5 +1,5 @@
 <?php
-include('../../db/mysql.php');
+include('../db/mysql.php');
 
 // Add this after establishing the database connection
 if ($mySQL->connect_error) {

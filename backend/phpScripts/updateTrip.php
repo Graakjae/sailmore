@@ -1,5 +1,5 @@
 <?php
-include "../../db/mysql.php";
+include "../db/mysql.php";
 
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 

@@ -1,5 +1,5 @@
 <?php 
-include '../../db/mysql.php';
+include '../db/mysql.php';
 session_start();
 // Get data from POST request
 

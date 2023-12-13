@@ -1,5 +1,5 @@
 <?php
-include "../../db/mysql.php";
+include "../db/mysql.php";
 
 // Retrieve trip ID from the URL path
 $trip = intval(basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));

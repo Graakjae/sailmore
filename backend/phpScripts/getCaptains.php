@@ -1,5 +1,5 @@
 <?php
-include "../../db/mysql.php";
+include "../db/mysql.php";
 
 // Initialize an empty array to store the data
 $data = array();

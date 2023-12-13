@@ -1,5 +1,5 @@
 <?php
-include "../../db/mysql.php";
+include "../db/mysql.php";
 session_start();
 $userID = $_SESSION['user_id'];
 $firstName = $_POST['firstName'];

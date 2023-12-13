@@ -1,5 +1,5 @@
 <?php
-include '../../db/mysql.php';
+include '../db/mysql.php';
 
 $response = array('success' => false, 'applications' => array(), 'error' => '');
 
