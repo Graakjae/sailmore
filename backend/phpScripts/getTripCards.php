@@ -14,12 +14,14 @@ if ($result->num_rows > 0) {
         $data[] = array(
             'pk_id' => $row['pk_id'],
             'title' => $row['title'],
+            'description' => $row['description'],
             'startpoint' => $row['startpoint'],
             'destination' => $row['destination'],
             'start_date' => $row['start_date'],
             'end_date' => $row['end_date'],
             'price' => $row['price'],
-            'img' => $row['img']
+            'img' => $row['img'],
+            'captain_ID' => $row['captain_ID']
         );
     }
 } else {
