@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { calculateAge } from "components/calculateAge";
 import SignOut from "@/components/SignOut";
 import "./captain-profile.css";
-import { useAuth } from "@/app/authContext";import "./style.css";
+import { useAuth } from "@/app/authContext";
 
 export default function captainProfilePage() {
     const [firstName, setFirstName] = useState("");
