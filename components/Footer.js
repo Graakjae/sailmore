@@ -3,6 +3,7 @@ import { captain, crewmembers, loggedout } from "@/constants/navLinks";
 import Link from "next/link";
 import { useAuth } from "@/app/authContext";
 import "../styles/Footer.css";
+import { nanoid } from "nanoid";
 function Footer({}) {
     const { loggedIn, userRole, userId } = useAuth();
     let linksToRender;
@@ -17,7 +18,7 @@ function Footer({}) {
     return (
         <footer>
             {linksToRender.map(link => (
-                <div>
+                <div key={nanoid()}>
                     <Link href={`${link.link}`} className="footer-text">
                         {link.text}
                     </Link>
