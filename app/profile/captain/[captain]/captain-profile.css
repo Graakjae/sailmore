@@ -7,7 +7,7 @@
 }
 
 .name-and-bio {
-    min-height: 400px;
+    min-height: 125px;
 }
 
 .right-wrapper {
@@ -44,7 +44,7 @@
 
 /* Add the following styles to create a box around the boat information */
 .infoContainer {
-    border-radius: 33px;
+    border-radius: 24px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
