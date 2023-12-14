@@ -27,8 +27,8 @@ const CrewMemberList = () => {
                         <Image
                             src={`/profilePictures/${crewmember.profilePicture}`}
                             alt="Profile image"
-                            width={150}
-                            height={150}
+                            width={500}
+                            height={500}
                             className="crewmember-img"
                         />
                         <p className="name-and-age">

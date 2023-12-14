@@ -12,6 +12,13 @@ CREATE TABLE captains (
 ALTER TABLE captains
 MODIFY COLUMN exp VARCHAR(255) NOT NULL;
 
+INSERT INTO captains (firstname, lastname, age, email, password, bio, country, exp)
+VALUES
+('John', 'Doe', 35, 'john.doe@example.com', 'hashed_password_1', 'Experienced captain with a passion for sailing.', 'United States', 10),
+('Jane', 'Smith', 28, 'jane.smith@example.com', 'hashed_password_2', 'Adventurous soul with a love for the sea.', 'Canada', 7),
+('Michael', 'Johnson', 40, 'michael.johnson@example.com', 'hashed_password_3', 'Veteran captain with a career spanning two decades.', 'Australia', 15);
+
+
 INSERT INTO captains
 VALUES (
     NULL,
@@ -72,6 +79,16 @@ CREATE TABLE trip (
     img INT NOT NULL
 );
 
+INSERT INTO trip (title, description, startpoint, destination, start_date, end_date, price, crew_capacity, rules)
+VALUES
+('Island Adventure', 'Explore beautiful islands and hidden coves on this exciting voyage.', 'Miami', 'Bahamas', '2023-06-15', '2023-06-25', 2000, 10, 'No smoking on board. Follow safety guidelines.'),
+('Northern Lights Expedition', 'Sail to the Arctic Circle and witness the mesmerizing Northern Lights.', 'Reykjavik', 'Arctic Circle', '2023-09-10', '2023-09-20', 3000, 8, 'Cold weather precautions in effect. Wildlife observation rules apply.'),
+('Mediterranean Escape', 'Experience the charm of the Mediterranean with stops in Greece and Italy.', 'Barcelona', 'Santorini', '2023-07-05', '2023-07-15', 2500, 12, 'Respect local customs. No fishing in protected areas.'),
+('Caribbean Dream Cruise', 'Sail through the crystal-clear waters of the Caribbean and enjoy the vibrant marine life.', 'Puerto Rico', 'St. Lucia', '2023-08-20', '2023-08-30', 1800, 15, 'Limit alcohol consumption. Eco-friendly practices encouraged.'),
+('Pacific Paradise Expedition', 'Embark on a journey to the Pacific Islands with stops in Hawaii and Fiji.', 'Los Angeles', 'Fiji', '2023-10-05', '2023-10-15', 2800, 10, 'Strictly no littering. Follow diving regulations.'),
+('Baltic Sea Discovery', 'Discover the beauty of the Baltic Sea with visits to Stockholm and Copenhagen.', 'Helsinki', 'Copenhagen', '2023-07-25', '2023-08-04', 2200, 8, 'Mindful of local wildlife. No loud music after 10 PM.'),
+('South American Adventure', 'Sail along the coast of South America and explore the rich culture of Brazil and Argentina.', 'Rio de Janeiro', 'Buenos Aires', '2023-11-01', '2023-11-11', 2600, 14, 'Respect indigenous communities. No plastic waste allowed.');
+
 CREATE TABLE trip_img (
     pk_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     trip_ID INT NOT NULL,
@@ -116,6 +133,23 @@ CREATE TABLE crewmember (
     exp INT NOT NULL,
     profilePicture VARCHAR(255) NOT NULL
 );
+
+INSERT INTO crewmember (firstname, lastname, age, email, password, bio, country, exp, profilePicture)
+VALUES
+('Emily', 'Johnson', '1990-03-15', 'emily.johnson@example.com', 'hashed_password_4', 'Enthusiastic sailor with a background in marine biology.', 'United States', 5, 'profile_pic_emily.jpg'),
+('Daniel', 'Nguyen', '1985-08-22', 'daniel.nguyen@example.com', 'hashed_password_5', 'Dedicated crew member with expertise in navigation.', 'Canada', 8, 'profile_pic_daniel.jpg'),
+('Sofia', 'Garcia', '1993-12-10', 'sofia.garcia@example.com', 'hashed_password_6', 'Passionate about maritime traditions and safety procedures.', 'Spain', 3, 'profile_pic_sofia.jpg');
+
+
+INSERT INTO crewmember (firstname, lastname, age, email, password, bio, country, exp, profilePicture)
+VALUES
+('Alex', 'Smith', '1992-06-28', 'alex.smith@example.com', 'hashed_password_7', 'Energetic crew member with a love for sailing and teamwork.', 'Australia', 6, 'profile_pic_alex.jpg'),
+('Olivia', 'Martinez', '1988-02-18', 'olivia.martinez@example.com', 'hashed_password_8', 'Experienced sailor with a focus on maritime safety and first aid.', 'United Kingdom', 9, 'profile_pic_olivia.jpg'),
+('Connor', 'Kim', '1995-11-03', 'connor.kim@example.com', 'hashed_password_9', 'Adventurous spirit with a background in marine engineering.', 'South Korea', 4, 'profile_pic_connor.jpg'),
+('Isabella', 'Wang', '1987-09-14', 'isabella.wang@example.com', 'hashed_password_10', 'Detail-oriented crew member with skills in navigation and logistics.', 'China', 7, 'profile_pic_isabella.jpg'),
+('Liam', 'Gomez', '1991-04-25', 'liam.gomez@example.com', 'hashed_password_11', 'Passionate about sailing and marine conservation efforts.', 'Mexico', 5, 'profile_pic_liam.jpg'),
+('Ava', 'Chen', '1989-07-07', 'ava.chen@example.com', 'hashed_password_12', 'Skilled deckhand with expertise in sail handling and rigging.', 'Singapore', 8, 'profile_pic_ava.jpg'),
+('Noah', 'Fernandez', '1994-01-30', 'noah.fernandez@example.com', 'hashed_password_13', 'Enthusiastic sailor with a background in weather forecasting.', 'Brazil', 6, 'profile_pic_noah.jpg');
 
 CREATE TABLE applications (
     pk_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
