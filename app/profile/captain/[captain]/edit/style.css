@@ -1,6 +1,54 @@
 
+.upper-div {
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.edit-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-profile-section {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.boat-edit-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilesection {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilesection div {
+    width: 100%;
+}
+
+.boat-edit-section div {
+    width: 100%;
+}
+
+.textInput {
+    width: 97% !important;
+    margin-bottom: 25px;
+}
+
 .edit-profile-section select {
-    width: 361.78px;
+    width: 100%;
     height: 61.78px;
     flex-shrink: 0;
     border-radius: 13px;
@@ -9,26 +57,43 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     font-size: large;
     padding-left: 10px;
+    margin-bottom: 25px;
     }
+    
 .change-password-button {
-    padding: 10px 30px; /* Adjust padding to increase button size */
-    font-size: 16px; /* Adjust font size as needed */
-    background-color: #049DBF; /* Set button background color */
-    color: #fff; /* Set text color to white */
-    border: none; /* Remove default button border */
-    border-radius: 38px; /* Optional: Add border-radius for rounded corners */
-    cursor: pointer; /* Add pointer cursor on hover */
-    margin-top: 20px;
+    background-color: #049dbf;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 38px;
+    height: fit-content;
+    color: #fff;
+    width: 250px;
+    border: none;
+    font-size: 25px;
 }
+
+.buttonCenter {
+    margin-top: 0 !important;
+    width: 33%;
+}
+
+.simp-btn {
+    margin-bottom: 0;
+    width: 250px;
+}
+
+.edit-profile-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .bio-section {
-    width: 361px;
     margin: 0 auto;
 }
 
-h3 {
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
 .bio-section textarea {
     width: 100%;
 }
@@ -37,39 +102,17 @@ h3 {
 }
 
 .bioInput {
-    height: 100px;
-    width: 300px;
-}
-
-.edit-profile-section {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    margin: 0 auto 2%;
+    min-height: 150px;
+    margin-bottom: 25px;
 }
 
 .label {
     margin-top: 0;
 }
 
-.boat-edit-section {
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-.profilesection {
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .togglebutton {
-    width: 30%;
-    margin: 30px auto 0;
+    width: 30% !important;
+    margin: 10px auto 0;
     text-align: left;
     flex-direction: column;
 }
@@ -77,15 +120,221 @@ h3 {
 .togglebutton div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
-    .boat-edit-section,
-    .profilesection {
-        width: 100%;
+.password-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    margin-bottom: 12.5px;
+}
 
+.editProfilePicture {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 24px;
+}
+
+.fileFlexBox {
+    position: relative;
+    display: flex;
+    width: 90% !important;
+    justify-content: center;
+    align-content: center;
+    border-radius: 24px;
+    background-color: #049DBF;
+    color: #fff;
+    height: 50px;
+    margin: 2% auto 25px;
+}
+
+.fileFlexBox h3 {
+    margin: 0;
+}
+
+.file-input {
+    position: absolute;
+    top: -2%;
+    height: 50px;
+}
+
+.closeEdit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 40px;
+    height: auto;
+}
+
+.password-button-mobile {
+    display: none;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .editWrapper {
+        width: 96%;
     }
+
     .edit-profile-section {
         flex-direction: column;
+        align-items: center;
+        width: 96%;
+        border-radius: 33px;
+        border: 1px solid #c1c1c1;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+        padding: 4% 0 6%;
     }
+
+    .textInput {
+        margin-bottom: 0;
+    }
+
+    .profile-container {
+        width: 96%;
+    }
+
+    .profilesection {
+        width: 96%;
+        margin-bottom: 40px;
+    }
+
+    .boat-edit-section {
+        width: 96%;
+    }
+
+    .boat-edit-section h3:first-child {
+        margin-top: 4px;
+       
+    }
+
+    .fileFlexBox {
+        width: 80% !important;
+        margin-bottom: 0;
+    }
+
+    .profile-container {
+        margin: 0 auto;
+    }
+
+    .profilepicture {
+        margin-top: 20px;
+    }
+
+    .header {
+        margin-bottom: 0;
+    }
+    
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .closeEdit {
+        position: absolute;
+        top: 0.45%;
+        left: 0;
+        padding: 10px 10px 10px 18px;
+        margin-left: 0;
+    }
+
+    .textInput {
+        width: 97%;
+    }
+
+    .simp-btn {
+        font-size: 1.3em;
+    }
+
+    .buttonCenter {
+        margin: 0 auto;
+        width: auto;
+    }
+
+    .fileFlexBox h3 {
+        font-size: 1.3em;
+    }
+
+    .togglebutton {
+        margin: 25px auto 10px;
+    }
+
+    .profilesection select {
+        margin-bottom: 0;
+    }
+
+    .bioInput {
+        margin-bottom: 0;
+    }
+
+    .password-button-container {
+        display: none;
+    }
+
+    .password-button-mobile {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .password-button-mobile button {
+        font-size: 1.3em;
+    }
+
+    .simp-btn {
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .editWrapper {
+        width: 96%;
+        padding-bottom: 8%;
+    }
+
+    .profile-container {
+        width: 95%;
+    }
+
+    .editProfilePicture {
+        width: 100%;
+    }
+
+    .textInput {
+        width: 97%;
+    }
+
+    .fileFlexBox {
+        width: 90%;
+    }
+
+    .editTitle {
+        font-size: 1.5em;
+    }
+
+    .closeEdit {
+        position: absolute;
+        padding: 10px 10px 10px 15px;
+        width: 33px;
+    }
+
+    .simp-btn {
+        font-size: 1.2em;
+    }
+
+    .fileFlexBox h3 {
+        font-size: 1.2em;
+    }
+
 }

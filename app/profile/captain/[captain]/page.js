@@ -112,6 +112,8 @@ export default function CaptainProfilePage() {
                         height={400}
                         className="profilePicture-mobile"
                     />
+                    <p className="bio">{bio}</p>
+                </div>
                     <div className="infoContainer-mobile">
                         <div className="infoWrapper">
                             <h3 className="section-title">About {firstName}</h3>
@@ -184,7 +186,6 @@ export default function CaptainProfilePage() {
                             <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
-                            <br />
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>

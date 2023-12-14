@@ -1,54 +1,50 @@
 .height {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
   }
   
   .flexBox {
+    width: 96%;
+    height: fit-content;
     display: flex;
-    justify-content: space-between;
-    width: 96%;
-    max-height: 500px;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 2.5%;
   }
-  
-  .bio {
-    width: 96%;
-    font-size: 18px;
-    margin-top: 100px;
-    margin-left: 100px;
-    max-height: 500px;
-  }
-  
-  .firstname {
-    font-size: 18px;
-    margin-top: 100px;
-    margin-left: 100px; 
-    max-height: 400px;/* Adjust the margin to move the text more to the right */
-  }
-  
 
-  .rightWrapper img {
-    margin-right: 0px;
-    margin-top: 40px;
-    padding: 20px; /* Adjust the margin as needed */
+  .right-wrapper {
+    max-width: 400px;
+    height: fit-content;
+  }
+
+  .right-wrapper img {
+      border-radius: 24px;
+      width: 100%;
   }
   
+  .left-wrapper {
+    width: 50%;
+    height: fit-content;
+  } 
+
   
   .infoWrapper {
-    text-align: left;
+    width: auto;
+  }
+
+  .infoWrapper p {
+    margin-top: 4px;
   }
  
   .infoContainer {
-    width: 70%;
-    height: 160px;
     border-radius: 33px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     padding: 30px;
+    align-self: flex-end;
     margin-top: 20px;
-    margin-left: 40px;
   }
   /* Add additional styles as needed for your layout */
   .buttonWrapper {
@@ -57,7 +53,17 @@
     margin-top: 20px; /* Adjust the margin as needed */
   }
   
-  .buttonWrapper button {
+.buttonWrapper {
+    display: flex;
+    justify-content: center; /* Align the button to the left */
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.buttonWrapper-mobile {
+    display: none;
+}
+
+.buttonWrapper button {
     background-color: #049dbf;
     cursor: pointer;
     padding: 15px 20px;
@@ -66,117 +72,141 @@
     min-width: 100px;
     border: none;
     font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .buttonWrapper button:hover {
-    background-color: #037a9c; /* Change color on hover if needed */
-  }
-  /* Style the trip images */
-  .tripimg {
-    width: 100%;
-  }
-  
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    font-weight: 600;
 }
-  .tripimg img {
-    width: 100%; 
-    height: auto; 
-    display: block;
-    max-width: 100%;
+
+  .navWrapperBorderBottom {
+    margin-bottom: 0;
   }
-  
-  .tripimg img {
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    max-height: 300px; 
-    display: block; 
-    border-radius: 8px;
+
+  .edit-button {
+    margin: 0 auto;
   }
-  
-  .trips-container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 70%;
+
+  .section-title {
+    font-size: 1.4em;
+    font-weight: 600;
   }
-  
-  .trip-item {
-    width: 35%;
-    box-sizing: border-box;
-    padding: 20px;
-    margin-left: 40px;
+
+  .profilePicture-mobile {
+      display: none;
   }
-  
-  /* Add this style to make the "Trips" text bigger */
-  h3 {
-    font-size: 20px; /* Adjust the font size as needed */
+
+  .infoContainer-mobile {
+      display: none;
   }
-  
-  .Tripstext {
-    margin-left: 100px;
+
+  .signout-div-desktop {
+      display: flex;
+      margin-bottom: 5%;
   }
-  
-  .Tripsitems {
-    margin-left: 20px
-  }
-  
-  .tripdetails {
-   margin-left: 20px;
-  }
-  .notrips {
-    margin-left: 80px;
+
+  .signout-div-mobile {
+      display: none;
   }
   
   @media only screen and (max-width: 500px) {
+
+    .height {
+        width: 94%;
+        max-width: 94%;
+        margin: 0 auto 8%;
+    }
+
     .flexBox {
-      flex-direction: column; /* Change to a single column layout on smaller screens */
+      margin-top: 0;
+  }
+
+    .bio {
+      width: 95%;
+      margin: 0 auto 4%;
+  }
+
+    .flexBox {
+      flex-direction: column;
     }
-  
-    .rightWrapper img {
-      margin-right: 0; /* Remove right margin on smaller screens */
-      margin-top: 20px; /* Adjust top margin on smaller screens */
+
+    .left-wrapper {
+        width: 100%;
     }
-  
-    .infoContainer {
-      width: 70%; /* Full width on smaller screens */
-      margin-left: 95px; /* Remove left margin on smaller screens */
+
+    .left-wrapper {
+        min-height: 50px;
+        height: auto;
     }
-  
+
+    .profilePicture {
+      display: none;
+  }
+
+  .profilePicture-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 4% auto;
+}
+
+  .infoContainer {
+      display: none;
+  }
+
+  .infoContainer-mobile {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+  }
+
+  .infoWrapper {
+      width: 50%;
+      text-align: center;
+  }
+
+    .section-title {
+        text-align: center;
+    }
+
+    .buttonWrapper-mobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+    }
+
     .buttonWrapper {
-      margin-top: 10px; /* Adjust top margin on smaller screens */
-    }
-  
-    .Tripstext,
-    .Tripsitems {
-      margin-left: 20px;
-      margin-top: 100px; /* Adjust the margin for smaller screens */
+        display: none;
     }
     
-    .rightWrapper img {
-      margin-left: 70px;
+    .buttonWrapper-mobile button {
+        background-color: #049dbf;
+        cursor: pointer;
+        padding: 15px 20px;
+        border-radius: 38px;
+        color: #fff;
+        min-width: 100px;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
     }
-  
-    .Tripstext {
-      margin-top: 750px;
+
+    .signout-div-desktop {
+        display: none;
     }
-    .trips-container {
-      width: 100%; /* Full width for trip items on smaller screens */
+
+    .signout-div-mobile {
+        display: flex;
     }
-  
-    .trip-item {
-      width: 100%; /* Full width for trip items on smaller screens */
-      margin: 0 0 20px;
-      margin-top: 0px; /* Adjust margins for better spacing */
+
+    .navWrapperBorderBottom {
+      margin-bottom: 20px;
     }
-  
-    .tripimg img {
-      border-radius: 8px;
-    }
-  
-  }
+
+}
+
+@media only screen and (max-width: 400px) {
+
+  .infoContainer-mobile h3 {
+    font-size: 1.1em;
+}    
+
+}

@@ -131,11 +131,20 @@ export default function EditCrewProfilePage() {
 
     return (
         <div>
-            <div>
+            <div className="upper-div">
+            <Image
+                                src="/back-button.png"
+                                alt="Close edit"
+                                width={100}
+                                height={100}
+                                className="closeEdit"
+                                onClick={() => router.push(`/profile/crew/${params.crew}`)}
+                            />
                 <div className="editWrapper">
-                    <div>
+                <h1 className="editTitle">Edit your profile</h1>
+                    <div className="profile-container">
+                        <div className="profile-info">
                         <div>
-                            <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
                             {profilePicture && typeof profilePicture === "string" ? (
                                 <img
                                     className="editProfilePicture"
@@ -149,16 +158,18 @@ export default function EditCrewProfilePage() {
                                     alt="Profile picture"
                                 />
                             )}
-                            <br />
                             <span className="file-name">{profilePicture ? profilePicture.name : ""}</span>
+                            <FileInputField label="Change profile picture" type="file" onChange={handleProfilePictureChange} />
                         </div>
                         <TextInputField
+                        className="input-field"
                             label={"First name"}
                             type="text"
                             value={firstName}
                             onChange={e => setFirstName(e.target.value)}
                         />
                         <TextInputField
+                        className="input-field"
                             label={"Last name"}
                             type="text"
                             value={lastName}
@@ -166,6 +177,7 @@ export default function EditCrewProfilePage() {
                         />
                         {error && <p className="error-message">{error}</p>}
                         <TextInputField
+                        className="input-field"
                             label={"Country"}
                             type="text"
                             value={country}
@@ -174,6 +186,7 @@ export default function EditCrewProfilePage() {
                         <div>
                             <h3 htmlFor="exp">Experience </h3>
                             <select
+                            className="input-field"
                                 defaultValue="none"
                                 id="exp"
                                 onChange={e => {
@@ -197,38 +210,34 @@ export default function EditCrewProfilePage() {
                         </div>
                         <TextInputField
                             label={"E-mail"}
+                            id="email-input"
                             type="text"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
+                        </div>
                         {showPasswordFields ? (
                             <div className="password-fields">
                                 <TextInputField
+                                className="input-field"
                                     label={"Password"}
                                     type="password"
                                     onChange={e => setPassword(e.target.value)}
                                 />
                                 <TextInputField
+                                className="input-field"
                                     label="Confirm Password"
                                     type="password"
                                     onChange={e => setPasswordConfirmation(e.target.value)}
                                 />
                             </div>
                         ) : (
-                            <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>
-                                Change password
-                            </button>
+                            <div className="change-password-button">
+                                <SimpleButton text={"Change password"} onClick={() => setShowPasswordFields(true)} />
+                            </div>
                         )}
                         <div className="save-button">
                             <SimpleButton text={"Save"} onClick={handleSaveClick} />
-                            <Image
-                                src="/cross.png"
-                                alt="Close edit"
-                                width={20}
-                                height={20}
-                                className="closeEdit"
-                                onClick={() => router.push(`/profile/crew/${params.crew}`)}
-                            />
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
 
 .right-wrapper {
     max-width: 400px;
-    max-height: 400px;
+    height: fit-content;
 }
 
 .right-wrapper img {
@@ -28,6 +28,10 @@
 .left-wrapper {
     width: 50%;
 }
+
+.infoWrapper p {
+    margin-top: 4px;
+  }
 
 .infoWrapper {
     text-align: left;
@@ -49,6 +53,15 @@
     align-self: flex-end;
     margin-top: 20px;
 }
+
+.boatInfoBox {
+    margin-top: 5%;
+}
+
+.boatInfoBox p {
+    margin-top: 4px;
+}
+
 /* Add additional styles as needed for your layout */
 .buttonWrapper {
     display: flex;
@@ -128,7 +141,10 @@
 }
 
 .notrips {
-    margin-left: 80px;
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+    font-weight: 600;
 }
 
 .edit-button {
@@ -160,17 +176,24 @@
         margin: 0 auto 8%;
     }
 
+    .bio {
+        width: 95%;
+        margin: 0 auto 4%;
+    }
+
+    .notrips {
+        width: 90%;
+        margin: 5px auto;
+        text-align: center;
+    }
+
     .left-wrapper {
         width: 100%;
     }
 
     .name-and-bio {
         min-height: 50px;
-        height: auto;
-    }
-
-    .name-and-bio .section-title {
-        margin-bottom: 3%;
+        height: fit-content;
     }
 
     .profilePicture {
@@ -183,7 +206,7 @@
         height: auto;
         object-fit: cover;
         border-radius: 12px;
-        margin: 7.5% auto;
+        margin: 4% auto;
     }
 
     .infoContainer {
@@ -204,6 +227,7 @@
     .boatInfoBox {
         width: 50%;
         text-align: center;
+        margin-top: 0;
     }
 
     .trips-list {
@@ -291,6 +315,10 @@
 
     .trip-card p {
         font-size: 0.8em;
+    }
+
+    .infoContainer-mobile h3 {
+        font-size: 1.1em;
     }
 
 }
