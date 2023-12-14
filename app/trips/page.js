@@ -75,7 +75,7 @@ export default function TripsOverview() {
             <h1>Trips on SailMore</h1>
             <div className="filter">
                 <form className="filter-form" onSubmit={handleSubmit}>
-                    <div className="search-bar">
+                    <div className="search-bar search-border">
                         <div className="search-bar-input">
                             <div className="pick-date search-input">
                                 <DatePicker
@@ -100,7 +100,7 @@ export default function TripsOverview() {
                                 onChange={e => setTargetPrice(e.target.value)}
                             />
                         </div>
-                        <button type="submit" className="submit-button">
+                        <button type="submit" className="submit-button search-bar-button ">
                             <img src="/search.png" />
                         </button>
                     </div>
@@ -116,11 +116,11 @@ export default function TripsOverview() {
                                 resetFilters(e);
                                 setPlaceholder("When do you plan to travel?");
                             }}
-                            className="reset-button-mobile"
+                            className="reset-button-mobile search-bar-button "
                         >
                             Reset filters
                         </button>
-                        <button type="submit" className="submit-button-mobile">
+                        <button type="submit" className="submit-button-mobile search-bar-button ">
                             <img src="/search.png" />
                         </button>
                     </div>

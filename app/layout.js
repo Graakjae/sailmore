@@ -5,6 +5,7 @@ import { AuthProvider } from "./authContext";
 import NavigationsBar from "@/components/navigationBar/NavigationBar";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Footer from "@/components/Footer";
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
                 <body className={quicksand.className}>
                     <NavigationsBar />
                     {children}
+                    <Footer />
                 </body>
             </html>
         </AuthProvider>
