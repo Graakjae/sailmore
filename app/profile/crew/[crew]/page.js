@@ -66,7 +66,7 @@ export default function CrewProfilePage() {
                     </h2>
                     <Image
                         priority
-                        src={`/profilePictures/${profilePicture}`}
+                        src={`/public_html/public/profilePictures/${profilePicture}`}
                         alt="Profile image"
                         width={400}
                         height={400}
@@ -93,7 +93,7 @@ export default function CrewProfilePage() {
                 <div className="right-wrapper">
                     <Image
                         className="profilePicture"
-                        src={`/profilePictures/${profilePicture}`}
+                        src={`/public/profilePictures/${profilePicture}`}
                         alt="Profile image"
                         width={400}
                         height={400}
