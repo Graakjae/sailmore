@@ -127,11 +127,13 @@ export default function CaptainProfilePage() {
                             <p>{length} feet</p>
                         </div>
                     </div>
+                    {authId === params.captain && (
                     <div className="buttonWrapper-mobile">
                                 <Link href={`/profile/captain/${params.captain}/edit`}>
                                     <button>Edit profile</button>
                                 </Link>
                             </div>  
+                    )}
                     <div className="trips-section">
                     <h2 className="section-title">Trips</h2>
                 <div className="trips-list">
@@ -187,11 +189,13 @@ export default function CaptainProfilePage() {
                             <p>{model}</p>
                             <p>Year {year}</p>
                             <p>{length} feet</p>
+                            {authId === params.captain && (
                             <div className="buttonWrapper">
                                 <Link href={`/profile/captain/${params.captain}/edit`}>
                                     <button>Edit profile</button>
                                 </Link>
                             </div>
+                            )}
                         </div>
                     </div>
                     <div className="signout-div-desktop">
