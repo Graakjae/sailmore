@@ -176,31 +176,35 @@ export default function EditCaptainProfilePage() {
     };
 
     return (
-        <div>
-            <div>
+        <div className="upper-div">
+            <Image
+                src="/back-button.png"
+                alt="Close edit"
+                width={100}
+                height={100}
+                className="closeEdit"
+                onClick={() => router.push(`/profile/crew/${params.crew}`)}
+            />
+            <div className="edit-wrapper">
                 <div className="edit-profile-section">
                     <div className="profilesection">
+                    <h2 className="header">Edit your profile</h2>
                         <div className="profilepicture">
-                            <FileInputField label="Profile picture" type="file" onChange={handleProfilePictureChange} />
-                            {profilePicture ? (
-                                <Image
+                        {profilePicture && typeof profilePicture === "string" ? (
+                                <img
                                     className="editProfilePicture"
                                     src={previewUrl || `/profilePictures/${profilePicture}`}
                                     alt="Profile picture"
-                                    width={300}
-                                    height={300}
                                 />
                             ) : (
-                                <Image
+                                <img
                                     className="editProfilePicture"
-                                    src={previewUrl || "/profilePictures/defaultProfilePicture.png"}
+                                    src={previewUrl || "/defaultProfilePicture.png"}
                                     alt="Profile picture"
-                                    width={300}
-                                    height={300}
                                 />
                             )}
-                            <br />
                             <span className="file-name">{profilePicture ? profilePicture.name : ""}</span>
+                            <FileInputField label="Change profile picture" type="file" onChange={handleProfilePictureChange} />
                         </div>
                         <TextInputField
                             label={"First name"}
@@ -252,6 +256,7 @@ export default function EditCaptainProfilePage() {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
+                        <div className="password-button-mobile">
                         {showPasswordFields ? (
                             <div className="password-fields">
                                 <TextInputField
@@ -270,11 +275,12 @@ export default function EditCaptainProfilePage() {
                                 Change password
                             </button>
                         )}
+                        </div>
                     </div>
                     <div className="boat-edit-section">
-                        <h3>Boat info: </h3>
+                    <h2 className="header">Edit your boat</h2>
                         <TextInputField
-                            label={"Boat brand"}
+                            label={"Brand"}
                             type="text"
                             value={brand}
                             onChange={e => setBrand(e.target.value)}
@@ -310,11 +316,33 @@ export default function EditCaptainProfilePage() {
                             <SwitchToggle text={"Wifi"} onChange={() => setWifi(!wifi)} value={wifi} />
                             <SwitchToggle text={"Power"} onChange={() => setPower(!power)} value={power} />
                         </div>
-                        <SimpleButton text={"Save"} onClick={handleSaveClick} />
-                        {error && <p className="error-message">{error}</p>}
                     </div>
                 </div>
             </div>
+            <div className="edit-profile-buttons">
+                <div className="password-button-container">
+                {showPasswordFields ? (
+                            <div className="password-fields">
+                                <TextInputField
+                                    label={"Password"}
+                                    type="password"
+                                    onChange={e => setPassword(e.target.value)}
+                                />
+                                <TextInputField
+                                    label="Confirm Password"
+                                    type="password"
+                                    onChange={e => setPasswordConfirmation(e.target.value)}
+                                />
+                            </div>
+                        ) : (
+                            <button className="change-password-button" onClick={() => setShowPasswordFields(true)}>
+                                Change password
+                            </button>
+                        )}
+                        </div>
+                        <SimpleButton text={"Save"} onClick={handleSaveClick} />
+                        {error && <p className="error-message">{error}</p>}
+                </div>
         </div>
     );
 }

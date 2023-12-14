@@ -1,5 +1,5 @@
 .editWrapper {
-    margin: 0 auto;
+    margin: 2% auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -24,6 +24,10 @@ h3 {
     max-width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+.profile-info {
+    margin-bottom: 10px;
 }
 
 .editWrapper select {
@@ -59,16 +63,13 @@ h3 {
     width: 100%;
 }
 
-.edit-profile-buttons {
-    margin-top: 40px;
-}
-
 .simp-btn {
+    margin-top: 12.5px;
     margin-bottom: 0 !important;
 }
 
 .buttonCenter {
-    margin-top: 20px !important;
+    margin-top: 0 !important;
 }
 
 .upper-div {
@@ -113,7 +114,7 @@ h3 {
 
     .editWrapper {
         width: 96%;
-        padding: 4% 0;
+        padding: 4% 0 6%;
     }
 
     .profile-container {
@@ -139,12 +140,25 @@ h3 {
     .textInput {
         width: 97%;
     }
+
+    .fileFlexBox {
+        width: 80%;
+    }
+
+    .simp-btn {
+        font-size: 1.3em;
+    }
+
+    .fileFlexBox h3 {
+        font-size: 1.3em;
+    }
 }
 
 @media only screen and (max-width: 400px) {
 
     .editWrapper {
         width: 96%;
+        padding-bottom: 8%;
     }
 
     .profile-container {
@@ -163,10 +177,22 @@ h3 {
         width: 90%;
     }
 
+    .editTitle {
+        font-size: 1.5em;
+    }
+
     .closeEdit {
         position: absolute;
         padding: 10px 10px 10px 15px;
         width: 33px;
+    }
+
+    .simp-btn {
+        font-size: 1.2em;
+    }
+
+    .fileFlexBox h3 {
+        font-size: 1.2em;
     }
 
 }

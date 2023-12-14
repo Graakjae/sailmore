@@ -83,12 +83,12 @@ export default function CrewProfilePage() {
                         </div>
                     </div>
                     <div className="buttonWrapper-mobile">
-                                <Link href={`/profile/captain/${params.captain}/edit`}>
+                                <Link href={`/profile/crew/${params.crew}/edit`}>
                                     <button>Edit profile</button>
                                 </Link>
                             </div>  
                 <div className="signout-div-mobile">
-                    {authId === params.captain && <SignOut />}
+                    {authId === params.crew && <SignOut />}
                 </div>
                 <div className="right-wrapper">
                     <Image

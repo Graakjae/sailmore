@@ -143,6 +143,7 @@ export default function EditCrewProfilePage() {
                 <div className="editWrapper">
                 <h1 className="editTitle">Edit your profile</h1>
                     <div className="profile-container">
+                        <div className="profile-info">
                         <div>
                             {profilePicture && typeof profilePicture === "string" ? (
                                 <img
@@ -214,7 +215,7 @@ export default function EditCrewProfilePage() {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
-                        <div className="edit-profile-buttons">
+                        </div>
                         {showPasswordFields ? (
                             <div className="password-fields">
                                 <TextInputField
@@ -237,7 +238,6 @@ export default function EditCrewProfilePage() {
                         )}
                         <div className="save-button">
                             <SimpleButton text={"Save"} onClick={handleSaveClick} />
-                        </div>
                         </div>
                     </div>
                 </div>
