@@ -1,33 +1,32 @@
-.height {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
-}
-
 .flexBox {
     display: flex;
-    justify-content: space-between;
-    width: 96%;
-    max-height: 500px;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
 }
 
-.bio {
-    font-size: 12px;
-    margin-top: 210px;
-    margin-right: 50px;
+.name-and-bio {
+    min-height: 400px;
 }
 
-.firstname {
-    font-size: 18px;
-    margin-top: 40px;
-    margin-left: 90px;
-    max-height: 400px; /* Adjust the margin to move the text more to the right */
+.right-wrapper {
+    max-width: 400px;
+    max-height: 400px;
 }
 
-.rightWrapper img {
-    margin-right: 0px;
-    margin-top: 40px;
-    border-radius: 10px;
+.right-wrapper img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.left-wrapper {
+    width: 50%;
 }
 
 .infoWrapper {
@@ -41,7 +40,6 @@
 
 /* Add the following styles to create a box around the boat information */
 .infoContainer {
-    width: 70%;
     border-radius: 33px;
     border: 1px solid #c1c1c1;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
@@ -50,13 +48,16 @@
     padding: 30px;
     align-self: flex-end;
     margin-top: 20px;
-    margin-left: 30px; /* Align the box to the right */
 }
 /* Add additional styles as needed for your layout */
 .buttonWrapper {
     display: flex;
-    justify-content: flex-start; /* Align the button to the left */
+    justify-content: center; /* Align the button to the left */
     margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.buttonWrapper-mobile {
+    display: none;
 }
 
 .buttonWrapper button {
@@ -68,116 +69,228 @@
     min-width: 100px;
     border: none;
     font-size: 18px;
-    margin-bottom: 20px;
+    font-weight: 600;
 }
 
-.buttonWrapper button:hover {
-    background-color: #037a9c; /* Change color on hover if needed */
-}
-/* Style the trip images */
-.tripimg {
+.trips-section {
     width: 100%;
+    margin-top: 20px;
 }
 
-.tripimg img {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-width: 100%;
-}
-
-.tripimg img {
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    max-height: 300px;
-    display: block;
-    border-radius: 8px;
-}
-
-.trips-container {
+.trips-list {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    width: 1000px;
-    margin-left: 20px;
+    flex-direction: row;
+    column-gap: 2%;
 }
 
-.trip-item {
-    width: 280px;
-    box-sizing: border-box;
-    padding: 20px;
-    margin-left: 50px;
+.trip-card {
+    width: 32%;
     text-decoration: none;
     color: black;
+    display: block;
+    margin-top: 2.5%;
+}
+
+.trip-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.trip-card h2 {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 243px; 
+    white-space: nowrap;
+}
+
+.trip-card h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 243px; 
+    white-space: nowrap;
+}
+
+.trip-card p {
+    font-size: 0.9em;
 }
 
 .profilePicture {
-    border-radius: 10px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
-/* Add this style to make the "Trips" text bigger */
-h3 {
-    font-size: 20px; /* Adjust the font size as needed */
-}
-
-.Tripstext {
-    margin-left: 90px;
-}
-
-.Tripsitems {
-    max-width: 800px;
-}
-
-.tripdetails {
-    margin-left: 0px;
-}
 .notrips {
     margin-left: 80px;
 }
 
-@media only screen and (max-width: 600px) {
-    .flexBox {
-        flex-direction: column; /* Change to a single column layout on smaller screens */
+.edit-button {
+    margin: 0 auto;
+}
+
+.profilePicture-mobile {
+    display: none;
+}
+
+.infoContainer-mobile {
+    display: none;
+}
+
+.signout-div-desktop {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.signout-div-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .height {
+        width: 94%;
+        max-width: 94%;
+        margin: 0 auto 8%;
     }
 
-    .rightWrapper img {
-        margin-right: 0; /* Remove right margin on smaller screens */
-        margin-top: 20px; /* Adjust top margin on smaller screens */
+    .left-wrapper {
+        width: 100%;
+    }
+
+    .name-and-bio {
+        min-height: 50px;
+        height: auto;
+    }
+
+    .name-and-bio .section-title {
+        margin-bottom: 3%;
+    }
+
+    .profilePicture {
+        display: none;
+    }
+
+    .profilePicture-mobile {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 12px;
+        margin: 7.5% auto;
     }
 
     .infoContainer {
-        width: 100%; /* Full width on smaller screens */
-        margin-left: 0; /* Remove left margin on smaller screens */
+        display: none;
+    }
+
+    .infoContainer-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .infoWrapper {
+        width: 50%;
+        text-align: center;
+    }
+
+    .boatInfoBox {
+        width: 50%;
+        text-align: center;
+    }
+
+    .trips-list {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: row;
+        column-gap: 2%;
+    }
+    
+    .trip-card {
+        width: 49%;
+        text-decoration: none;
+        color: black;
+        display: block;
+        margin-top: 2.5%;
+    }
+
+    .section-title {
+        text-align: center;
+    }
+
+    .trip-card h2 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 198px; 
+        white-space: nowrap;
+    }
+    
+    .trip-card h3 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 198px; 
+        white-space: nowrap;
+    }
+
+    .buttonWrapper-mobile {
+        display: flex;
+        justify-content: center;
     }
 
     .buttonWrapper {
-        margin-top: 10px; /* Adjust top margin on smaller screens */
+        display: none;
+    }
+    
+    .buttonWrapper-mobile button {
+        background-color: #049dbf;
+        cursor: pointer;
+        padding: 15px 20px;
+        border-radius: 38px;
+        color: #fff;
+        min-width: 100px;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
     }
 
-    .Tripstext,
-    .Tripsitems {
-        margin-left: 20px;
-        margin-top: 100px; /* Adjust the margin for smaller screens */
+    .signout-div-desktop {
+        display: none;
     }
 
-    .rightWrapper img {
-        margin-left: 70px;
+    .signout-div-mobile {
+        display: flex;
     }
 
-    .Tripstext {
-        margin-top: 750px;
+}
+
+@media only screen and (max-width: 400px) {
+
+    .trip-card h2 {
+        font-size: 0.9em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 172px; 
+        white-space: nowrap;
     }
-    .trips-container {
-        width: 100%; /* Full width for trip items on smaller screens */
+    
+    .trip-card h3 {
+        font-size: 0.9em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 172px; 
+        white-space: nowrap;
     }
 
-    .trip-item {
-        width: 100%; /* Full width for trip items on smaller screens */
-        margin: 0 0 20px;
-        margin-top: 0px; /* Adjust margins for better spacing */
+    .trip-card p {
+        font-size: 0.8em;
     }
 
-    .tripimg img {
-        border-radius: 8px;
-    }
 }
