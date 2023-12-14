@@ -103,7 +103,7 @@ export default function CaptainProfilePage() {
                     </p>
                     <Image
                         priority
-                        src={`/profilePictures/${profilePicture}`}
+                        src={`/public/profilePictures/${profilePicture}`}
                         alt="Profile image"
                         width={400}
                         height={400}
@@ -142,7 +142,7 @@ export default function CaptainProfilePage() {
                                 <Link href={`/trip/${trip.trip_id}`} key={trip.trip_id} className="trip-card">
                                             {trip.images.length > 0 ? (
                                                 <Image
-                                                    src={`/trip_img/${trip.images[0]}`}
+                                                    src={`/pulbic_html/public/trip_img/${trip.images[0]}`}
                                                     alt={`Image of ${trip.title}`}
                                                     width={200}
                                                     height={200}
