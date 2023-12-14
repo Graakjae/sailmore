@@ -7,7 +7,7 @@ if (isset($_GET['trip'])) {
     try {
         $tripId = $_GET['trip'];
 
-        $sql = "SELECT crewmember.firstname, crewmember.lastname, crewmember.pk_id
+        $sql = "SELECT crewmember.firstname, crewmember.lastname, crewmember.pk_id, crewmember.profilePicture
                 FROM applications
                 JOIN crewmember ON applications.crewmember_ID = crewmember.pk_id
                 WHERE applications.trip_ID = ? AND applications.applicationStatus = 'accepted'";

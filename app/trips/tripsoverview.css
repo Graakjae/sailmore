@@ -24,6 +24,10 @@
 .trip-title {
     font-size: 1.2em;
     color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .trip-area {
