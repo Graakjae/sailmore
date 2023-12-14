@@ -172,13 +172,14 @@ export default function CreateTripPage() {
                                 className="descriptionTextarea"
                             />
                         </div>
-                        <div>
-                            <h3>Boat image</h3>
+                        <div className="boat-picture-upload">
+                            <h3>Images</h3>
                             <input
                                 type="file"
                                 onChange={handleAddTripImage}
                                 placeholder=""
                                 multiple
+                                className="add-img-button"
                                 name="trip_img[]"
                             />
                         </div>
