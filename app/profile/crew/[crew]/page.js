@@ -82,11 +82,13 @@ export default function CrewProfilePage() {
                             <p>{exp}</p>
                         </div>
                     </div>
+                    {authId === params.crew && (
                     <div className="buttonWrapper-mobile">
                                 <Link href={`/profile/crew/${params.crew}/edit`}>
                                     <button>Edit profile</button>
                                 </Link>
-                            </div>  
+                            </div>
+                    )}
                 <div className="signout-div-mobile">
                     {authId === params.crew && <SignOut />}
                 </div>
@@ -105,16 +107,20 @@ export default function CrewProfilePage() {
                             <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
+                            {authId === params.crew && (
                             <div className="buttonWrapper">
                                 <Link href={`/profile/crew/${params.crew}/edit`}>
                                     <button>Edit profile</button>
                                 </Link>
                             </div>
+                            )}
                         </div>
+                    </div>
+                    <div className="signout-div-desktop">
+                        {authId === params.crew && <SignOut />}
                     </div>
                 </div>
             </div>
-            {authId === params.crew && <SignOut />}
         </div>
     );
 }
