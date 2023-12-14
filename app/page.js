@@ -80,13 +80,13 @@ function HomePage() {
                                 />
                             </div>
                             <Link
-                                className="submit-button search-bar-icon "
+                                className="submit-button-front search-bar-icon "
                                 href={{
                                     pathname: "/trips"
                                 }}
                             >
                                 <button type="submit" className="search-bar-icon2">
-                                    <img src="/search.png" />
+                                    <img src="/search.png" className="search-bar-icon-img" />
                                 </button>
                             </Link>
                         </div>

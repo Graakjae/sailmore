@@ -101,7 +101,7 @@ export default function TripsOverview() {
                             />
                         </div>
                         <button type="submit" className="submit-button search-bar-button ">
-                            <img src="/search.png" />
+                            <img src="/search.png" className="search-bar-icon-img" />
                         </button>
                     </div>
                     <input
@@ -121,7 +121,7 @@ export default function TripsOverview() {
                             Reset filters
                         </button>
                         <button type="submit" className="submit-button-mobile search-bar-button ">
-                            <img src="/search.png" />
+                            <img src="/search.png" className="search-bar-icon-img" />
                         </button>
                     </div>
                     <button

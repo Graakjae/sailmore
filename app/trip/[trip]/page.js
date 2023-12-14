@@ -124,7 +124,7 @@ export default function TripPage() {
                 </div>
                 <div className="trip-info">
                     <div className="left-wrapper">
-                        <h2 className="trip-title">{trip.title}</h2>
+                        <h2 className="trip-page-title">{trip.title}</h2>
                         <Link href={`/profile/captain/${trip.captain_ID}`} className="captain-wrapper">
                             {trip.profilePicture ? (
                                 <Image
