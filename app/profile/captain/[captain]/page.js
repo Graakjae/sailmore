@@ -122,7 +122,8 @@ export default function CaptainProfilePage() {
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>{brand} {model}</p>
+                            <p>{brand}</p>
+                            <p>{model}</p>
                             <p>Year {year}</p>
                             <p>{length} feet</p>
                         </div>
@@ -183,7 +184,8 @@ export default function CaptainProfilePage() {
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>{brand} {model}</p>
+                            <p>{brand}</p>
+                            <p>{model}</p>
                             <p>Year {year}</p>
                             <p>{length} feet</p>
                             <div className="buttonWrapper">
