@@ -93,7 +93,7 @@ export default function TripPage() {
     console.log("trip", trip);
     const neededCrew = maxCapacity - acceptedCrew.length;
     const crewNumbers = Array.from({ length: neededCrew }, (_, index) => index + 1);
-    console.log(trip);
+    console.log(acceptedCrew);
     return (
         <div className="trip-wrapper">
             <div>
@@ -249,6 +249,7 @@ export default function TripPage() {
                                             alt={`Image of ${member.firstname}`}
                                             width={30}
                                             height={30}
+                                            className="crew-image"
                                         />
                                         <p>
                                             {member.firstname} {member.lastname}
@@ -262,6 +263,7 @@ export default function TripPage() {
                                             alt={`You?`}
                                             width={30}
                                             height={30}
+                                            className="crew-image"
                                         />
                                         <p>You?</p>
                                     </div>

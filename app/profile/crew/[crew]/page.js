@@ -74,24 +74,22 @@ export default function CrewProfilePage() {
                     />
                     <p className="bio">{bio}</p>
                 </div>
-                    <div className="infoContainer-mobile">
-                        <div className="infoWrapper">
-                            <h3 className="section-title">About {firstName}</h3>
-                            <p>{CalculateAge(age)} years old</p>
-                            <p>From {country}</p>
-                            <p>{exp}</p>
-                        </div>
+                <div className="infoContainer-mobile">
+                    <div className="infoWrapper">
+                        <h3 className="section-title">About {firstName}</h3>
+                        <p>{CalculateAge(age)} years old</p>
+                        <p>From {country}</p>
+                        <p>{exp}</p>
                     </div>
-                    {authId === params.crew && (
-                    <div className="buttonWrapper-mobile">
-                                <Link href={`/profile/crew/${params.crew}/edit`}>
-                                    <button>Edit profile</button>
-                                </Link>
-                            </div>
-                    )}
-                <div className="signout-div-mobile">
-                    {authId === params.crew && <SignOut />}
                 </div>
+                {authId === params.crew && (
+                    <div className="buttonWrapper-mobile">
+                        <Link href={`/profile/crew/${params.crew}/edit`}>
+                            <button>Edit profile</button>
+                        </Link>
+                    </div>
+                )}
+                <div className="signout-div-mobile">{authId == params.crew && <SignOut />}</div>
                 <div className="right-wrapper">
                     <Image
                         className="profilePicture"
@@ -103,22 +101,20 @@ export default function CrewProfilePage() {
                     />
                     <div className="infoContainer">
                         <div className="infoWrapper">
-                        <h3 className="section-title">About {firstName}</h3>
+                            <h3 className="section-title">About {firstName}</h3>
                             <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
                             {authId === params.crew && (
-                            <div className="buttonWrapper">
-                                <Link href={`/profile/crew/${params.crew}/edit`}>
-                                    <button>Edit profile</button>
-                                </Link>
-                            </div>
+                                <div className="buttonWrapper">
+                                    <Link href={`/profile/crew/${params.crew}/edit`}>
+                                        <button>Edit profile</button>
+                                    </Link>
+                                </div>
                             )}
                         </div>
                     </div>
-                    <div className="signout-div-desktop">
-                        {authId === params.crew && <SignOut />}
-                    </div>
+                    <div className="signout-div-desktop">{authId == params.crew && <SignOut />}</div>
                 </div>
             </div>
         </div>

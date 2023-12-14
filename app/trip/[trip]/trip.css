@@ -103,6 +103,11 @@
     font-weight: 600;
 }
 
+.crew-image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .background {
     position: fixed;
     height: 100vh;

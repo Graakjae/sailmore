@@ -1,38 +1,37 @@
 .height {
     display: flex;
     flex-direction: column;
-  }
-  
-  .flexBox {
+}
+
+.flexBox {
     width: 96%;
     height: fit-content;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     margin-top: 2.5%;
-  }
+}
 
-  .right-wrapper {
+.right-wrapper {
     max-width: 400px;
     height: fit-content;
-  }
+}
 
-  .right-wrapper img {
-      border-radius: 24px;
-      width: 100%;
-  }
-  
-  .left-wrapper {
+.right-wrapper img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+.left-wrapper {
     width: 50%;
     height: fit-content;
-  } 
+}
 
-  
-  .infoWrapper {
+.infoWrapper {
     width: auto;
-  }
+}
 
-  .infoWrapper p {
+.infoWrapper p {
     margin-top: 4px;
   }
  
@@ -45,14 +44,14 @@
     padding: 30px;
     align-self: flex-end;
     margin-top: 20px;
-  }
-  /* Add additional styles as needed for your layout */
-  .buttonWrapper {
+}
+/* Add additional styles as needed for your layout */
+.buttonWrapper {
     display: flex;
     justify-content: flex-start; /* Align the button to the left */
     margin-top: 20px; /* Adjust the margin as needed */
-  }
-  
+}
+
 .buttonWrapper {
     display: flex;
     justify-content: center; /* Align the button to the left */
@@ -75,38 +74,37 @@
     font-weight: 600;
 }
 
-  .navWrapperBorderBottom {
+.navWrapperBorderBottom {
     margin-bottom: 0;
-  }
+}
 
-  .edit-button {
+.edit-button {
     margin: 0 auto;
-  }
+}
 
-  .section-title {
+.section-title {
     font-size: 1.4em;
     font-weight: 600;
-  }
+}
 
-  .profilePicture-mobile {
-      display: none;
-  }
+.profilePicture-mobile {
+    display: none;
+}
 
-  .infoContainer-mobile {
-      display: none;
-  }
+.infoContainer-mobile {
+    display: none;
+}
 
-  .signout-div-desktop {
-      display: flex;
-      margin-bottom: 5%;
-  }
+.signout-div-desktop {
+    display: flex;
+    margin-bottom: 5%;
+}
 
-  .signout-div-mobile {
-      display: none;
-  }
-  
-  @media only screen and (max-width: 500px) {
+.signout-div-mobile {
+    display: none;
+}
 
+@media only screen and (max-width: 500px) {
     .height {
         width: 94%;
         max-width: 94%;
@@ -114,16 +112,16 @@
     }
 
     .flexBox {
-      margin-top: 0;
-  }
+        margin-top: 0;
+    }
 
     .bio {
-      width: 95%;
-      margin: 0 auto 4%;
-  }
+        width: 95%;
+        margin: 0 auto 4%;
+    }
 
     .flexBox {
-      flex-direction: column;
+        flex-direction: column;
     }
 
     .left-wrapper {
@@ -136,32 +134,32 @@
     }
 
     .profilePicture {
-      display: none;
-  }
+        display: none;
+    }
 
-  .profilePicture-mobile {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-    margin: 4% auto;
-}
+    .profilePicture-mobile {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 12px;
+        margin: 4% auto;
+    }
 
-  .infoContainer {
-      display: none;
-  }
+    .infoContainer {
+        display: none;
+    }
 
-  .infoContainer-mobile {
-      display: flex;
-      width: 100%;
-      justify-content: space-evenly;
-  }
+    .infoContainer-mobile {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
 
-  .infoWrapper {
-      width: 50%;
-      text-align: center;
-  }
+    .infoWrapper {
+        width: 50%;
+        text-align: center;
+    }
 
     .section-title {
         text-align: center;
@@ -176,7 +174,7 @@
     .buttonWrapper {
         display: none;
     }
-    
+
     .buttonWrapper-mobile button {
         background-color: #049dbf;
         cursor: pointer;
@@ -198,15 +196,12 @@
     }
 
     .navWrapperBorderBottom {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
-
 }
 
 @media only screen and (max-width: 400px) {
-
-  .infoContainer-mobile h3 {
-    font-size: 1.1em;
-}    
-
+    .infoContainer-mobile h3 {
+        font-size: 1.1em;
+    }
 }
