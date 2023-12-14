@@ -247,7 +247,7 @@ export default function UpdateTripPage() {
                             onChange={e => setRules(e.target.value)}
                         />
                     </div>
-                <div>
+                <div className="picture-upload">
                     <label htmlFor="imageInput"><h3>Add Images</h3></label>
                     <input type="file" accept="image/*" multiple className="add-img-button" onChange={handleFileChange} />
                 </div>
