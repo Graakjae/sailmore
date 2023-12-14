@@ -105,7 +105,7 @@ export default function ApplicationsPage() {
                                             alt="Profile Image"
                                             width={50}
                                             height={50}
-                                            className="profilePicture"
+                                            className="profilePicture-application"
                                         />
                                         <div>
                                             <h3>

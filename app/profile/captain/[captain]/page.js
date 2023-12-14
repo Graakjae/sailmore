@@ -139,7 +139,11 @@ export default function CaptainProfilePage() {
                         <div className="trips-list">
                             {trips.length > 0 ? (
                                 trips.map(trip => (
-                                    <Link href={`/trip/${trip.trip_id}`} key={trip.trip_id} className="trip-card">
+                                    <Link
+                                        href={`/trip/${trip.trip_id}`}
+                                        key={trip.trip_id}
+                                        className="trip-card-profile"
+                                    >
                                         {trip.images.length > 0 ? (
                                             <Image
                                                 src={`/trip_img/${trip.images[0]}`}
