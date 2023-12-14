@@ -23,7 +23,8 @@ if ($result->num_rows > 0) {
             'country' => $row['country'],
             'exp' => $row['exp'],
             'profilePicture' => $row['profilePicture'],
-            'role' => $row['role']
+            'role' => $row['role'],
+            'pk_id' => $row['pk_id']
         );
     }
 } else {

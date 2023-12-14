@@ -13,3 +13,129 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.title {
+    font-size: 4rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.searchbar {
+    padding: 0 10%;
+    margin-top: 60px;
+}
+
+.homepage-wrapper {
+    padding: 0 5%;
+}
+
+.under-searchbar {
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+
+.under-searchbar-text {
+    text-decoration: none;
+    color: white;
+}
+
+.background-opacity {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.trip-list {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.frontpage-height {
+    height: 80vh;
+}
+
+.title-margin {
+    margin-top: 60px;
+}
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+        margin-top: 100px;
+    }
+
+    .under-searchbar {
+        height: 80px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .under-searchbar-text {
+        text-decoration: none;
+        color: white;
+        width: 60%;
+    }
+
+    .background-opacity {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        opacity: 0.5;
+        z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 2rem;
+        margin-top: 50px;
+    }
+
+    .background-opacity {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        opacity: 0.5;
+        z-index: -1;
+    }
+}

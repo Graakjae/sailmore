@@ -1,15 +1,29 @@
+import { usePathname } from "next/navigation";
+import { captain, crewmembers, loggedout } from "@/constants/navLinks";
+import Link from "next/link";
+import { useAuth } from "@/app/authContext";
+import "../styles/Footer.css";
+function Footer({}) {
+    const { loggedIn, userRole, userId } = useAuth();
+    let linksToRender;
 
-function Footer() {
+    if (userRole === "captain") {
+        linksToRender = captain(userId);
+    } else if (userRole === "crewmember") {
+        linksToRender = crewmembers(userId);
+    } else {
+        linksToRender = loggedout;
+    }
     return (
         <footer>
-            <ul>
-                <li><a href="TripsOverview">Trips</a></li>
-                <li><a href="travelers">Travelers</a></li>
-                <li><a href="login">Login</a></li>
-                <li><a href="signup">Signup</a></li>
-                <li><a href="AboutSailmore">About Sailmore</a></li>
-            </ul>
+            {linksToRender.map(link => (
+                <div>
+                    <Link href={`${link.link}`} className="footer-text">
+                        {link.text}
+                    </Link>
+                </div>
+            ))}
         </footer>
-    )
+    );
 }
-export default Footer
+export default Footer;

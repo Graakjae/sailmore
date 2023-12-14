@@ -1,201 +1,210 @@
 .crewmember-page {
-  width: 92%;
-  margin: 2.5% auto;
+    width: 92%;
+    margin: 2.5% auto;
 }
 
 .filter {
-  margin-top: 2%;
-  margin-bottom: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .filter-form {
-  margin-bottom: 1%;
-  display: flex;
-  align-items: center;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
 }
 
 .filter-form select {
-  margin-right: 1%;
+    margin-right: 1%;
 }
 
 .crewmember-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.crewmember-card {
-  width: 320px;
-  margin-bottom: 20px;
-  height: 390px;
-}
-
-.crewmember-img {
-  height: 320px;
-  width: 320px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.name-and-age {
-  font-weight: 1000;
-  font-size: 1.2em;
-}
-
-.exp-filter, .age-filter {
-  border-radius: 24px;
-  border: solid 1px black;
-  padding-left: 8px;
-  height: 30px;
-  margin-right: 20px;
-  width: 130px;
-}
-
-.submit-button {
-  width: 130px;
-  height: 30px;
-  background-color: #049DBF;
-  border-radius: 24px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.submit-button img {
-  width: 16%;
-  height: auto;
-}
-
-.reset-button {
-  height: 30px;
-  border-radius: 24px;
-  padding: 0 26px;
-  border: none;
-  background-color: #049DBF;
-  color: white;
-  font-weight: 600;
-  width: 130px;
-}
-
-.submit-button-mobile {
-  display: none;
-}
-
-@media only screen and (max-width: 500px) {
-
-  h1 {
-    text-align: center;
-  }
-
-  .filter {
-    margin-bottom: 8%;
-  }
-
-  .filter-form {
-    margin-bottom: 2%;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .crewmember-page {
-    width: 94%;
-    margin: 4% auto 5%;
-  }
-  
-  .crewmember-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
+}
 
-  .crewmember-card {
-    width: 49%;
-    min-height: 230px;
-    height: auto;
+.crewmember-card {
+    width: 320px;
     margin-bottom: 20px;
-  }
+    height: 390px;
+}
 
-  .crewmember-img {
-    height: 198px;
-    width: 100%;
+.crewmember-img {
+    height: 320px;
+    width: 320px;
     object-fit: cover;
     border-radius: 5px;
-  }
-  
-  .name-and-age {
-    font-size: 1em;
-    color: #000;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 198px; 
-    white-space: nowrap;
-  }
-  
-  .crew-exp,
-  .crew-country {
-    font-size: 0.9em;
-  }
+}
 
-  .exp-filter, .age-filter {
-    border: 1px solid black;
-    border-radius: 12px;
-    width: 49%;
-    height: 40px;
+.name-and-age {
+    font-weight: 700;
+    font-size: 1.2em;
+    text-decoration: underline white;
+    color: black;
     margin: 0;
-  }
+}
 
-  .filter-form select {
-    margin-right: 0;
-  }
+.exp-filter,
+.age-filter {
+    border-radius: 24px;
+    border: solid 1px black;
+    padding-left: 8px;
+    height: 30px;
+    margin-right: 20px;
+    width: 130px;
+}
 
-  .submit-button {
-    display: none;
-  }
-
-  .mobile-buttons {
+.submit-button {
+    width: 130px;
+    height: 30px;
+    background-color: #049dbf;
+    border-radius: 24px;
+    border: none;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 5%;
-  }
-
-  .submit-button-mobile {
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 49%;
-    height: 40px;
-    background-color: #049DBF;
-    border-radius: 12px;
-    border: none;
-  }
+}
 
-  .submit-button-mobile img {
-    width: 12%;
+.submit-button img {
+    width: 16%;
     height: auto;
-  }
+}
 
-  .reset-button {
-    width: 49%;
-    height: 40px;
-    border-radius: 12px;
-    padding: 0 20px;
+.reset-button {
+    height: 30px;
+    border-radius: 24px;
+    padding: 0 26px;
     border: none;
-    background-color: #049DBF;
+    background-color: #049dbf;
     color: white;
     font-weight: 600;
-  }
+    width: 130px;
+}
+
+.submit-button-mobile {
+    display: none;
+}
+.crew-exp,
+.crew-country {
+    color: black;
+    text-decoration: underline white;
+    margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        text-align: center;
+    }
+
+    .filter {
+        margin-bottom: 8%;
+    }
+
+    .filter-form {
+        margin-bottom: 2%;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .crewmember-page {
+        width: 94%;
+        margin: 4% auto 5%;
+    }
+
+    .crewmember-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .crewmember-card {
+        width: 49%;
+        min-height: 230px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .crewmember-img {
+        height: 198px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .name-and-age {
+        font-size: 1em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 198px;
+        white-space: nowrap;
+        color: #000;
+    }
+
+    .crew-exp,
+    .crew-country {
+        font-size: 0.9em;
+    }
+
+    .exp-filter,
+    .age-filter {
+        border: 1px solid black;
+        border-radius: 12px;
+        width: 49%;
+        height: 40px;
+        margin: 0;
+    }
+
+    .filter-form select {
+        margin-right: 0;
+    }
+
+    .submit-button {
+        display: none;
+    }
+
+    .mobile-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5%;
+    }
+
+    .submit-button-mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 49%;
+        height: 40px;
+        background-color: #049dbf;
+        border-radius: 12px;
+        border: none;
+    }
+
+    .submit-button-mobile img {
+        width: 12%;
+        height: auto;
+    }
+
+    .reset-button {
+        width: 49%;
+        height: 40px;
+        border-radius: 12px;
+        padding: 0 20px;
+        border: none;
+        background-color: #049dbf;
+        color: white;
+        font-weight: 600;
+    }
 }
 
 @media only screen and (max-width: 380px) {
-
-  .name-and-age {
-    font-size: 1em;
-    color: #000;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 172px; 
-    white-space: nowrap;
-  }
+    .name-and-age {
+        font-size: 1em;
+        color: #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 172px;
+        white-space: nowrap;
+    }
 }
