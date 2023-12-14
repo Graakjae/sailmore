@@ -112,7 +112,7 @@ export default function CaptainProfilePage() {
                         height={400}
                         className="profilePicture-mobile"
                     />
-                    <p className="bio">{bio}</p>
+                <p className="bio">{bio}</p>
                 </div>
                     <div className="infoContainer-mobile">
                         <div className="infoWrapper">
@@ -120,13 +120,11 @@ export default function CaptainProfilePage() {
                             <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
-                            <br />
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>
-                                {brand} {model}
-                            </p>
+                            <p>{brand}</p>
+                            <p>{model}</p>
                             <p>Year {year}</p>
                             <p>{length} feet</p>
                         </div>
@@ -191,9 +189,8 @@ export default function CaptainProfilePage() {
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>
-                                {brand} {model}
-                            </p>
+                            <p>{brand}</p>
+                            <p>{model}</p>
                             <p>Year {year}</p>
                             <p>{length} feet</p>
                             {authId === params.captain && (
@@ -208,6 +205,5 @@ export default function CaptainProfilePage() {
                     <div className="signout-div-desktop">{authId === params.captain && <SignOut />}</div>
                 </div>
             </div>
-        </div>
     );
 }
