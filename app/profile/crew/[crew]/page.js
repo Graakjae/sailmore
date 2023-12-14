@@ -9,6 +9,7 @@ import { CalculateAge } from "components/CalculateAge";
 import "./crew-profile.css";
 import { useAuth } from "@/app/authContext";
 import SignOut from "@/components/SignOut";
+
 export default function CrewProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -21,6 +22,7 @@ export default function CrewProfilePage() {
     const params = useParams();
     const authId = useAuth().userId;
     console.log("params", params);
+
     useEffect(() => {
         const userId = params;
 
@@ -58,14 +60,39 @@ export default function CrewProfilePage() {
     return (
         <div className="height">
             <div className="flexBox">
-                <div className="bio">
-                    <h2>
+                <div className="left-wrapper">
+                    <h2 className="section-title">
                         {firstName} {lastName}
                     </h2>
-                    <p>{bio}</p>
-                </div>
-                <div className="rightWrapper">
                     <Image
+                        priority
+                        src={`/profilePictures/${profilePicture}`}
+                        alt="Profile image"
+                        width={400}
+                        height={400}
+                        className="profilePicture-mobile"
+                    />
+                    <p className="bio">{bio}</p>
+                </div>
+                    <div className="infoContainer-mobile">
+                        <div className="infoWrapper">
+                            <h3 className="section-title">About {firstName}</h3>
+                            <p>{CalculateAge(age)} years old</p>
+                            <p>From {country}</p>
+                            <p>{exp}</p>
+                        </div>
+                    </div>
+                    <div className="buttonWrapper-mobile">
+                                <Link href={`/profile/crew/${params.crew}/edit`}>
+                                    <button>Edit profile</button>
+                                </Link>
+                            </div>  
+                <div className="signout-div-mobile">
+                    {authId === params.crew && <SignOut />}
+                </div>
+                <div className="right-wrapper">
+                    <Image
+                        className="profilePicture"
                         src={`/profilePictures/${profilePicture}`}
                         alt="Profile image"
                         width={400}
@@ -74,14 +101,13 @@ export default function CrewProfilePage() {
                     />
                     <div className="infoContainer">
                         <div className="infoWrapper">
-                            <h3>
-                                {firstName}, {CalculateAge(age)}
-                            </h3>
-                            <p>From: {country}</p>
-                            <p>Experience: {exp}</p>
+                        <h3 className="section-title">About {firstName}</h3>
+                            <p>{CalculateAge(age)} years old</p>
+                            <p>From {country}</p>
+                            <p>{exp}</p>
                             <div className="buttonWrapper">
                                 <Link href={`/profile/crew/${params.crew}/edit`}>
-                                    <button>Edit</button>
+                                    <button>Edit profile</button>
                                 </Link>
                             </div>
                         </div>

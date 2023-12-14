@@ -102,9 +102,7 @@ export default function CaptainProfilePage() {
                     <p className="section-title">
                         Captain {firstName} {lastName}
                     </p>
-                    <p className="bio">{bio}</p>
-                </div>
-                <Image
+                    <Image
                         priority
                         src={`/profilePictures/${profilePicture}`}
                         alt="Profile image"
@@ -112,10 +110,12 @@ export default function CaptainProfilePage() {
                         height={400}
                         className="profilePicture-mobile"
                     />
+                    <p className="bio">{bio}</p>
+                </div>
                     <div className="infoContainer-mobile">
                         <div className="infoWrapper">
                             <h3 className="section-title">About {firstName}</h3>
-                            <p>{calculateAge(age)} years old</p>
+                            <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
                             <br />
@@ -177,10 +177,9 @@ export default function CaptainProfilePage() {
                     <div className="infoContainer">
                         <div className="infoWrapper">
                             <h3 className="section-title">About {firstName}</h3>
-                            <p>{calculateAge(age)} years old</p>
+                            <p>{CalculateAge(age)} years old</p>
                             <p>From {country}</p>
                             <p>{exp}</p>
-                            <br />
                         </div>
                         <div className="boatInfoBox">
                             <h3 className="section-title">{firstName}'s boat</h3>
