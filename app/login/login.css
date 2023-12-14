@@ -38,6 +38,10 @@ h2 {
     margin-top: 30px;
 }
 
+.textInput:last-child {
+    margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 600px) {
     .loginWrapper {
         width: 90%;
