@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
 }
 
 .signupWrapper {
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     padding: 40px 20px; /* Adjust padding as needed */
-    margin-top: 50px; /* Added margin-top to match your original styles */
+    top: 100%;
 }
 
 input {
