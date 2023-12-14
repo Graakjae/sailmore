@@ -8,7 +8,6 @@ import { CalculateAge } from "components/CalculateAge";
 import SignOut from "@/components/SignOut";
 import "./captain-profile.css";
 import { useAuth } from "@/app/authContext";
-import Footer from "@/components/Footer";
 
 export default function CaptainProfilePage() {
     const [firstName, setFirstName] = useState("");
@@ -114,95 +113,94 @@ export default function CaptainProfilePage() {
                     />
                     <p className="bio">{bio}</p>
                 </div>
-                    <div className="infoContainer-mobile">
-                        <div className="infoWrapper">
-                            <h3 className="section-title">About {firstName}</h3>
-                            <p>{CalculateAge(age)} years old</p>
-                            <p>From {country}</p>
-                            <p>{exp}</p>
-                            <br />
-                        </div>
-                        <div className="boatInfoBox">
-                            <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>
-                                {brand} {model}
-                            </p>
-                            <p>Year {year}</p>
-                            <p>{length} feet</p>
-                        </div>
+                <div className="infoContainer-mobile">
+                    <div className="infoWrapper">
+                        <h3 className="section-title">About {firstName}</h3>
+                        <p>{CalculateAge(age)} years old</p>
+                        <p>From {country}</p>
+                        <p>{exp}</p>
+                        <br />
                     </div>
-                    <div className="buttonWrapper-mobile">
-                        <Link href={`/profile/captain/${params.captain}/edit`}>
-                            <button>Edit profile</button>
-                        </Link>
-                    </div>
-                    <div className="trips-section">
-                        <h2 className="section-title">Trips</h2>
-                        <div className="trips-list">
-                            {trips.length > 0 ? (
-                                trips.map(trip => (
-                                    <Link href={`/trip/${trip.trip_id}`} key={trip.trip_id} className="trip-card">
-                                        {trip.images.length > 0 ? (
-                                            <Image
-                                                src={`/trip_img/${trip.images[0]}`}
-                                                alt={`Image of ${trip.title}`}
-                                                width={200}
-                                                height={200}
-                                            />
-                                        ) : (
-                                            <p>No images for this trip</p>
-                                        )}
-                                        <h2>{trip.title}</h2>
-                                        <h3>
-                                            {trip.startpoint} to {trip.destination}
-                                        </h3>
-                                        <p>
-                                            {trip.start_date} - {trip.end_date}
-                                        </p>
-                                        <p>{trip.price}€/day</p>
-                                    </Link>
-                                ))
-                            ) : (
-                                <div className="notrips">
-                                    <p>No trips found</p>
-                                </div>
-                            )}
-                        </div>
-                        <div className="signout-div-mobile">{authId === params.captain && <SignOut />}</div>
+                    <div className="boatInfoBox">
+                        <h3 className="section-title">{firstName}'s boat</h3>
+                        <p>
+                            {brand} {model}
+                        </p>
+                        <p>Year {year}</p>
+                        <p>{length} feet</p>
                     </div>
                 </div>
-                <div className="right-wrapper">
-                    <Image
-                        priority
-                        src={`/profilePictures/${profilePicture}`}
-                        alt="Profile image"
-                        width={400}
-                        height={400}
-                        className="profilePicture"
-                    />
-                    <div className="infoContainer">
-                        <div className="infoWrapper">
-                            <h3 className="section-title">About {firstName}</h3>
-                            <p>{CalculateAge(age)} years old</p>
-                            <p>From {country}</p>
-                            <p>{exp}</p>
-                        </div>
-                        <div className="boatInfoBox">
-                            <h3 className="section-title">{firstName}'s boat</h3>
-                            <p>
-                                {brand} {model}
-                            </p>
-                            <p>Year {year}</p>
-                            <p>{length} feet</p>
-                            <div className="buttonWrapper">
-                                <Link href={`/profile/captain/${params.captain}/edit`}>
-                                    <button>Edit profile</button>
+                <div className="buttonWrapper-mobile">
+                    <Link href={`/profile/captain/${params.captain}/edit`}>
+                        <button>Edit profile</button>
+                    </Link>
+                </div>
+                <div className="trips-section">
+                    <h2 className="section-title">Trips</h2>
+                    <div className="trips-list">
+                        {trips.length > 0 ? (
+                            trips.map(trip => (
+                                <Link href={`/trip/${trip.trip_id}`} key={trip.trip_id} className="trip-card">
+                                    {trip.images.length > 0 ? (
+                                        <Image
+                                            src={`/trip_img/${trip.images[0]}`}
+                                            alt={`Image of ${trip.title}`}
+                                            width={200}
+                                            height={200}
+                                        />
+                                    ) : (
+                                        <p>No images for this trip</p>
+                                    )}
+                                    <h2>{trip.title}</h2>
+                                    <h3>
+                                        {trip.startpoint} to {trip.destination}
+                                    </h3>
+                                    <p>
+                                        {trip.start_date} - {trip.end_date}
+                                    </p>
+                                    <p>{trip.price}€/day</p>
                                 </Link>
+                            ))
+                        ) : (
+                            <div className="notrips">
+                                <p>No trips found</p>
                             </div>
+                        )}
+                    </div>
+                    <div className="signout-div-mobile">{authId === params.captain && <SignOut />}</div>
+                </div>
+            </div>
+            <div className="right-wrapper">
+                <Image
+                    priority
+                    src={`/profilePictures/${profilePicture}`}
+                    alt="Profile image"
+                    width={400}
+                    height={400}
+                    className="profilePicture"
+                />
+                <div className="infoContainer">
+                    <div className="infoWrapper">
+                        <h3 className="section-title">About {firstName}</h3>
+                        <p>{CalculateAge(age)} years old</p>
+                        <p>From {country}</p>
+                        <p>{exp}</p>
+                    </div>
+                    <div className="boatInfoBox">
+                        <h3 className="section-title">{firstName}'s boat</h3>
+                        <p>
+                            {brand} {model}
+                        </p>
+                        <p>Year {year}</p>
+                        <p>{length} feet</p>
+                        <div className="buttonWrapper">
+                            <Link href={`/profile/captain/${params.captain}/edit`}>
+                                <button>Edit profile</button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="signout-div-desktop">{authId === params.captain && <SignOut />}</div>
                 </div>
+                <div className="signout-div-desktop">{authId === params.captain && <SignOut />}</div>
             </div>
         </div>
     );
