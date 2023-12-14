@@ -1,5 +1,7 @@
 .applications-wrapper {
     padding: 0 5%;
+    min-height: 900px;
+    padding-bottom: 50px;
 }
 .application-wrapper {
     margin-top: 10px;

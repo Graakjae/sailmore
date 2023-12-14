@@ -8,7 +8,6 @@ import { CalculateAge } from "components/CalculateAge";
 import SignOut from "@/components/SignOut";
 import "./captain-profile.css";
 import { useAuth } from "@/app/authContext";
-import Footer from "@/components/Footer";
 
 export default function CaptainProfilePage() {
     const [firstName, setFirstName] = useState("");
@@ -199,11 +198,11 @@ export default function CaptainProfilePage() {
                                     <button>Edit profile</button>
                                 </Link>
                             </div>
-                            )}
-                        </div>
+                        )}
                     </div>
-                    <div className="signout-div-desktop">{authId === params.captain && <SignOut />}</div>
                 </div>
+                <div className="signout-div-desktop">{authId === params.captain && <SignOut />}</div>
             </div>
+        </div>
     );
 }

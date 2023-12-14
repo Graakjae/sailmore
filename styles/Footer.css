@@ -15,7 +15,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     padding: 3% 0;
-    margin-top: 200px;
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 768px) {
