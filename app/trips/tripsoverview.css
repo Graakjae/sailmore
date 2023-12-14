@@ -1,374 +1,412 @@
 .trips-page {
-  width: 92%;
-  margin: 2.5% auto;
+    width: 92%;
+    margin: 2.5% auto;
 }
 
 .trip-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .trip-card-inner-container {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .trip-card {
-  width: 320px;
-  margin-bottom: 20px;
-  height: 320px;
+    width: 320px;
+    margin-bottom: 20px;
+    height: 320px;
+    text-decoration: underline white;
 }
 
 .trip-title {
-  font-size: 1.2em;
-  color: #000;
+    font-size: 1.2em;
+    color: #000;
 }
 
 .trip-area {
-  font-size: 1.2em;
-  color: #000;
+    font-size: 1.2em;
+    color: #000;
 }
 
 .trip-dates,
 .trip-price {
-  color: #000;
+    color: #000;
 }
 
 .trip-img {
-  height: 225px;
-  width: 320px;
-  object-fit: cover;
-  border-radius: 5px;
+    height: 225px;
+    width: 320px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 .filter {
-  margin-top: 2%;
-  margin-bottom: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .filter-form {
-  margin-bottom: 1%;
+    margin-bottom: 1%;
 }
 
 .search-bar {
-  display: flex;
-  height: 66px;
-  border: 2px solid black;
-  border-radius: 24px;
-  margin-bottom: 1%;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    height: 80px;
+    border-radius: 24px;
+    margin-bottom: 1%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.search-border {
+    border: 2px solid black;
 }
 
 .search-bar input {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .search-bar-input {
-  display: flex;
-  flex-direction: row;
-  width: 95%;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    align-items: center;
 }
 
 .pick-date input {
-  border: none;
-  outline: none;
-  background: none;
+    border: none;
+    outline: none;
+    background: none;
 }
 
 .placeholder {
-  width: 42%;
-  position: absolute;
-  z-index: -5;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
 }
 
 .search-input {
-  width: 45%;
-  border: 0;
-  margin: 0 40px;
+    width: 45%;
+    border: 0;
+    margin: 0 40px;
 }
 
 .react-datepicker-wrapper {
-  width: 45%;
-  border: 0;
-  margin: 0
+    width: 45%;
+    border: 0;
+    margin: 0;
 }
 
 .search-bar input:focus {
-  outline: none;
+    outline: none;
 }
 
 .search-bar button {
-  border: 0;
+    border: 0;
 }
 
 .search-bar p {
-  font-size: 2.5em;
-  font-weight: 1;
-  margin-bottom: 5px;
-  color: black;
+    font-size: 2.5em;
+    font-weight: 1;
+    margin-bottom: 5px;
+    color: black;
 }
 
-.search-bar button {
-  justify-content: flex-end;
-  width: 6%;
-  height: 82%;
-  background-color: #049DBF;
-  border-radius: 20px;
-  margin-right: 8px;
+.search-bar-button {
+    justify-content: flex-end;
+    width: 6%;
+    height: 82%;
+    background-color: #049dbf;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+.search-bar-icon {
+    justify-content: end;
+    width: 12%;
+    height: 82%;
+    background-color: #049dbf;
+    border-radius: 20px;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar-icon2 {
+    background-color: #049dbf;
+    border-radius: 20px;
+}
+
+.search-bar-icon2 img {
+    width: 50px;
 }
 
 .search-bar img {
-  width: 33%;
+    width: 33%;
 }
 
 .pick-date {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 2;
 }
 
 .react-datepicker-wrapper {
-  width: 100%;
-  overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
 
 .react-datepicker-wrapper input {
-  width: 100%;
-  overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
 
 .max-price {
-  border-radius: 24px;
-  border: solid 1px black;
-  padding-left: 12px;
-  height: 30px;
-  margin-right: 20px;
-  width: 118px;
+    border-radius: 24px;
+    border: solid 1px black;
+    padding-left: 12px;
+    height: 30px;
+    margin-right: 20px;
+    width: 118px;
 }
 
 .reset-button {
-  height: 30px;
-  border-radius: 24px;
-  padding: 0 26px;
-  border: none;
-  background-color: #049DBF;
-  color: white;
-  font-weight: 600;
-  width: 130px;
+    height: 30px;
+    border-radius: 24px;
+    padding: 0 26px;
+    border: none;
+    background-color: #049dbf;
+    color: white;
+    font-weight: 600;
+    width: 130px;
 }
 
 .max-price-mobile {
-  display: none;
+    display: none;
 }
 
 .submit-button-mobile {
-  display: none;
+    display: none;
 }
 
 .mobile-buttons {
-  display: none;
+    display: none;
+}
+
+.crew-exp {
+    color: black;
+}
+
+.crew-country {
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
 }
 
 @media only screen and (max-width: 500px) {
+    .trips-page {
+        width: 94%;
+        margin: 4% auto 5%;
+    }
 
-  .trips-page {
-    width: 94%;
-    margin: 4% auto 5%;
-  }
-  
-  .trip-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+    .trip-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-  .trip-card-inner-container {
-    width: 49%;
-  }
+    .trip-card-inner-container {
+        width: 47%;
+    }
 
-  .trip-card {
-    width: 100%;
-    min-height: 230px;
-    height: auto;
-    margin-bottom: 20px;
-  }
+    .trip-card {
+        width: 100%;
+        min-height: 230px;
+        height: auto;
+        margin-bottom: 20px;
+    }
 
-  .trip-img {
-    height: 150px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  
-  .trip-title {
-    font-size: 1em;
-    color: #000;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 198px; 
-    white-space: nowrap;
-  }
-  
-  .trip-area {
-    font-size: 0.9em;
-    color: #000;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 198px; 
-    white-space: nowrap;
-  }
-  
-  .trip-dates,
-  .trip-price {
-    color: #000;
-    font-size: 0.9em;
-  }
+    .trip-img {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 
-  .search-bar {
-    display: block;
-    border: none;
-    margin-bottom: 77px;
-  }
+    .trip-title {
+        font-size: 1em;
+        color: #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 198px;
+        white-space: nowrap;
+    }
 
-  .search-bar p {
-    display: none;
-  }
+    .trip-area {
+        font-size: 0.9em;
+        color: #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 198px;
+        white-space: nowrap;
+    }
 
-  .search-bar-input {
-    display: block;
-    margin-bottom: 0;
-  }
+    .trip-dates,
+    .trip-price {
+        color: #000;
+        font-size: 0.9em;
+    }
 
-  .search-bar input {
-    font-size: 1em;
-  }
+    .search-bar {
+        display: block;
+        border: none;
+        margin-bottom: 77px;
+        background-color: transparent;
+    }
 
-  .search-input {
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 12px;
-    width: 100%;
-    margin: 0;
-  }
+    .search-bar p {
+        display: none;
+    }
 
-  .pick-date {
-    display: block;
-    padding: 10px;
-    margin-bottom: 2%;
-    height: 18.4px;
-  }
+    .search-bar-input {
+        display: block;
+        margin-bottom: 0;
+    }
 
-  .placeholder {
-    left: 2.5%;
-    top: 30%;
-    width: 50%;
-  }
+    .search-bar input {
+        font-size: 1em;
+    }
 
-  .search-input:focus {
-    outline: none;
-    border: 1px solid black;
-  }
+    .search-input {
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 12px;
+        width: 100%;
+        margin: 0;
+    }
 
-  .search-bar img {
-    width: 20%;
-  }
+    .pick-date {
+        display: block;
+        padding: 10px;
+        margin-bottom: 2%;
+        height: 18.4px;
+        background-color: white;
+    }
 
-  .max-price {
-    display: none;
-  }
+    .placeholder {
+        left: 2.5%;
+        top: 30%;
+        width: 50%;
+    }
 
-  .max-price-mobile {
-    display: block;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 12px;
-    width: 100%;
-    margin-top: 2%;
-  }
+    .search-input:focus {
+        outline: none;
+        border: 1px solid black;
+    }
 
-  .submit-button {
-    display: none;
-  }
+    .search-bar img {
+        width: 20%;
+    }
 
-  .submit-button-mobile {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 49%;
-    height: 40px;
-    background-color: #049DBF;
-    border-radius: 12px;
-    border: none;
-  }
+    .max-price {
+        display: none;
+    }
 
-  .submit-button-mobile img {
-    width: 12%;
-  }
+    .max-price-mobile {
+        display: block;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 12px;
+        width: 100%;
+        margin-top: 2%;
+    }
 
-  .reset-button-mobile {
-    width: 49%;
-    height: 40px;
-    border-radius: 12px;
-    padding: 0 20px;
-    border: none;
-    background-color: #049DBF;
-    color: white;
-    font-weight: 600;
-  }
+    .submit-button {
+        display: none;
+    }
 
-  .mobile-buttons {
-    display: flex;
-    margin-top: 0;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 8%;
-  }
+    .submit-button-mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 49%;
+        height: 40px;
+        background-color: #049dbf;
+        border-radius: 12px;
+        border: none;
+    }
 
-  .reset-button {
-    display: none;
-  }
+    .submit-button-mobile img {
+        width: 12%;
+    }
 
-  h1 {
-    text-align: center;
-  }
+    .reset-button-mobile {
+        width: 49%;
+        height: 40px;
+        border-radius: 12px;
+        padding: 0 20px;
+        border: none;
+        background-color: #049dbf;
+        color: white;
+        font-weight: 600;
+    }
 
-  .filter {
-    margin-bottom: 0;
-  }
+    .mobile-buttons {
+        display: flex;
+        margin-top: 0;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 8%;
+    }
 
-  .filter-form {
-    margin-bottom: 0;
-  }
+    .reset-button {
+        display: none;
+    }
 
+    h1 {
+        text-align: center;
+    }
+
+    .filter {
+        margin-bottom: 0;
+    }
+
+    .filter-form {
+        margin-bottom: 0;
+    }
 }
 
 @media only screen and (max-width: 380px) {
+    .trip-title {
+        font-size: 1em;
+        color: #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 172px;
+        white-space: nowrap;
+    }
 
-.trip-title {
-  font-size: 1em;
-  color: #000;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 172px; 
-  white-space: nowrap;
-}
+    .trip-area {
+        font-size: 0.9em;
+        color: #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 172px;
+        white-space: nowrap;
+    }
 
-.trip-area {
-  font-size: 0.9em;
-  color: #000;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 172px; 
-  white-space: nowrap;
-}
+    .max-price-mobile {
+        width: 99%;
+    }
 
-.max-price-mobile {
-  width: 99%;
-}
-
-.search-input {
-  width: 99%;
-}
+    .search-input {
+        width: 100%;
+    }
 }
