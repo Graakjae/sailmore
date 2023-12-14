@@ -6,8 +6,8 @@
 .trip-card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 39px;
 }
 
 .trip-card-inner-container {
@@ -33,6 +33,10 @@
 .trip-area {
     font-size: 1.2em;
     color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .trip-dates,

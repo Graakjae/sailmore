@@ -141,6 +141,7 @@ export default function CreateTripPage() {
                                 placeholder="DD/MM/YYYY"
                                 selected={startDate}
                                 onChange={date => setStartDate(date || new Date())}
+                                className="input"
                             />
                         </div>
                         <div>
@@ -150,6 +151,7 @@ export default function CreateTripPage() {
                                 placeholder="DD/MM/YYYY"
                                 selected={endDate}
                                 onChange={date => setEndDate(date || new Date())}
+                                className="input"
                             />
                         </div>
                         <TextInputField
@@ -177,7 +179,7 @@ export default function CreateTripPage() {
                             <input
                                 type="file"
                                 onChange={handleAddTripImage}
-                                placeholder=""
+                                placeholder=" "
                                 multiple
                                 className="add-img-button"
                                 name="trip_img[]"
