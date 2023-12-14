@@ -1,5 +1,5 @@
 .editWrapper {
-    margin: 2% auto;
+    margin: 0 auto 2%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -131,7 +131,7 @@ h3 {
 
     .closeEdit {
         position: absolute;
-        top: 0.75%;
+        top: 0.66%;
         left: 0;
         padding: 10px 10px 10px 18px;
         margin-left: 0;
