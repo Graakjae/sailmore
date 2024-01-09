@@ -5,7 +5,7 @@ const TripCard = ({ title, startpoint, destination, start_date, end_date, price,
     return (
         <div className="trip-card">
             <img
-                src={`${img}`}
+                src={img}
                 className="trip-img"
                 alt="Trip Image"
                 onError={e => {
