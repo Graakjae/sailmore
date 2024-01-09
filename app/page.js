@@ -100,7 +100,7 @@ function HomePage() {
                     </div>
                 </div>
                 <h2 className="trip-list">Trips</h2>
-                <div className="flexbox">
+                <div className="flexbox-frontpage">
                     <div className="trip-card-container">
                         {filteredTrips.slice(0, 8).map((trip, index) => (
                             <Link href={`/trip/${trip.pk_id}`} key={index} className="trip-card-inner-container">
