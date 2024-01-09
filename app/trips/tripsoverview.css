@@ -21,22 +21,24 @@
     text-decoration: underline white;
 }
 
-.trip-title {
+.trip-title-tripcard {
     font-size: 1.2em;
     color: #000;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
     white-space: nowrap;
+    margin: 0;
 }
 
-.trip-area {
+.trip-area-tripcard {
     font-size: 1.2em;
     color: #000;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
     white-space: nowrap;
+    margin: 0;
 }
 
 .trip-dates,
@@ -272,13 +274,14 @@
         width: 20px;
     }
 
-    .trip-area {
+    .trip-area-tripcard {
         font-size: 0.9em;
         color: #000;
         text-overflow: ellipsis;
         overflow: hidden;
         width: 100%;
         white-space: nowrap;
+        margin: 0;
     }
 
     .trip-dates,
@@ -412,7 +415,7 @@
         white-space: nowrap;
     }
 
-    .trip-area {
+    .trip-area-tripcard {
         font-size: 0.9em;
         color: #000;
         text-overflow: ellipsis;

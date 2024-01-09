@@ -40,8 +40,8 @@
 .name-and-age {
     font-weight: 700;
     font-size: 1.2em;
-    text-decoration: underline white;
     color: black;
+    text-decoration: none;
     margin: 0;
 }
 

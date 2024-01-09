@@ -147,7 +147,9 @@ export default function TripsOverview() {
                                   start_date={trip.start_date}
                                   end_date={trip.end_date}
                                   price={trip.price}
-                                  img={`/trip_img/${trip.img ? trip.img : "/defaultTripImage.jpg"}`}
+                                  img={`http://frederikgraakjaer.dk/public/trip_img/${
+                                      trip.img ? trip.img : "/defaultTripImage.jpg"
+                                  }`}
                                   key={index}
                                   trip={trip}
                               />

@@ -25,7 +25,7 @@ const CrewMemberList = () => {
                 {crewmembers.map((crewmember, index) => (
                     <Link href={`/profile/crew/${crewmember.pk_id}`} key={index} className="crewmember-card">
                         <Image
-                            src={`/profilePictures/${crewmember.profilePicture}`}
+                            src={`http://frederikgraakjaer.dk/public/profilePictures/${crewmember.profilePicture}`}
                             alt="Profile image"
                             width={500}
                             height={500}

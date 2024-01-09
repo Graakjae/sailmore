@@ -15,6 +15,7 @@ export default function TripPage() {
     const [acceptedCrew, setAcceptedCrew] = useState([]);
     const [maxCapacity, setMaxCapacity] = useState(0);
     const { trip: tripParam } = useParams();
+    const [images, setImages] = useState([]);
     const userId = useAuth().userId;
     const loggedIn = useAuth().loggedIn;
     const userRole = useAuth().userRole;
@@ -22,6 +23,7 @@ export default function TripPage() {
         if (tripParam) {
             fetchTrip(tripParam);
             fetchAcceptedCrew(tripParam);
+            fetchImages(tripParam);
         }
     }, [tripParam]);
 
@@ -40,14 +42,6 @@ export default function TripPage() {
             console.error("Error fetching data:", error);
         }
     };
-
-    const [images, setImages] = useState([]);
-
-    useEffect(() => {
-        if (tripParam) {
-            fetchImages(tripParam);
-        }
-    }, [tripParam]);
 
     const fetchImages = async tripId => {
         try {

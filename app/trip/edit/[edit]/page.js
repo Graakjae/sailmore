@@ -106,6 +106,15 @@ export default function UpdateTripPage() {
                 if (response.ok) {
                     const result = await response.json();
                     console.log("Delete result:", result);
+                    if (result.success) {
+                        // Perform any additional actions upon successful trip deletion
+                        console.log("Trip deleted successfully");
+
+                        // Redirect to the home page
+                        router.push("/trips");
+                    } else {
+                        console.error("Error deleting trip:", result.error);
+                    }
                 }
             } else {
                 console.error("Failed to delete trip. HTTP status:", response.status);
@@ -181,100 +190,109 @@ export default function UpdateTripPage() {
         <div className="flex-container">
             <div className="edit-wrapper">
                 <div className="inner-container">
-                <h2>Update Trip</h2>
+                    <h2>Update Trip</h2>
 
-                <form onSubmit={handleUpdateTrip}>
-                    <TextInputField
-                        label={"Title"}
-                        type="text"
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
-                    <TextInputField
-                        label={"Description"}
-                        type="text"
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                    />
-                    <TextInputField
-                        label={"Startpoint"}
-                        type="text"
-                        value={startpoint}
-                        onChange={e => setStartPoint(e.target.value)}
-                    />
-                    <TextInputField
-                        label={"Destination"}
-                        type="text"
-                        value={destination}
-                        onChange={e => setDestination(e.target.value)}
-                    />
-                    <div>
-                        <h3>Start date</h3>
-                        <DatePicker
-                            className="date"
-                            dateFormat="dd/MM/yy"
-                            selected={start_date}
-                            onChange={date => setStartDate(date)}
-                        />
-                    </div>
-                    <div>
-                        <h3>End date</h3>
-                        <DatePicker
-                            className="date"
-                            dateFormat="dd/MM/yy"
-                            selected={end_date}
-                            onChange={date => setEndDate(date)}
-                        />
-                    </div>
-                    <TextInputField
-                        label={"Price"}
-                        type="text"
-                        value={price}
-                        onChange={e => setPrice(e.target.value)}
-                    />
-                    <TextInputField
-                        label={"Crew capacity"}
-                        type="text"
-                        value={crew_capacity}
-                        onChange={e => setCrewCapacity(e.target.value)}
-                    />
-                    <div>
-                        <h3>Rules</h3>
-                        <textarea
-                            className="rules"
+                    <form onSubmit={handleUpdateTrip}>
+                        <TextInputField
+                            label={"Title"}
                             type="text"
-                            value={rules}
-                            onChange={e => setRules(e.target.value)}
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
                         />
-                    </div>
-                <div className="picture-upload">
-                    <label htmlFor="imageInput"><h3>Add Images</h3></label>
-                    <input type="file" accept="image/*" multiple className="add-img-button" onChange={handleFileChange} />
-                </div>
-                    {tripImages.map((image, index) => (
-                    <div className="trip-img" key={index}>
-                        <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
-                        <div className="delete-img" onClick={() => handleDeleteImage(image.pk_id)}>
-                            <img src="/cross.png" alt="Delete Image" />
+                        <TextInputField
+                            label={"Description"}
+                            type="text"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        />
+                        <TextInputField
+                            label={"Startpoint"}
+                            type="text"
+                            value={startpoint}
+                            onChange={e => setStartPoint(e.target.value)}
+                        />
+                        <TextInputField
+                            label={"Destination"}
+                            type="text"
+                            value={destination}
+                            onChange={e => setDestination(e.target.value)}
+                        />
+                        <div>
+                            <h3>Start date</h3>
+                            <DatePicker
+                                className="date"
+                                dateFormat="dd/MM/yy"
+                                selected={start_date}
+                                onChange={date => setStartDate(date)}
+                            />
                         </div>
-                    </div>
-                ))}
-                    {newTripImages.map((image, index) => (
-                        <Image
-                            key={index}
-                            src={URL.createObjectURL(image)}
-                            alt={`Image ${index + 1} of the trip`}
-                            width={200}
-                            height={200}
-                            
+                        <div>
+                            <h3>End date</h3>
+                            <DatePicker
+                                className="date"
+                                dateFormat="dd/MM/yy"
+                                selected={end_date}
+                                onChange={date => setEndDate(date)}
+                            />
+                        </div>
+                        <TextInputField
+                            label={"Price"}
+                            type="text"
+                            value={price}
+                            onChange={e => setPrice(e.target.value)}
                         />
-                    ))}
-                    <button type="submit" className="updatetrip">Update Trip</button>
-                </form>
-                <button onClick={handleDeleteTrip} className="delete-btn">
-                    Delete Trip
-                </button>
-            </div>
+                        <TextInputField
+                            label={"Crew capacity"}
+                            type="text"
+                            value={crew_capacity}
+                            onChange={e => setCrewCapacity(e.target.value)}
+                        />
+                        <div>
+                            <h3>Rules</h3>
+                            <textarea
+                                className="rules"
+                                type="text"
+                                value={rules}
+                                onChange={e => setRules(e.target.value)}
+                            />
+                        </div>
+                        <div className="picture-upload">
+                            <label htmlFor="imageInput">
+                                <h3>Add Images</h3>
+                            </label>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                multiple
+                                className="add-img-button"
+                                onChange={handleFileChange}
+                            />
+                        </div>
+                        {tripImages.map((image, index) => (
+                            <div className="trip-img" key={index}>
+                                <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
+                                <div className="delete-img" onClick={() => handleDeleteImage(image.pk_id)}>
+                                    <img src="/cross.png" alt="Delete Image" />
+                                </div>
+                            </div>
+                        ))}
+                        {newTripImages.map((image, index) => (
+                            <Image
+                                key={index}
+                                src={URL.createObjectURL(image)}
+                                alt={`Image ${index + 1} of the trip`}
+                                width={200}
+                                height={200}
+                            />
+                        ))}
+                        <button type="submit" className="updatetrip">
+                            Update Trip
+                        </button>
+                    </form>
+                    <button onClick={handleDeleteTrip} className="delete-btn">
+                        Delete Trip
+                    </button>
+                </div>
             </div>
         </div>
     );
