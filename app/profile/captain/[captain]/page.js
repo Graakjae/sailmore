@@ -103,7 +103,7 @@ export default function CaptainProfilePage() {
                         </p>
                         <Image
                             priority
-                            src={`/profilePictures/${profilePicture}`}
+                            src={`http://frederikgraakjaer.dk/public/profilePictures/${profilePicture}`}
                             alt="Profile image"
                             width={400}
                             height={400}
@@ -146,7 +146,7 @@ export default function CaptainProfilePage() {
                                     >
                                         {trip.images.length > 0 ? (
                                             <Image
-                                                src={`/trip_img/${trip.images[0]}`}
+                                                src={`http://frederikgraakjaer.dk/public/trip_img/${trip.images[0]}`}
                                                 alt={`Image of ${trip.title}`}
                                                 width={200}
                                                 height={200}
@@ -176,7 +176,7 @@ export default function CaptainProfilePage() {
                 <div className="right-wrapper">
                     <Image
                         priority
-                        src={`/profilePictures/${profilePicture}`}
+                        src={`http://frederikgraakjaer.dk/public/profilePictures/${profilePicture}`}
                         alt="Profile image"
                         width={400}
                         height={400}

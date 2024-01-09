@@ -95,7 +95,7 @@ export default function TripPage() {
                     <Slider {...imageSliderSettings} className="slider-wrapper">
                         {images.length === undefined ? (
                             <Image
-                                src={`/trip_img/defaultTripImage.jpg`}
+                                src={`http://frederikgraakjaer.dk/public/trip_img/defaultTripImage.jpg`}
                                 alt="default"
                                 width={1000}
                                 height={850}
@@ -105,7 +105,7 @@ export default function TripPage() {
                             images.map(image => (
                                 <div className="slider" key={image.img}>
                                     <Image
-                                        src={`/trip_img/${image.img}`}
+                                        src={`http://frederikgraakjaer.dk/public/trip_img/${image.img}`}
                                         alt={image.img}
                                         width={1000}
                                         height={850}
@@ -122,7 +122,7 @@ export default function TripPage() {
                         <Link href={`/profile/captain/${trip.captain_ID}`} className="captain-wrapper">
                             {trip.profilePicture ? (
                                 <Image
-                                    src={`/profilePictures/${trip.profilePicture}`}
+                                    src={`http://frederikgraakjaer.dk/public/profilePictures/${trip.profilePicture}`}
                                     alt="Profile picture"
                                     width={50}
                                     height={50}
@@ -239,7 +239,7 @@ export default function TripPage() {
                                 {acceptedCrew.map(member => (
                                     <div className="crew" key={member.pk_id}>
                                         <Image
-                                            src={`/profilePictures/${member.profilePicture}`}
+                                            src={`http://frederikgraakjaer.dk/public/profilePictures/${member.profilePicture}`}
                                             alt={`Image of ${member.firstname}`}
                                             width={30}
                                             height={30}
@@ -253,7 +253,7 @@ export default function TripPage() {
                                 {crewNumbers.map(member => (
                                     <div className="crew" key={nanoid()}>
                                         <Image
-                                            src={`/profilePictures/smallProfilePicture.png`}
+                                            src={`http://frederikgraakjaer.dk/public/profilePictures/smallProfilePicture.png`}
                                             alt={`You?`}
                                             width={30}
                                             height={30}

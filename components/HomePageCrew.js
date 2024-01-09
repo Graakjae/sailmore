@@ -26,7 +26,7 @@ const CrewMemberList = () => {
                 {crewmembers.slice(0, 8).map((crewmember, index) => (
                     <Link href={`profile/crew/${crewmember.pk_id}`} key={index} className="trip-card-inner-container">
                         <Image
-                            src={`/profilePictures/${crewmember.profilePicture}`}
+                            src={`http://frederikgraakjaer.dk/public/profilePictures/${crewmember.profilePicture}`}
                             alt="Profile image"
                             width={150}
                             height={150}

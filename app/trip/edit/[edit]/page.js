@@ -270,7 +270,12 @@ export default function UpdateTripPage() {
                         </div>
                         {tripImages.map((image, index) => (
                             <div className="trip-img" key={index}>
-                                <Image src={`/trip_img/${image.img}`} alt={`${image.img}`} width={200} height={200} />
+                                <Image
+                                    src={`http://frederikgraakjaer.dk/public/trip_img/${image.img}`}
+                                    alt={`${image.img}`}
+                                    width={200}
+                                    height={200}
+                                />
                                 <div className="delete-img" onClick={() => handleDeleteImage(image.pk_id)}>
                                     <img src="/cross.png" alt="Delete Image" />
                                 </div>

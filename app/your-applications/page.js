@@ -45,7 +45,7 @@ export default function YourApplicationsPage() {
                 {applications.map(application => (
                     <Link href={`/trip/${application.pk_id}`} key={nanoid()} className="crewApplication">
                         <Image
-                            src={`/trip_img/${application.img}`}
+                            src={`http://frederikgraakjaer.dk/public/trip_img/${application.img}`}
                             alt={application.title}
                             width={200}
                             height={200}

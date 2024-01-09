@@ -19,7 +19,7 @@ const CaptainCard = ({
 }) => {
     return (
         <div className="trip-card">
-            <img src={`/profilePictures/${profilePicture}`} className="captain-img" />
+            <img src={`http://frederikgraakjaer.dk/public/profilePictures/${profilePicture}`} className="captain-img" />
             <p>
                 {firstname} {lastname}, {age}
             </p>

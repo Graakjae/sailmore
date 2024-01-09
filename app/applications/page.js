@@ -101,7 +101,7 @@ export default function ApplicationsPage() {
                                     </div>
                                     <Link href={`/profile/crew/${application.crewmember_ID}`} className="profile">
                                         <Image
-                                            src={`/profilePictures/${application.profilePicture}`}
+                                            src={`http://frederikgraakjaer.dk/public/profilePictures/${application.profilePicture}`}
                                             alt="Profile Image"
                                             width={50}
                                             height={50}
