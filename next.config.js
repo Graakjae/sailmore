@@ -6,7 +6,7 @@ module.exports = {
         return [
             {
                 source: "/backend/phpScripts/:path*",
-                destination: "http://localhost:8000/backend/phpScripts/:path*"
+                destination: "http://frederikgraakjaer.dk/backend/phpScripts/:path*"
             }
         ];
     },
