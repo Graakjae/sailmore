@@ -61,7 +61,7 @@
     z-index: -1;
 }
 
-.flexbox {
+.flexbox-frontpage {
     display: flex;
     justify-content: center;
     align-items: center;
