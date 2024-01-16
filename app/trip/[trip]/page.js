@@ -17,8 +17,7 @@ export default function TripPage() {
     const { trip: tripParam } = useParams();
     const [images, setImages] = useState([]);
     const userId = useAuth().userId;
-    const loggedIn = useAuth().loggedIn;
-    const userRole = useAuth().userRole;
+
     useEffect(() => {
         if (tripParam) {
             fetchTrip(tripParam);
@@ -218,7 +217,7 @@ export default function TripPage() {
                             <div className="important-info">
                                 <Image src={`/icons/icon_anchor.png`} alt="calendar" width={20} height={20} />
                                 <p>
-                                    {trip.destination} - {trip.startpoint}
+                                    {trip.startpoint} - {trip.destination}
                                 </p>
                             </div>
                             <div className="important-info">
