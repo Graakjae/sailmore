@@ -17,8 +17,6 @@ $price = $_POST['price'];
 $crew_capacity = $_POST['crew_capacity'];
 $rules = $_POST['rules'];
 
-
-// Use prepared statements to prevent SQL injection
 $query = "UPDATE trip SET title = ?, description = ?, startpoint = ?, destination = ?, start_date = ?, end_date = ?, price = ?, crew_capacity = ?, rules = ? WHERE captain_ID = ? AND pk_id = ?";
 $stmt = $mySQL->prepare($query);
 

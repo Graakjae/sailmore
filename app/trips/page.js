@@ -138,7 +138,6 @@ export default function TripsOverview() {
             <div className="trip-card-container">
                 {filteredTrips !== null
                     ? filteredTrips.map((trip, index) => (
-                          // Wrap each TripCard with Link
                           <Link href={`/trip/${trip.pk_id}`} key={index} className="trip-card-inner-container">
                               <TripCard
                                   title={trip.title}

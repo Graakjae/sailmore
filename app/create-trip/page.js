@@ -8,7 +8,6 @@ import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import TextInputField from "@/components/inputs/textInputField";
 import { useAuth } from "../authContext";
-import Image from "next/image";
 export default function CreateTripPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
